@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.LinearGradient
 import android.graphics.Paint
+import android.graphics.PorterDuff
 import android.graphics.RadialGradient
 import android.graphics.Rect
 import android.graphics.RectF
@@ -13,6 +14,7 @@ import android.graphics.Shader
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import com.neilturner.aerialviews.ui.helpers.FastBlurCompat
 
 /**
  * An authentic museum picture frame with dynamic aspect ratio adaptation.
@@ -60,7 +62,6 @@ class GalleryFrameView @JvmOverloads constructor(
         }
 
     fun getFocalPointY(): Float {
-        val shadowPadY = 36f * density
         val fTop = shadowPadY - 4f * density
         val fBottom = height.toFloat() - shadowPadY - 4f * density
         val cTop = fTop + totalBorderPerSide
@@ -84,6 +85,10 @@ class GalleryFrameView @JvmOverloads constructor(
         }
 
     private val density = resources.displayMetrics.density
+
+    // Padding for soft diffuse physical wall drop shadows
+    private val shadowPadX = 48f * density
+    private val shadowPadY = 52f * density
 
     // Scaled dimensions
     private val frameMoldingWidth = 22f * density
@@ -110,6 +115,12 @@ class GalleryFrameView @JvmOverloads constructor(
 
     // Reusable linen canvas texture bitmap
     private var linenBitmap: Bitmap? = null
+
+    // Cached soft-blurred physical wall shadow bitmap
+    private var shadowBitmap: Bitmap? = null
+    private var lastShadowW = 0
+    private var lastShadowH = 0
+    private var lastLightingProfile: ArtLightingProfile? = null
 
     init {
         setWillNotDraw(false)
@@ -165,10 +176,6 @@ class GalleryFrameView @JvmOverloads constructor(
         val targetFrameW = targetCanvasW + 2 * totalBorderPerSide
         val targetFrameH = targetCanvasH + 2 * totalBorderPerSide
 
-        // Extra padding for the drop shadow
-        val shadowPadX = 36f * density
-        val shadowPadY = 40f * density
-
         val measuredW = (targetFrameW + shadowPadX * 2).toInt()
         val measuredH = (targetFrameH + shadowPadY * 2).toInt()
 
@@ -177,9 +184,6 @@ class GalleryFrameView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
-        val shadowPadX = 36f * density
-        val shadowPadY = 40f * density
 
         val fLeft = shadowPadX
         val fTop = shadowPadY - 4f * density
@@ -232,91 +236,88 @@ class GalleryFrameView @JvmOverloads constructor(
         }
     }
 
+    private val shadowDstRect = RectF()
+    private val shadowDrawPaint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
+
     private fun drawRealisticDropShadow(canvas: Canvas, r: RectF) {
-        val shadowOffsetX = 20f * density * lightingProfile.shadowOffsetXFactor
-        val shadowAlpha = lightingProfile.shadowAlpha
+        val w = width
+        val h = height
+        if (w <= 0 || h <= 0) return
 
-        // 1. Soft diffuse ambient penumbra (wide soft shadow showing proximity to the wall)
-        shadowRect.set(
-            r.left - 10f * density + shadowOffsetX * 0.18f,
-            r.top - 3f * density,
-            r.right + 10f * density + shadowOffsetX * 0.18f,
-            r.bottom + 16f * density
-        )
-        shadowPaint.color = Color.argb((shadowAlpha * 0.28f).toInt(), 10, 8, 6)
-        canvas.drawRoundRect(shadowRect, 12f * density, 12f * density, shadowPaint)
+        if (shadowBitmap == null || lastShadowW != w || lastShadowH != h || lastLightingProfile != lightingProfile) {
+            shadowBitmap?.recycle()
 
-        // 2. Tight contact ambient occlusion (AO) directly behind the physical frame perimeter
-        shadowRect.set(
-            r.left - 2f * density + shadowOffsetX * 0.10f,
-            r.top + 1.5f * density,
-            r.right + 2f * density + shadowOffsetX * 0.10f,
-            r.bottom + 6f * density
-        )
-        shadowPaint.color = Color.argb((shadowAlpha * 0.82f).toInt(), 8, 6, 4)
-        canvas.drawRoundRect(shadowRect, 5f * density, 5f * density, shadowPaint)
+            // Render shadow onto a 1/4 scaled bitmap and apply dual-pass FastBlur for a silky Gaussian falloff
+            val scale = 0.25f
+            val sW = (w * scale).toInt().coerceAtLeast(10)
+            val sH = (h * scale).toInt().coerceAtLeast(10)
+            val sBmp = Bitmap.createBitmap(sW, sH, Bitmap.Config.ARGB_8888)
+            val sCanvas = Canvas(sBmp)
 
-        // 3. Deep downward directional cast shadow onto the wall below the frame
-        shadowRect.set(
-            r.left + 4f * density + shadowOffsetX * 0.45f,
-            r.bottom - 2f * density,
-            r.right - 4f * density + shadowOffsetX * 0.45f,
-            r.bottom + 24f * density
-        )
-        shadowPaint.shader = LinearGradient(
-            shadowOffsetX * 0.5f, r.bottom - 2f * density,
-            shadowOffsetX, r.bottom + 24f * density,
-            Color.argb(shadowAlpha, 8, 6, 4),
-            Color.TRANSPARENT,
-            Shader.TileMode.CLAMP
-        )
-        canvas.drawRect(shadowRect, shadowPaint)
+            val sDensity = density * scale
+            val shadowOffsetX = 18f * sDensity * lightingProfile.shadowOffsetXFactor
+            val shadowAlpha = lightingProfile.shadowAlpha
 
-        // 4. Directional lateral cast shadow along the side opposite to the light
-        if (lightingProfile.direction == LightDirection.LEFT) {
-            // Light from left -> casts shadow to the right
-            shadowRect.set(
-                r.right - 4f * density,
-                r.top + 6f * density,
-                r.right + 18f * density,
-                r.bottom + 14f * density
+            val bPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+            val sLeft = r.left * scale
+            val sTop = r.top * scale
+            val sRight = r.right * scale
+            val sBottom = r.bottom * scale
+
+            // 1. Soft diffuse ambient penumbra (wide soft shadow showing wall proximity)
+            val penumbraRect = RectF(
+                sLeft - 3f * sDensity + shadowOffsetX * 0.25f,
+                sTop - 1.5f * sDensity,
+                sRight + 3f * sDensity + shadowOffsetX * 0.25f,
+                sBottom + 16f * sDensity
             )
-            shadowPaint.shader = LinearGradient(
-                r.right - 4f * density, 0f,
-                r.right + 18f * density, 0f,
-                Color.argb((shadowAlpha * 0.85f).toInt(), 8, 6, 4),
-                Color.TRANSPARENT,
-                Shader.TileMode.CLAMP
+            bPaint.color = Color.argb((shadowAlpha * 0.38f).toInt(), 12, 10, 8)
+            sCanvas.drawRoundRect(penumbraRect, 10f * sDensity, 10f * sDensity, bPaint)
+
+            // 2. Directional cast shadow (downward & lateral opposite to light source)
+            val castRect = RectF(
+                sLeft + shadowOffsetX * 0.55f,
+                sTop + 6f * sDensity,
+                sRight + shadowOffsetX * 0.55f,
+                sBottom + 22f * sDensity
             )
-            canvas.drawRect(shadowRect, shadowPaint)
-        } else if (lightingProfile.direction == LightDirection.RIGHT) {
-            // Light from right -> casts shadow to the left
-            shadowRect.set(
-                r.left - 18f * density,
-                r.top + 6f * density,
-                r.left + 4f * density,
-                r.bottom + 14f * density
+            bPaint.color = Color.argb((shadowAlpha * 0.62f).toInt(), 10, 8, 6)
+            sCanvas.drawRoundRect(castRect, 6f * sDensity, 6f * sDensity, bPaint)
+
+            // 3. Tight contact ambient occlusion (AO) directly anchoring frame to wall
+            val contactRect = RectF(
+                sLeft + 2f * sDensity + shadowOffsetX * 0.12f,
+                sTop + 2f * sDensity,
+                sRight - 2f * sDensity + shadowOffsetX * 0.12f,
+                sBottom + 6f * sDensity
             )
-            shadowPaint.shader = LinearGradient(
-                r.left + 4f * density, 0f,
-                r.left - 18f * density, 0f,
-                Color.argb((shadowAlpha * 0.85f).toInt(), 8, 6, 4),
-                Color.TRANSPARENT,
-                Shader.TileMode.CLAMP
-            )
-            canvas.drawRect(shadowRect, shadowPaint)
+            bPaint.color = Color.argb((shadowAlpha * 0.90f).toInt(), 8, 6, 4)
+            sCanvas.drawRoundRect(contactRect, 3f * sDensity, 3f * sDensity, bPaint)
+
+            // Dual-pass box blur approximating a rich Gaussian blur curve
+            val blurRadius = (6 * density).toInt().coerceIn(3, 16)
+            FastBlurCompat.applyBlur(sBmp, blurRadius)
+            FastBlurCompat.applyBlur(sBmp, blurRadius)
+
+            shadowBitmap = sBmp
+            lastShadowW = w
+            lastShadowH = h
+            lastLightingProfile = lightingProfile
         }
 
-        shadowPaint.shader = null
+        shadowBitmap?.let {
+            shadowDstRect.set(0f, 0f, w.toFloat(), h.toFloat())
+            canvas.drawBitmap(it, null, shadowDstRect, shadowDrawPaint)
+        }
     }
 
     private fun drawArchitecturalFrameMolding(canvas: Canvas, r: RectF) {
-        val radius = 3f * density
+        val radius = 4f * density
         val m = frameMoldingWidth
 
-        // 1. Tier 1: Outer Hardwood Cove Molding
-        // Dark museum antique mahogany / walnut with subtle depth
-        val outerWood = if (isClassicalStyle) Color.parseColor("#20140D") else Color.parseColor("#181512")
+        // 1. Tier 1: Outer Architectural Molding (Antique Venetian Gold & Burnished Museum Bronze)
+        val outerWood = if (isClassicalStyle) Color.parseColor("#8A6B3D") else Color.parseColor("#725838")
         moldingPaint.color = outerWood
         canvas.drawRoundRect(r, radius, radius, moldingPaint)
 
@@ -324,8 +325,8 @@ class GalleryFrameView @JvmOverloads constructor(
         bevelHighlightPaint.shader = LinearGradient(
             0f, r.top,
             0f, r.top + 2.5f * density,
-            Color.argb(0x85, 255, 235, 190), // Warm gold highlight catch on top edge
-            Color.argb(0x10, 255, 235, 190),
+            Color.argb(0xB0, 255, 235, 190), // Luminous gold catch on top edge
+            Color.argb(0x20, 255, 235, 190),
             Shader.TileMode.CLAMP
         )
         canvas.drawRect(r.left, r.top, r.right, r.top + 2.5f * density, bevelHighlightPaint)
@@ -334,25 +335,25 @@ class GalleryFrameView @JvmOverloads constructor(
         // 3. Directional Lateral Bevel Lighting (Light facing side catches light; opposite side recedes)
         when (lightingProfile.direction) {
             LightDirection.LEFT -> {
-                bevelHighlightPaint.color = Color.parseColor("#382418")
+                bevelHighlightPaint.color = Color.parseColor("#A88852")
                 canvas.drawRect(r.left, r.top, r.left + 2f * density, r.bottom, bevelHighlightPaint)
-                bevelShadowPaint.color = Color.parseColor("#0E0805")
+                bevelShadowPaint.color = Color.parseColor("#4D381D")
                 canvas.drawRect(r.right - 2f * density, r.top, r.right, r.bottom, bevelShadowPaint)
             }
             LightDirection.RIGHT -> {
-                bevelHighlightPaint.color = Color.parseColor("#382418")
+                bevelHighlightPaint.color = Color.parseColor("#A88852")
                 canvas.drawRect(r.right - 2f * density, r.top, r.right, r.bottom, bevelHighlightPaint)
-                bevelShadowPaint.color = Color.parseColor("#0E0805")
+                bevelShadowPaint.color = Color.parseColor("#4D381D")
                 canvas.drawRect(r.left, r.top, r.left + 2f * density, r.bottom, bevelShadowPaint)
             }
             LightDirection.CENTER -> {
-                bevelShadowPaint.color = Color.parseColor("#0E0805")
+                bevelShadowPaint.color = Color.parseColor("#4D381D")
                 canvas.drawRect(r.left, r.bottom - 2f * density, r.right, r.bottom, bevelShadowPaint)
             }
         }
 
         // 4. Underside drop shadow on bottom molding rail
-        bevelShadowPaint.color = Color.parseColor("#120A06")
+        bevelShadowPaint.color = Color.parseColor("#422F18")
         canvas.drawRect(r.left, r.bottom - 2.5f * density, r.right, r.bottom, bevelShadowPaint)
 
         // 5. Tier 2: Stepped Architectural Cove
@@ -363,12 +364,12 @@ class GalleryFrameView @JvmOverloads constructor(
             r.right - coveInset,
             r.bottom - coveInset
         )
-        val coveColor = if (isClassicalStyle) Color.parseColor("#2C1B11") else Color.parseColor("#201C18")
+        val coveColor = if (isClassicalStyle) Color.parseColor("#664D29") else Color.parseColor("#523D20")
         moldingPaint.color = coveColor
         canvas.drawRect(tempRect, moldingPaint)
 
         // Inner cove shading for authentic 3D architectural profile
-        bevelShadowPaint.color = Color.parseColor("#26000000")
+        bevelShadowPaint.color = Color.parseColor("#38000000")
         canvas.drawRect(tempRect.left, tempRect.top, tempRect.right, tempRect.top + 2f * density, bevelShadowPaint)
         canvas.drawRect(tempRect.left, tempRect.top, tempRect.left + 2f * density, tempRect.bottom, bevelShadowPaint)
 

@@ -471,7 +471,6 @@ class ScreenController(
         isPaused = false
         pauseStartTime = 0
         currentMedia = media
-        overlayStateStore.resetForNextMedia()
 
         if (media.uri.toString().contains("smb://")) {
             val pattern = Regex("(smb://)([^:]+):([^@]+)@([\\d.]+)/")
@@ -481,8 +480,6 @@ class ScreenController(
         } else {
             Timber.i("Loading: ${media.metadata.shortDescription} - ${media.uri} (${media.metadata.pointsOfInterest})")
         }
-
-        updateMetadataOverlayData(media)
 
         // Set overlay positions
         overlayHelper.assignOverlaysAndIds(
@@ -1286,6 +1283,10 @@ class ScreenController(
 
     override fun onVideoPrepared() {
         if (!blackOutMode && currentMedia?.type == AerialMediaType.VIDEO) {
+            currentMedia?.let {
+                overlayStateStore.resetForNextMedia()
+                updateMetadataOverlayData(it)
+            }
             fadeInNextItem()
         }
     }
@@ -1426,7 +1427,10 @@ class ScreenController(
         if (blackOutMode) return
         currentMedia
             ?.takeIf { it.type == AerialMediaType.IMAGE }
-            ?.let { updateMetadataOverlayData(it) }
+            ?.let {
+                overlayStateStore.resetForNextMedia()
+                updateMetadataOverlayData(it)
+            }
         fadeInNextItem()
     }
 

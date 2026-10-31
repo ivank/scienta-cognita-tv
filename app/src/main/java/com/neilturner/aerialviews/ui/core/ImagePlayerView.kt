@@ -168,6 +168,15 @@ class ImagePlayerView : FrameLayout {
             visibility = GONE
         }
 
+    // Stationary foreground ceiling with museum lighting fixtures (sits in front of wall and artwork)
+    private val galleryCeilingForegroundView =
+        ImageView(context).apply {
+            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, Gravity.TOP)
+            scaleType = ImageView.ScaleType.FIT_XY
+            adjustViewBounds = true
+            visibility = GONE
+        }
+
     private val progressBar =
         GeneralPrefs.progressBarLocation != ProgressBarLocation.DISABLED &&
             GeneralPrefs.progressBarType != ProgressBarType.VIDEOS
@@ -187,8 +196,9 @@ class ImagePlayerView : FrameLayout {
         addView(sculptureBacklightView)
         addView(foregroundImageView)
         addView(galleryBackgroundImageView)
-        addView(gallerySpotlightView)
         addView(galleryFrameView)
+        addView(gallerySpotlightView)
+        addView(galleryCeilingForegroundView)
     }
 
     fun release() {
@@ -379,6 +389,13 @@ class ImagePlayerView : FrameLayout {
         )
         galleryBackgroundImageView.visibility = VISIBLE
 
+        // Stationary foreground ceiling with museum track lights
+        galleryCeilingForegroundView.setImageResource(
+            if (isClassical) R.drawable.fg_gallery_ceiling_classical else R.drawable.fg_gallery_ceiling_modern,
+        )
+        galleryCeilingForegroundView.visibility = VISIBLE
+        galleryCeilingForegroundView.translationY = 0f
+
         // Dynamic lighting profile
         val lightingProfile = ArtLightingManager.getProfile(currentMedia)
         gallerySpotlightView.setLightingProfile(lightingProfile)
@@ -413,6 +430,7 @@ class ImagePlayerView : FrameLayout {
     ) {
         galleryBackgroundImageView.visibility = GONE
         gallerySpotlightView.visibility = GONE
+        galleryCeilingForegroundView.visibility = GONE
         galleryFrameView.visibility = GONE
         galleryFrameView.paintingDrawable = null
 
@@ -461,6 +479,7 @@ class ImagePlayerView : FrameLayout {
     ) {
         galleryBackgroundImageView.visibility = GONE
         gallerySpotlightView.visibility = GONE
+        galleryCeilingForegroundView.visibility = GONE
         galleryFrameView.visibility = GONE
         galleryFrameView.paintingDrawable = null
         sculptureBacklightView.visibility = GONE
@@ -610,6 +629,7 @@ class ImagePlayerView : FrameLayout {
 
         galleryBackgroundImageView.visibility = GONE
         gallerySpotlightView.visibility = GONE
+        galleryCeilingForegroundView.visibility = GONE
         galleryFrameView.visibility = GONE
         galleryFrameView.paintingDrawable = null
         galleryFrameView.scaleX = 1f
