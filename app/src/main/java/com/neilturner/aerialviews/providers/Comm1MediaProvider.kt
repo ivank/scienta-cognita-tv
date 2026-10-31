@@ -1,6 +1,7 @@
 package com.neilturner.aerialviews.providers
 
 import android.content.Context
+import androidx.core.net.toUri
 import com.neilturner.aerialviews.R
 import com.neilturner.aerialviews.data.network.JsonHelper.parseJson
 import com.neilturner.aerialviews.data.network.JsonHelper.parseJsonMap
@@ -56,10 +57,12 @@ class Comm1MediaProvider(
         wrapper.photos?.forEach { photo ->
             if (prefs.enabled) {
                 val detailed = photo.details.ifBlank { photo.description }
+                val hasVideo = !photo.video1080.isNullOrBlank()
+                val mediaUri = if (hasVideo) photo.video1080.orEmpty().toUri() else photo.uriAtQuality(quality)
                 videos.add(
                     AerialMedia(
-                        photo.uriAtQuality(quality),
-                        type = AerialMediaType.IMAGE,
+                        mediaUri,
+                        type = if (hasVideo) AerialMediaType.VIDEO else AerialMediaType.IMAGE,
                         source = AerialMediaSource.COMM1,
                         metadata =
                             AerialMediaMetadata(

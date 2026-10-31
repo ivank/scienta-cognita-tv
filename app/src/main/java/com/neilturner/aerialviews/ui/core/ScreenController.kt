@@ -1274,6 +1274,18 @@ class ScreenController(
     private fun commitAndFadeInPreparedItem(media: AerialMedia) {
         if (blackOutMode || currentMedia !== media) return
 
+        // For portrait 3D-orbit sculpture videos (_left.mp4 / _right.mp4), place the info bubble on the opposite side
+        val metaId = overlayHelper.findOverlay<MetadataOverlay>().firstOrNull()?.id
+        if (metaId != null && media.type == AerialMediaType.VIDEO) {
+            val uriStr = media.uri.toString().lowercase()
+            val metaNormallyOnRight = bottomRightIds.contains(metaId) || topRightIds.contains(metaId)
+            if (uriStr.endsWith("_left.mp4")) {
+                alternate = !metaNormallyOnRight
+            } else if (uriStr.endsWith("_right.mp4")) {
+                alternate = metaNormallyOnRight
+            }
+        }
+
         // While the screen is completely covered by loadingView (alpha = 1f),
         // move overlays to their next position and update the underlying media views.
         applyNextOverlayPositions()

@@ -470,49 +470,57 @@
       "title": "Christ the Redeemer — Paul Landowski, 1931, Corcovado, Rio de Janeiro, Brazil",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Christ_the_Redeemer_-_Cristo_Redentor.jpg/1920px-Christ_the_Redeemer_-_Cristo_Redentor.jpg",
       "description": "Colossal Art Deco statue of Jesus Christ created by French sculptor Paul Landowski and Brazilian engineer Heitor da Silva Costa. Standing 30 meters tall atop the 700-meter Corcovado peak overlooking Rio de Janeiro, it was constructed between 1922 and 1931 from reinforced concrete and six million soapstone tiles. In 2007, it was voted one of the New Seven Wonders of the World.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_01_christ_the_redeemer_left.mp4"
     },
     {
       "title": "David — Michelangelo, 1504, Galleria dell'Accademia, Florence, Italy",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/%27David%27_by_Michelangelo_Fir_JBU004.jpg/1920px-%27David%27_by_Michelangelo_Fir_JBU004.jpg",
       "description": "Masterpiece of Renaissance sculpture created in pure Carrara marble by Michelangelo between 1501 and 1504. Standing 5.17 meters tall, the statue portrays the biblical hero David, poised with intense focus before facing Goliath. Its anatomical accuracy and contrapposto stance established it as the supreme symbol of Florentine civic liberty.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_02_david_right.mp4"
     },
     {
       "title": "Mask of Tutankhamun — 18th Dynasty Gold Mask, c. 1323 BC, Luxor / Cairo, Egypt",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/27/CairoEgMuseumTaaMaskMostlyPhotographed.jpg",
       "description": "Ancient Egyptian gold funerary mask of the 18th Dynasty pharaoh Tutankhamun, crafted around 1323 BC. Discovered in 1925 in the Valley of the Kings by Howard Carter, it is fashioned from two sheets of beaten high-karat gold inlaid with colored glass, faience, and semi-precious lapis lazuli.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_03_mask_of_tutankhamun_left.mp4"
     },
     {
       "title": "Great Sphinx of Giza — Old Kingdom Colossal Sculpture, c. 2500 BC, Giza, Egypt",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Sphinx_with_the_third_pyramid.jpg/1920px-Sphinx_with_the_third_pyramid.jpg",
       "description": "Colossal limestone statue of a reclining mythical sphinx with the body of a lion and the head of Pharaoh Khafre, carved around 2500 BC during Egypt's Old Kingdom. Measuring 73 meters long and 20 meters high, it is the oldest known monumental sculpture in Egypt.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_04_great_sphinx_of_giza_full.mp4"
     },
     {
       "title": "Benin Bronzes — Kingdom of Benin Royal Sculptures, 16th c., Benin City, Nigeria",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Benin_brass_plaque_03_%28cropped%29.jpg/1920px-Benin_brass_plaque_03_%28cropped%29.jpg",
       "description": "Group of over a thousand commemorative brass and bronze plaques and cast sculptures created by the Edo people of the Kingdom of Benin from the 16th century onward. Adorning the royal palace of the Oba, their intricate lost-wax casting exemplifies West African metalworking mastery.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_05_benin_bronzes_right.mp4"
     },
     {
       "title": "Church of St. George — Rock-Hewn Monolithic Church, c. 1200, Lalibela, Ethiopia",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Lalibela%2C_san_giorgio%2C_esterno_24.jpg/1920px-Lalibela%2C_san_giorgio%2C_esterno_24.jpg",
       "description": "Monolithic cross-shaped church carved directly downward into volcanic tuff rock during the late 12th or early 13th century under King Gebre Mesqel Lalibela. Connected by a subterranean network of trenches and catacombs, it remains an active pilgrimage site of the Ethiopian Orthodox Tewahedo Church.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_06_church_of_st_george_full.mp4"
     },
     {
       "title": "Great Mosque of Djenné — Sudano-Sahelian Earth Architecture, c. 13th c., Djenné, Mali",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Djenne_great_mud_mosque.jpg/1920px-Djenne_great_mud_mosque.jpg",
       "description": "The largest mud-brick architecture in the world, situated along the Bani River in Mali. Built in the distinctive Sudano-Sahelian architectural style with sun-baked earth bricks, its walls are replastered annually by the entire community during an extraordinary cultural festival.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_07_great_mosque_of_djenn_full.mp4"
     },
     {
       "title": "Ife Head of a King — Kingdom of Ife Brass Sculpture, c. 1300, Ife, Nigeria",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Arte_yoruba%2C_nigeria%2C_testa_da_ife%2C_12-15mo_secolo.JPG",
       "description": "Masterpiece of Yoruba naturalistic sculpture cast in copper alloy around 1300 AD in the ancient sacred city of Ile-Ife. Unearthed in 1938, its refined facial features and delicate striations represent an Ooni (king) wearing a beaded royal headdress.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_08_ife_head_of_a_king_left.mp4"
     },
     {
       "title": "The Great Wave off Kanagawa — Hokusai, c. 1831, Mount Fuji, Japan",
@@ -530,73 +538,85 @@
       "title": "Terracotta Army — Qin Dynasty Sculptures, c. 210 BC, Xi'an, China",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/51714-Terracota-Army.jpg/1920px-51714-Terracota-Army.jpg",
       "description": "Monumental funerary collection of more than 8,000 life-sized terracotta soldiers, 130 chariots, and 520 horses buried around 210 BC to protect Qin Shi Huang, the first Emperor of China, in the afterlife. Every single soldier displays unique facial features, armor, and hairstyles.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_09_terracotta_army_full.mp4"
     },
     {
       "title": "Taj Mahal — Mughal Monumental Architecture, 1648, Agra, India",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/1920px-Taj_Mahal_%28Edited%29.jpeg",
       "description": "Ivory-white marble mausoleum on the south bank of the Yamuna River, commissioned in 1631 by Mughal Emperor Shah Jahan to house the tomb of his favorite wife, Mumtaz Mahal. Celebrated as the jewel of Muslim art in India, it features symmetry, Persian calligraphy, and pietra dura inlays.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_10_taj_mahal_full.mp4"
     },
     {
-      "title": "Padmapani Bodhisattva Fresco — Ajanta Caves, c. 475 AD, Maharashtra, India",
+      "title": "Ajanta Rock-Cut Cave Temples — Vakataka Dynasty, c. 475 AD, Maharashtra, India",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Ajanta_%2863%29.jpg",
-      "description": "Ancient Buddhist cave fresco painted around 475 AD inside Cave 1 of the Ajanta Caves, a UNESCO World Heritage site in the Sahyadri mountains. Depicts Bodhisattva Padmapani holding a blue lotus flower, radiating compassion with subtle shading and spiritual elegance.",
-      "category": "painting"
+      "description": "Monumental rock-cut Buddhist cave sanctuaries carved into a horseshoe-shaped basalt cliff gorge in the Sahyadri hills of Maharashtra, India, under the Vakataka Dynasty around 475 AD. Comprising 30 prayer halls (chaityas) and monasteries (viharas), it is a UNESCO World Heritage masterpiece.",
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_11_ajanta_rock_cut_cave_temples_full.mp4"
     },
     {
       "title": "Kandariya Mahadeva Temple — Chandela Dynasty, c. 1030 AD, Khajuraho, India",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Khajuraho.KandariyaMahadeva.jpg/1920px-Khajuraho.KandariyaMahadeva.jpg",
       "description": "The largest and most ornate Hindu temple at Khajuraho, built around 1030 AD by the Chandela king Vidyadhara. Dedicated to Lord Shiva, its towering spire represents Mount Meru, adorned with over 800 intricately carved sculptures celebrating divine joy and artistic perfection.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_12_kandariya_mahadeva_temple_full.mp4"
     },
     {
       "title": "Angkor Wat — Khmer Monumental Architecture, c. 1150 AD, Siem Reap, Cambodia",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1920px-Angkor_Wat.jpg",
       "description": "Massive temple complex constructed in the early 12th century by Khmer King Suryavarman II, originally dedicated to Vishnu before transforming into a Buddhist center. Spanning over 160 hectares, it is the largest religious monument in the world, surrounded by a vast moat.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_13_angkor_wat_full.mp4"
     },
     {
       "title": "Borobudur Temple Stupas — Sailendra Dynasty, c. 800 AD, Java, Indonesia",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Pradaksina.jpg/1920px-Pradaksina.jpg",
       "description": "The world's largest Buddhist temple, built in the 8th and 9th centuries under the Sailendra Dynasty. Constructed without mortar from volcanic rock, its concentric terraces ascend past 2,672 relief panels and 504 Buddha statues toward a central monumental dome.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_14_borobudur_temple_stupas_full.mp4"
     },
     {
       "title": "Gate of All Nations — Achaemenid Empire, c. 515 BC, Persepolis, Iran",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/2018-09-21_Iran%2C_Persepolis%2C_Tachara_%28from_the_southeast%29.jpg/1920px-2018-09-21_Iran%2C_Persepolis%2C_Tachara_%28from_the_southeast%29.jpg",
       "description": "Grand entrance portal ordered by King Xerxes I around 515 BC at Persepolis, the ceremonial capital of the Persian Achaemenid Empire. Guarded by colossal winged human-headed bulls (lamassu), it welcomed envoys and dignitaries from all provinces of the vast empire.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_15_gate_of_all_nations_full.mp4"
     },
     {
       "title": "El Castillo (Pyramid of Kukulkan) — Maya Civilization, c. 900 AD, Chichen Itza, Mexico",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Chichen_Itza_3.jpg/1920px-Chichen_Itza_3.jpg",
       "description": "Mesoamerican step-pyramid dedicated to the feathered serpent deity Kukulkan, built by the Maya civilization between the 9th and 12th centuries. During the equinoxes, the afternoon sun casts shadows creating the illusion of a giant serpent slithering down the stairs.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_16_el_castillo_pyramid_of_kukulkan_full.mp4"
     },
     {
       "title": "Pyramid of the Sun — Pre-Columbian City, c. 200 AD, Teotihuacan, Mexico",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/2020-02-11_Teotihuacan_la_Avenida_de_los_Muertos_y_la_Pir%C3%A1mide_del_Sol.jpg/1920px-2020-02-11_Teotihuacan_la_Avenida_de_los_Muertos_y_la_Pir%C3%A1mide_del_Sol.jpg",
       "description": "The largest structure in the ancient pre-Columbian city of Teotihuacan, built around 200 AD along the Avenue of the Dead. Rising 65 meters above the valley floor, it served as an astronomical observatory and ceremonial temple dedicated to celestial deities.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_17_pyramid_of_the_sun_full.mp4"
     },
     {
       "title": "Aztec Sun Stone (Piedra del Sol) — Aztec Empire, c. 1502, Tenochtitlan / Mexico City",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Monolito_de_la_Piedra_del_Sol.jpg/1920px-Monolito_de_la_Piedra_del_Sol.jpg",
       "description": "Colossal basalt calendar monolith carved in the early 16th century by the Mexica (Aztec) Empire under Emperor Moctezuma II. Unearthed beneath Mexico City's Zócalo in 1790, it depicts the central face of the sun god Tonatiuh surrounded by four previous cosmic eras.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_18_aztec_sun_stone_piedra_del_sol_full.mp4"
     },
     {
       "title": "Machu Picchu Sanctuary — Inca Empire, c. 1450, Andes Mountains, Cusco, Peru",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Machu_Picchu%2C_2023_%28012%29.jpg/1920px-Machu_Picchu%2C_2023_%28012%29.jpg",
       "description": "Inca royal citadel situated on a mountain ridge 2,430 meters above sea level in the Sacred Valley of Peru, constructed around 1450 under Emperor Pachacuti. Known for its sophisticated dry-stone masonry, agricultural terraces, and dramatic alpine panorama.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_19_machu_picchu_sanctuary_full.mp4"
     },
     {
       "title": "Moai of Rapa Nui — Polynesian Monolithic Statues, c. 1250–1500, Easter Island, Chile",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/5/50/AhuTongariki.JPG",
       "description": "Monolithic volcanic stone figures carved by the Polynesian Rapa Nui people between 1250 and 1500 AD. Representing ancestral chiefs, nearly 1,000 statues stand across the remote Pacific island, gazing inland from monumental stone platforms called ahu.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_20_moai_of_rapa_nui_full.mp4"
     },
     {
       "title": "American Gothic — Grant Wood, 1930, Eldon, Iowa / Art Institute of Chicago",
@@ -644,7 +664,8 @@
       "title": "The Thinker — Auguste Rodin, 1904, Musée Rodin, Paris, France",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Le_Penseur_by_Rodin_%28Kunsthalle_Bielefeld%29_2014-04-10.JPG/1920px-Le_Penseur_by_Rodin_%28Kunsthalle_Bielefeld%29_2014-04-10.JPG",
       "description": "Iconic bronze sculpture created by French sculptor Auguste Rodin, conceived in 1880 as part of The Gates of Hell inspired by Dante's Inferno. Depicts a muscular male figure leaning forward in deep philosophical meditation, symbolizing human contemplation and creative struggle.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_21_the_thinker_right.mp4"
     },
     {
       "title": "The Kiss — Gustav Klimt, 1908, Belvedere Palace, Vienna, Austria",
@@ -668,25 +689,29 @@
       "title": "Venus de Milo — Alexandros of Antioch, c. 150 BC, Milos, Greece",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Front_views_of_the_Venus_de_Milo.jpg/1920px-Front_views_of_the_Venus_de_Milo.jpg",
       "description": "Classical Hellenistic marble sculpture carved around 150 BC on the Aegean island of Milos, attributed to Alexandros of Antioch. Standing over 2 meters tall, the graceful goddess of love and beauty is renowned worldwide for her classic S-curve contrapposto.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_22_venus_de_milo_left.mp4"
     },
     {
       "title": "Winged Victory of Samothrace — Hellenistic Sculpture, c. 190 BC, Samothrace, Greece",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Victoire_de_Samothrace_-_Musee_du_Louvre_-_20190812.jpg/1920px-Victoire_de_Samothrace_-_Musee_du_Louvre_-_20190812.jpg",
       "description": "Monumental Parian marble sculpture of the goddess Nike, created around 190 BC on the Greek island of Samothrace to celebrate a naval triumph. Perched upon a ship's prow with rippling drapery swept by sea winds, it presides over the Daru staircase in the Louvre.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_23_winged_victory_of_samothrace_right.mp4"
     },
     {
       "title": "The Colosseum — Flavian Amphitheatre, 80 AD, Rome, Italy",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1920px-Colosseo_2020.jpg",
       "description": "The largest ancient amphitheatre ever built, constructed in limestone, tuff, and brick-faced concrete under the Flavian emperors between 72 and 80 AD. Seating over 50,000 spectators for gladiatorial contests, it remains the ultimate architectural icon of Imperial Rome.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_24_the_colosseum_full.mp4"
     },
     {
       "title": "The Parthenon & Acropolis — Classical Greek Architecture, c. 447 BC, Athens, Greece",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/d/da/The_Parthenon_in_Athens.jpg",
       "description": "Former temple dedicated to the goddess Athena, constructed between 447 and 432 BC atop the rocky Acropolis of Athens by architects Ictinus and Callicrates under Pericles. Regarded as the zenith of Doric classical architecture and Western democratic heritage.",
-      "category": "architecture"
+      "category": "architecture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_25_the_parthenon_acropolis_full.mp4"
     },
     {
       "title": "The Scream — Edvard Munch, 1893, National Museum, Oslo, Norway",
@@ -710,13 +735,14 @@
       "title": "Madara Rider — Early Medieval Rock Relief, c. 710 AD, Madara, Bulgaria",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/1/18/JE%C5%B9DZIEC_Z_MADARY.JPG",
       "description": "Early medieval monumental rock relief carved around 710 AD into a vertical 100-meter cliff near Madara in northeastern Bulgaria. Depicting a horseman triumphant over a lion, followed by a hunting dog, it is a UNESCO World Heritage site honoring the early Bulgarian rulers.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_26_madara_rider_full.mp4"
     },
     {
       "title": "Boyana Church Frescoes — Medieval Master, 1259, Boyana, Sofia, Bulgaria",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Boyana_Church_Mural_Paintings.jpg/1920px-Boyana_Church_Mural_Paintings.jpg",
       "description": "Medieval Bulgarian Orthodox church located at the foot of Mount Vitosha in Sofia. Its exceptional 1259 frescoes by a master Bulgarian iconographer display remarkable psychological depth, realism, and vibrant color, foreshadowing the European Renaissance by decades.",
-      "category": "architecture"
+      "category": "painting"
     },
     {
       "title": "Rila Monastery Frescoes — Zahari Zograf, c. 1844, Rila, Bulgaria",
@@ -728,7 +754,8 @@
       "title": "The Bronze Horseman — Étienne Falconet, 1782, Senate Square, Saint Petersburg, Russia",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/The_Bronze_Horseman_%28St._Petersburg%2C_Russia%29.jpg/1920px-The_Bronze_Horseman_%28St._Petersburg%2C_Russia%29.jpg",
       "description": "Monumental equestrian statue of Peter the Great, commissioned by Catherine the Great and sculpted by Étienne Maurice Falconet between 1768 and 1782 on the bank of the Neva River. Peter points westward atop the Thunder Stone, the largest stone ever moved by humans.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_27_the_bronze_horseman_full.mp4"
     },
     {
       "title": "Morning in a Pine Forest — Ivan Shishkin, 1889, Tretyakov Gallery, Moscow, Russia",
@@ -908,7 +935,8 @@
       "title": "Shiva Nataraja (Lord of the Dance) — Chola Dynasty Bronze, 11th c., Thanjavur, Tamil Nadu, India",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Shiva_Nataraja%2C_Southern_India%2C_Tamil_Nadu%2C_Chola_dynasty%2C_900s-1100s_with_later_alterations%2C_cast_bronze_-_Portland_Art_Museum_-_Portland%2C_Oregon_-_DSC08478.jpg/1920px-Shiva_Nataraja%2C_Southern_India%2C_Tamil_Nadu%2C_Chola_dynasty%2C_900s-1100s_with_later_alterations%2C_cast_bronze_-_Portland_Art_Museum_-_Portland%2C_Oregon_-_DSC08478.jpg",
       "description": "11th-century lost-wax bronze masterpiece of the Chola Dynasty from Tamil Nadu. Depicts the cosmic dance (Ananda Tandava) of Shiva within an aureole of flames, embodying the continuous cycle of creation, preservation, and destruction of the universe.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_28_shiva_nataraja_lord_of_the_dance_left.mp4"
     },
     {
       "title": "The Court of Gayumars — Sultan Muhammad, c. 1522, Shahnameh of Shah Tahmasp, Tabriz, Iran",
@@ -938,19 +966,22 @@
       "title": "Striding Lion Glazed Relief — Processional Way of Babylon, c. 575 BC, Mesopotamia / Iraq",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Processional_Way%2C_Babylon_-_Google_Art_Project.jpg/1920px-Processional_Way%2C_Babylon_-_Google_Art_Project.jpg",
       "description": "Neo-Babylonian glazed polychrome brick relief from the Processional Way of Babylon (c. 575 BC) during the reign of Nebuchadnezzar II. The sacred lion of the goddess Ishtar strided along the sacred ceremonial avenue to the Ishtar Gate.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_29_striding_lion_glazed_relief_full.mp4"
     },
     {
       "title": "The Royal Lion Hunt of Ashurbanipal — Neo-Assyrian Relief, c. 645 BC, Nineveh / Mosul, Iraq",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Ashurbanipal%27s_lion-hunt_scene%2C_wall_relief%2C_7th_century_BC%2C_from_Nineveh%2C_the_British_Museum.jpg/1920px-Ashurbanipal%27s_lion-hunt_scene%2C_wall_relief%2C_7th_century_BC%2C_from_Nineveh%2C_the_British_Museum.jpg",
       "description": "Triumphant alabaster bas-relief from the North Palace of Nineveh (c. 645 BC). Depicts the great Assyrian king Ashurbanipal in his chariot hunting desert lions, celebrated worldwide for the intense muscular realism and pathos of the wounded animals.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_30_the_royal_lion_hunt_of_ashurbanipal_full.mp4"
     },
     {
       "title": "Achaemenid Immortals Glazed Frieze — Palace of Darius, c. 510 BC, Susa, Iran",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Frieze_of_Archers_from_the_Palace_of_Darius_I_in_Susa_%281503%29.jpg/1920px-Frieze_of_Archers_from_the_Palace_of_Darius_I_in_Susa_%281503%29.jpg",
       "description": "Glazed siliceous brick frieze from the Apadana Palace of Darius the Great at Susa (c. 510 BC). Depicts the elite elite Persian royal guard known as 'The Immortals', adorned in embroidered robes and armed with spears, bows, and quivers.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_31_achaemenid_immortals_glazed_frieze_right.mp4"
     },
     {
       "title": "Complete View of Mount Geumgang (Geumgangjeondo) — Jeong Seon, 1734, Joseon Dynasty, Korea",
@@ -986,13 +1017,15 @@
       "title": "The Raven and the First Men — Bill Reid, 1980, Haida Nation / Vancouver, Canada",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Raven_and_the_First_Men_02.jpg/1920px-Raven_and_the_First_Men_02.jpg",
       "description": "Monumental yellow cedar carving by master Haida artist Bill Reid (1980) at the Museum of Anthropology in Vancouver. Illustrates the Haida creation myth of Raven coaxing the first human beings out of a giant clamshell on the shores of Haida Gwaii.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_32_the_raven_and_the_first_men_full.mp4"
     },
     {
       "title": "Moche Portrait Vessel of a Ruler — Moche Culture, c. 450 AD, Larco Museum, Lima, Peru",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Portrait_Vessel_of_a_Ruler%2C_100_BC_-_500_AD%2C_Moche%2C_north_coast_of_Peru%2C_ceramic_and_pigment_-_Art_Institute_of_Chicago_-_DSC00321.JPG/1920px-Portrait_Vessel_of_a_Ruler%2C_100_BC_-_500_AD%2C_Moche%2C_north_coast_of_Peru%2C_ceramic_and_pigment_-_Art_Institute_of_Chicago_-_DSC00321.JPG",
       "description": "Finely modeled stirrup-spout ceramic vessel of the Moche culture of ancient Peru (c. 450 AD). Features an individualized realistic human portrait of an elite Moche dignitary with ornate headdress, ear spools, and painted facial markings.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_33_moche_portrait_vessel_of_a_ruler_left.mp4"
     },
     {
       "title": "Queen Nefertari Playing Senet — Tomb of Nefertari, c. 1255 BC, Valley of the Queens, Luxor, Egypt",
@@ -1016,7 +1049,8 @@
       "title": "Olowe of Ise Carved Veranda Post — Yoruba Kingdom, c. 1910, Ekiti / Ikere, Nigeria",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Veranda_Post_%28%C3%92p%C3%B3_%C3%92g%C3%B2g%C3%A1%29_%28ARTIC_1984.550%29.jpg/1920px-Veranda_Post_%28%C3%92p%C3%B3_%C3%92g%C3%B2g%C3%A1%29_%28ARTIC_1984.550%29.jpg",
       "description": "Magnificent architectural veranda post carved from a single trunk of wood by master Yoruba sculptor Olowe of Ise (c. 1910) for the royal palace of Ikere. Depicts an equestrian warrior king atop a horse with extraordinary vertical dynamism.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_34_olowe_of_ise_carved_veranda_post_right.mp4"
     },
     {
       "title": "Earth's Creation — Emily Kame Kngwarreye, 1994, Utopia, Northern Territory, Australia",
@@ -1028,7 +1062,8 @@
       "title": "Carved Canoe Prow (Tauihu) — Māori Whakairo Wood Carving, 18th c., Aotearoa / New Zealand",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Te_Paranihi_-_M%C4%81ori_waka_taua_%28war_canoe%29_from_the_Otago_Museum_02.jpg/1920px-Te_Paranihi_-_M%C4%81ori_waka_taua_%28war_canoe%29_from_the_Otago_Museum_02.jpg",
       "description": "18th-century Māori war canoe prow (tauihu) carved from native tōtara wood with pounamu jade chisels. Features intricate spirals (pitau) and stylized ancestral guardian figures (manaia) with iridescent pāua shell eyes, personifying ocean navigation power.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_35_carved_canoe_prow_tauihu_full.mp4"
     },
     {
       "title": "Portrait of a Beauty (Miindo) — Shin Yun-bok (Hyewon), c. 1805, Joseon Dynasty, Seoul, Korea",
@@ -1220,7 +1255,8 @@
       "title": "Fountain — Marcel Duchamp, 1917",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Marcel_Duchamp%2C_1917%2C_Fountain%2C_photograph_by_Alfred_Stieglitz.jpg",
       "description": "Fountain was a readymade sculpture attributed to Marcel Duchamp in 1917, consisting of a porcelain urinal signed \"R. Mutt\".",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_36_fountain_left.mp4"
     },
     {
       "title": "Nude Descending a Staircase No. 2 — Marcel Duchamp, 1912",
@@ -1232,7 +1268,8 @@
       "title": "The Bride Stripped Bare by Her Bachelors — Marcel Duchamp, Even",
       "url-1080": "https://uploads3.wikiart.org/images/marcel-duchamp/the-bride-stripped-bare-by-her-bachelors-1923.jpg",
       "description": "The Bride Stripped Bare by Her Bachelors, Even (in French : La mariée mise à nu par ses célibataires, même), also called The Large Glass (in French : Le Grand Verre), is an artwork by Marcel Duchamp over 9 feet (2.7 m) tall and almost 6 feet (1.76m) wide.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_37_the_bride_stripped_bare_by_her_bachelors_right.mp4"
     },
     {
       "title": "Portrait of Adele Bloch Bauer I — Gustav Klimt, 1907",
@@ -1586,13 +1623,15 @@
       "title": "The Obliteration Room — Yayoi Kusama, 2002",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Yayoi_Kusama_Obliteration_Room.jpg",
       "description": "Immersive contemporary installation ('The Obliteration Room') by Japanese avant-garde artist Yayoi Kusama, transforming an entire domestic interior with thousands of vibrant chromatic polka dots.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_38_the_obliteration_room_full.mp4"
     },
     {
       "title": "Pumpkin — Yayoi Kusama, 1994",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Yayoi_Kusama%2C_Pumpkin%2C_2015_%2837171698741%29.jpg/1920px-Yayoi_Kusama%2C_Pumpkin%2C_2015_%2837171698741%29.jpg",
       "description": "Iconic polka-dotted pumpkin sculpture by Japanese contemporary artist Yayoi Kusama, turning the organic gourd form into a hypnotic, rhythmic monument of black-and-yellow dots.",
-      "category": "sculpture"
+      "category": "sculpture",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_39_pumpkin_full.mp4"
     },
     {
       "title": "Thunderstorm Beneath the Summit — Katsushika Hokusai, c. 1830 to 1832",

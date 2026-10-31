@@ -14,6 +14,9 @@ class Comm1Photo {
     @SerialName("url-4K")
     val url4k: String? = null
 
+    @SerialName("video-1080")
+    val video1080: String? = null
+
     val title: String = ""
     val description: String = ""
     val details: String = ""
