@@ -22,6 +22,8 @@ class MediaPlaylist(
     size: Int = initialVideos.size,
     private var windowOffset: Int = 0,
     private val fetchChunk: (suspend (offset: Int, limit: Int) -> List<AerialMedia>)? = null,
+    private val onPositionChanged: ((position: Int) -> Unit)? = null,
+    private val onReshuffle: (() -> List<AerialMedia>)? = null,
 ) {
     private var position = startPosition
 
@@ -50,6 +52,21 @@ class MediaPlaylist(
             return null
         }
 
+        if (position >= servableSize - 1) {
+            Timber.i("MediaPlaylist: Reached end of playlist ($position / $servableSize). Reshuffling before starting over.")
+            val reshuffled = onReshuffle?.invoke()
+            if (!reshuffled.isNullOrEmpty()) {
+                synchronized(windowLock) {
+                    windowVideos.clear()
+                    windowVideos.addAll(reshuffled)
+                    servableSize = reshuffled.size
+                }
+            }
+            position = 0
+            onPositionChanged?.invoke(0)
+            return getItemAt(0) ?: skipForward()
+        }
+
         position = calculateNext(++position)
         Timber.v("MediaPlaylist: nextItem() -> pos $position / $size (window: $windowSize)")
         checkAndRefillWindow()
@@ -57,6 +74,7 @@ class MediaPlaylist(
         // A refill may have discovered the chunk source is shorter than declared, so re-wrap
         // before resolving rather than serving an index the source cannot produce.
         position = calculateNext(position)
+        onPositionChanged?.invoke(position)
         return getItemAt(position) ?: skipForward()
     }
 
@@ -71,6 +89,7 @@ class MediaPlaylist(
         checkAndRefillWindow()
 
         position = calculateNext(position)
+        onPositionChanged?.invoke(position)
         return getItemAt(position) ?: skipForward()
     }
 

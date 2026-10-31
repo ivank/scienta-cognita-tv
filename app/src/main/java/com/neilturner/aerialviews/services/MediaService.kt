@@ -228,17 +228,22 @@ class MediaService(
                 Timber.i("Media items after time filtering: ${filteredMedia.size} (was $before)")
             }
 
-            if (config.shuffleVideos) {
-                filteredMedia = weightedInterleavedShuffle(filteredMedia)
-                Timber.i("Shuffling media items with weighted source interleaving")
-            }
-
             // Defence in depth for a provider that emits a network source despite being typed
             // local. Applied before caching so the cached list only ever holds playable items.
             if (filterRemote) {
                 val before = filteredMedia.size
                 filteredMedia = filteredMedia.filterNot { it.source.requiresNetwork }
                 Timber.i("MediaService: WiFi-only filter removed ${before - filteredMedia.size} remote items")
+            }
+
+            var resumePosition = 0
+            if (config.shuffleVideos) {
+                val shuffledResult = ShuffledPlaylistManager.getOrGenerateShuffledList(context, filteredMedia) {
+                    weightedInterleavedShuffle(it)
+                }
+                filteredMedia = shuffledResult.first
+                resumePosition = shuffledResult.second
+                Timber.i("MediaService: Persistent shuffled media items (${filteredMedia.size} items, resumePos: $resumePosition)")
             }
 
             val musicPlaylist =
@@ -279,8 +284,23 @@ class MediaService(
                 Timber.i("MediaService: Cache disabled, using full in-memory playlist (${filteredMedia.size} items)")
             }
 
+            val appliedMedia = filter.apply(filteredMedia)
+            val playlist = MediaPlaylist(
+                initialVideos = appliedMedia,
+                startPosition = resumePosition - 1,
+                onPositionChanged = { pos ->
+                    ShuffledPlaylistManager.savePosition(context, pos)
+                },
+                onReshuffle = {
+                    val reshuffled = ShuffledPlaylistManager.reshuffleAndRestart(context, filteredMedia) {
+                        weightedInterleavedShuffle(it)
+                    }
+                    filter.apply(reshuffled)
+                },
+            )
+
             return@withContext MediaFetchResult(
-                mediaPlaylist = MediaPlaylist(filter.apply(filteredMedia)),
+                mediaPlaylist = playlist,
                 musicPlaylist = musicPlaylist,
             )
         }

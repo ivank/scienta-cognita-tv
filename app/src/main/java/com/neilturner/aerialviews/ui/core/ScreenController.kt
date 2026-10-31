@@ -32,6 +32,7 @@ import com.neilturner.aerialviews.services.KtorServer
 import com.neilturner.aerialviews.services.MediaService
 import com.neilturner.aerialviews.services.MusicPlayer
 import com.neilturner.aerialviews.services.NowPlayingService
+import com.neilturner.aerialviews.services.ShuffledPlaylistManager
 import com.neilturner.aerialviews.services.sonos.SonosService
 import com.neilturner.aerialviews.services.weather.WeatherService
 import com.neilturner.aerialviews.ui.controls.ProgressBar
@@ -904,10 +905,13 @@ class ScreenController(
     }
 
     private fun savePlaybackPosition() {
-        if (this::playlist.isInitialized && GeneralPrefs.playlistCache) {
-            mainScope.launch {
-                Timber.d("PlaylistCache: Saving playback position: ${playlist.currentPosition}")
-                cacheRepository.saveMediaPosition(playlist.currentPosition)
+        if (this::playlist.isInitialized) {
+            ShuffledPlaylistManager.savePosition(context, playlist.currentPosition)
+            if (GeneralPrefs.playlistCache) {
+                mainScope.launch {
+                    Timber.d("PlaylistCache: Saving playback position: ${playlist.currentPosition}")
+                    cacheRepository.saveMediaPosition(playlist.currentPosition)
+                }
             }
         }
     }
@@ -925,6 +929,10 @@ class ScreenController(
     fun stop() {
         if (isStopped) return
         isStopped = true
+
+        if (this::playlist.isInitialized) {
+            ShuffledPlaylistManager.savePosition(context, playlist.currentPosition)
+        }
 
         if (GeneralPrefs.playlistCache) {
             // ExoPlayer must be accessed on the main thread
