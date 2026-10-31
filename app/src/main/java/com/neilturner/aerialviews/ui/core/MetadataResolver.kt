@@ -40,7 +40,7 @@ internal class MetadataResolver(
         preferences: Preferences,
     ): ResolvedMetadata {
         val base =
-            if (media.type == AerialMediaType.IMAGE) {
+            if (media.type == AerialMediaType.IMAGE || media.metadata.category.isNotBlank()) {
                 resolvePhoto(context, media, preferences)
             } else {
                 resolveVideo(context, media, preferences)
@@ -111,6 +111,17 @@ internal class MetadataResolver(
                 }
             }
         }
+
+        media.metadata.shortDescription
+            .trim()
+            .takeIf { it.isNotBlank() }
+            ?.let {
+                return ResolvedMetadata(
+                    text = it,
+                    poi = emptyMap(),
+                    metadataType = MetadataType.STATIC,
+                )
+            }
 
         return ResolvedMetadata(
             text = "",

@@ -1662,6 +1662,286 @@
       "url-1080": "https://uploads8.wikiart.org/images/irma-stern/arab-1939.jpg",
       "description": "Celebrated 1945 oil portrait ('Arabier') by South African expressionist Irma Stern, inspired by her voyages to Zanzibar and painted with rich, jewel-like Fauvist color and dignified characterization.",
       "category": "painting"
+    },
+    {
+      "title": "Bust of Nefertiti — Thutmose, c. 1345 BC, Neues Museum, Berlin, Germany",
+      "description": "Painted stucco-coated limestone portrait bust of Great Royal Wife Nefertiti of Eighteenth-Dynasty Egypt, sculpted by the royal master Thutmose at Amarna and celebrated for its symmetrical elegance.",
+      "category": "sculpture",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Nofretete_Neues_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_40_bust_of_nefertiti_left.mp4"
+    },
+    {
+      "title": "Pietà — Michelangelo, 1499, St. Peter's Basilica, Vatican City",
+      "description": "High Renaissance Carrara marble masterpiece carved by a 24-year-old Michelangelo Buonarroti, depicting the Virgin Mary cradling the body of Jesus with serene classical grace and virtuosic drapery.",
+      "category": "sculpture",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Michelangelo%27s_Pieta_5450_cropncleaned_edit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_41_piet_right.mp4"
+    },
+    {
+      "title": "Laocoön and His Sons — Agesander, Athenodoros & Polydoros of Rhodes, c. 40 BC, Vatican Museums, Vatican City",
+      "description": "Monumental Hellenistic marble group unearthed in Rome in 1506, capturing the Trojan priest Laocoön and his two sons writhing in agony as giant sea serpents coil around them.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Laoco%C3%B6n_and_his_sons_group.jpg/1920px-Laoco%C3%B6n_and_his_sons_group.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_42_laoco_n_and_his_sons_left.mp4"
+    },
+    {
+      "title": "Apollo and Daphne — Gian Lorenzo Bernini, 1625, Galleria Borghese, Rome, Italy",
+      "description": "Baroque life-size Carrara marble sculpture by Gian Lorenzo Bernini capturing the dramatic Ovidian metamorphosis at the exact instant laurel bark and leaves envelop the fleeing nymph Daphne.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Apollo_and_Daphne_%28Bernini%29_%28cropped%29.jpg/1920px-Apollo_and_Daphne_%28Bernini%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_43_apollo_and_daphne_right.mp4"
+    },
+    {
+      "title": "Ecstasy of Saint Teresa — Gian Lorenzo Bernini, 1652, Santa Maria della Vittoria, Rome, Italy",
+      "description": "High Baroque sculptural altarpiece in the Cornaro Chapel by Gian Lorenzo Bernini, depicting the Spanish mystic Teresa of Ávila floating on marble clouds illuminated by gilded bronze rays.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Cornaro_chapel_in_Santa_Maria_della_Vittoria_in_Rome_HDR.jpg/1920px-Cornaro_chapel_in_Santa_Maria_della_Vittoria_in_Rome_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_44_ecstasy_of_saint_teresa_full.mp4"
+    },
+    {
+      "title": "Discobolus (Discus Thrower) — Myron (Lancellotti Roman Marble), c. 450 BC, Palazzo Massimo, Rome, Italy",
+      "description": "Classical Greek athletic ideal originally cast in bronze by Myron of Eleutherae and preserved in the Lancellotti Roman marble copy, poised at the coiled apex of a discus throw.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Discobolus_in_National_Roman_Museum_Palazzo_Massimo_alle_Terme.JPG/1920px-Discobolus_in_National_Roman_Museum_Palazzo_Massimo_alle_Terme.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_45_discobolus_discus_thrower_left.mp4"
+    },
+    {
+      "title": "Statue of Liberty (Liberty Enlightening the World) — Frédéric Auguste Bartholdi, 1886, New York Harbor, USA",
+      "description": "Colossal neoclassical copper monument designed by Frédéric Auguste Bartholdi with an internal iron framework by Gustave Eiffel, gifted by France to the United States on Liberty Island.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Statue_of_Liberty%2C_NY.jpg/1920px-Statue_of_Liberty%2C_NY.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_46_statue_of_liberty_liberty_enlightening_t_full.mp4"
+    },
+    {
+      "title": "Perseus with the Head of Medusa — Benvenuto Cellini, 1554, Loggia dei Lanzi, Florence, Italy",
+      "description": "Mannerist bronze tour de force cast by Benvenuto Cellini for Duke Cosimo I de' Medici, showing the mythological hero standing triumphantly over Medusa's body and raising her severed head.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Perseus_Medusa_Cellini_Lanzi_Florence.jpg/1920px-Perseus_Medusa_Cellini_Lanzi_Florence.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_47_perseus_with_the_head_of_medusa_right.mp4"
+    },
+    {
+      "title": "The Kiss (Le Baiser) — Auguste Rodin, 1889, Musée Rodin, Paris, France",
+      "description": "Sensuous white marble sculpture by Auguste Rodin depicting the medieval Italian lovers Paolo and Francesca from Dante's Inferno locked in a timeless embrace emerging from rough-hewn stone.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Lyon_1er_-_Mus%C3%A9e_des_Beaux-Art_-_Salle_230_-_Le_Baiser_%28Auguste_Rodin%29_01.jpg/1920px-Lyon_1er_-_Mus%C3%A9e_des_Beaux-Art_-_Salle_230_-_Le_Baiser_%28Auguste_Rodin%29_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_48_the_kiss_le_baiser_left.mp4"
+    },
+    {
+      "title": "Dying Gaul (Capitoline Gaul) — Ancient Roman Marble after Hellenistic Bronze, c. 220 BC, Capitoline Museums, Rome, Italy",
+      "description": "Poignant ancient Roman marble copy of a lost Pergamene bronze commemorating King Attalus I's victory over the Galatians, celebrated for its noble pathos and anatomical realism.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Dying_Gaul_Musei_Capitolini_MC747.jpg/1920px-Dying_Gaul_Musei_Capitolini_MC747.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_49_dying_gaul_capitoline_gaul_full.mp4"
+    },
+    {
+      "title": "Farnese Hercules — Glykon of Athens after Lysippos, c. 216 AD, National Archaeological Museum, Naples, Italy",
+      "description": "Monumental Roman marble statue recovered from the Baths of Caracalla, depicting a weary, heavily muscled Hercules leaning on his club draped with the Nemean lion's pelt.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Herakles_Farnese_MAN_Napoli_Inv6001_n01.jpg/1920px-Herakles_Farnese_MAN_Napoli_Inv6001_n01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_50_farnese_hercules_right.mp4"
+    },
+    {
+      "title": "Charioteer of Delphi (Heniokhos) — Ancient Greek Bronze, c. 474 BC, Delphi Archaeological Museum, Greece",
+      "description": "Rare surviving life-size Early Classical Greek bronze cast to commemorate Polyzalos of Gela's victory at the Pythian Games, preserving inlaid glass eyes and copper eyelashes.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Aurige._Mus%C3%A9e_Delphes._Gr%C3%A8ce.png/1920px-Aurige._Mus%C3%A9e_Delphes._Gr%C3%A8ce.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_51_charioteer_of_delphi_heniokhos_left.mp4"
+    },
+    {
+      "title": "Artemision Bronze (Zeus or Poseidon) — Classical Greek Bronze, c. 460 BC, National Archaeological Museum, Athens, Greece",
+      "description": "Over-life-size Classical Greek original bronze recovered from an ancient shipwreck off Cape Artemision, capturing the god of sky or sea poised to hurl a thunderbolt or trident.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Bronze_Zeus_or_Poseidon_NAMA_X_15161_Athens_Greece.jpg/1920px-Bronze_Zeus_or_Poseidon_NAMA_X_15161_Athens_Greece.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_52_artemision_bronze_zeus_or_poseidon_right.mp4"
+    },
+    {
+      "title": "Mask of Agamemnon — Mycenaean Gold Funerary Mask, c. 1550 BC, National Archaeological Museum, Athens, Greece",
+      "description": "Beaten sheet-gold royal death mask excavated by Heinrich Schliemann from Shaft Grave V at Mycenae in 1876, an emblem of Bronze Age Aegean kingship.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Agamemnon_mask_NAMA_Athens_Greece.jpg/1920px-Agamemnon_mask_NAMA_Athens_Greece.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_53_mask_of_agamemnon_left.mp4"
+    },
+    {
+      "title": "The Seated Scribe — Old Kingdom Painted Limestone, c. 2500 BC, Saqqara / Musée du Louvre, Paris, France",
+      "description": "Fourth- or Fifth-Dynasty painted limestone statue from Saqqara with lifelike rock-crystal, magnesite, and copper-inlaid eyes, portraying an alert Egyptian official with papyrus scroll in hand.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/The_seated_scribe-E_3023-IMG_4267-gradient-contrast.jpg/1920px-The_seated_scribe-E_3023-IMG_4267-gradient-contrast.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_54_the_seated_scribe_right.mp4"
+    },
+    {
+      "title": "Colossal Olmec Head (San Lorenzo Monument 1) — Olmec Civilization, c. 1200 BC, Xalapa Museum of Anthropology, Veracruz, Mexico",
+      "description": "Multi-ton basalt boulder carved by Mesoamerica's mother culture into a commanding ruler portrait wearing a close-fitting helmet, transported miles from the Tuxtla Mountains.",
+      "category": "sculpture",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Xalapa_Museum%2C_Veracruz%2C_La_Venta%2C_Olmec_%2814038749787%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_55_colossal_olmec_head_san_lorenzo_monument_left.mp4"
+    },
+    {
+      "title": "Leshan Giant Buddha — Tang Dynasty Cliff Sculpture, 803 AD, Leshan, Sichuan, China",
+      "description": "Standing 71 meters tall at the confluence of the Min, Qingyi, and Dadu rivers, this red sandstone Maitreya Buddha carved during the Tang Dynasty is the largest pre-modern stone sculpture on Earth.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Leshan_Giant_Buddha%2C_20161102.jpg/1920px-Leshan_Giant_Buddha%2C_20161102.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_56_leshan_giant_buddha_full.mp4"
+    },
+    {
+      "title": "Great Buddha of Kamakura (Kamakura Daibutsu) — Kamakura Period Bronze, c. 1252, Kōtoku-in, Kamakura, Japan",
+      "description": "Monumental outdoor bronze statue of Amida Buddha cast in the 13th century at Kōtoku-in temple, surviving a 1498 tsunami that swept away its original wooden hall.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/The_Great_Buddha_of_K%C5%8Dtoku-in_%28Kamakura_Daibutsu%29.jpg/1920px-The_Great_Buddha_of_K%C5%8Dtoku-in_%28Kamakura_Daibutsu%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_57_great_buddha_of_kamakura_kamakura_daibut_full.mp4"
+    },
+    {
+      "title": "Augustus of Prima Porta — Imperial Roman Marble, c. 20 BC, Vatican Museums, Vatican City",
+      "description": "Full-length marble portrait of Rome's first emperor Augustus in ceremonial cuirass carved with cosmic and Parthian victory reliefs, discovered at Empress Livia's villa at Prima Porta.",
+      "category": "sculpture",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Statue-Augustus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_58_augustus_of_prima_porta_right.mp4"
+    },
+    {
+      "title": "Winged Bull (Lamassu) from Citadel of Sargon II — Neo-Assyrian Limestone, c. 710 BC, Dur-Sharrukin / Louvre, Paris, France",
+      "description": "Colossal monolithic gypsum-alabaster guardian deity with a bearded human head, eagle wings, and five bull legs sculpted to appear stationary from the front and striding from the side.",
+      "category": "sculpture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Lamassu_du_palais_de_Khorsabad%2C_Mus%C3%A9e_du_Louvre.jpg/1920px-Lamassu_du_palais_de_Khorsabad%2C_Mus%C3%A9e_du_Louvre.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_59_winged_bull_lamassu_from_citadel_of_sarg_left.mp4"
+    },
+    {
+      "title": "Hagia Sophia — Anthemius of Tralles & Isidore of Miletus, 537 AD, Istanbul, Turkey",
+      "description": "Revolutionary Byzantine cathedral commissioned by Emperor Justinian I, crowned by a pendentive dome that seemed 'suspended from heaven by a golden chain' and later flanked by Ottoman minarets.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Hagia_Sophia_Mars_2013.jpg/1920px-Hagia_Sophia_Mars_2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_60_hagia_sophia_full.mp4"
+    },
+    {
+      "title": "Al-Khazneh (The Treasury) — Nabataean Kingdom, c. 1st c. AD, Petra, Jordan",
+      "description": "Elaborate Hellenistic-style royal mausoleum carved directly into a rose-red sandstone cliff face at the mouth of the Siq gorge by the Nabataean caravan empire.",
+      "category": "architecture",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/62/Al_Khazneh_Petra_edit_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_61_al_khazneh_the_treasury_right.mp4"
+    },
+    {
+      "title": "Court of the Lions, Alhambra Palace — Nasrid Dynasty, 1380, Granada, Spain",
+      "description": "Jewel of Moorish palace architecture in Andalusia, uniting a central alabaster fountain borne by twelve marble lions with filigree stucco arches and muqarnas vaults.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Patio_de_Los_Leones_La_Alhambra_Granada_20170320_122728_Richtone%28HDR%29.jpg/1920px-Patio_de_Los_Leones_La_Alhambra_Granada_20170320_122728_Richtone%28HDR%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_62_court_of_the_lions_alhambra_palace_full.mp4"
+    },
+    {
+      "title": "Basílica de la Sagrada Família — Antoni Gaudí, begun 1882, Barcelona, Spain",
+      "description": "Antoni Gaudí's visionary Catalan Modernisme basilica, fusing Gothic structural geometry with organic hyperboloid vaults and towering sculptural facades.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Sagrada_Familia_8-12-21_%284%29.jpg/1920px-Sagrada_Familia_8-12-21_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_63_bas_lica_de_la_sagrada_fam_lia_full.mp4"
+    },
+    {
+      "title": "The Pantheon — Roman Empire under Hadrian, c. 126 AD, Rome, Italy",
+      "description": "Best-preserved monument of ancient Rome, combining a Corinthian granite portico with the world's largest unreinforced concrete dome pierced by a 9-meter central oculus.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Pantheon_in_Rome_%281%29.jpg/1920px-Pantheon_in_Rome_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_64_the_pantheon_full.mp4"
+    },
+    {
+      "title": "Saint Basil's Cathedral — Postnik Yakovlev, 1561, Red Square, Moscow, Russia",
+      "description": "Cathedral of Vasily the Blessed commissioned by Ivan the Terrible on Red Square, famous for its nine flame-like polychrome onion domes rising above the Moscow River.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Saint_Basil%27s_Cathedral_%28Moscow%2C_2004%29.jpg/1920px-Saint_Basil%27s_Cathedral_%28Moscow%2C_2004%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_65_saint_basil_s_cathedral_right.mp4"
+    },
+    {
+      "title": "Neuschwanstein Castle — King Ludwig II of Bavaria, 1886, Hohenschwangau, Bavaria, Germany",
+      "description": "Nineteenth-century Romanesque Revival cliffside palace built by King Ludwig II in the Bavarian Alps as a poetic homage to Richard Wagner's operas.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Neuschwanstein_Castle_2024-02.jpg/1920px-Neuschwanstein_Castle_2024-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_66_neuschwanstein_castle_full.mp4"
+    },
+    {
+      "title": "Mont-Saint-Michel Abbey — Medieval Norman Architecture, 11th–16th c., Normandy, France",
+      "description": "Fortified Benedictine abbey crowning a tidal granite island off the coast of Normandy, ascending in tiers from medieval ramparts to a soaring Gothic spire.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/MSM_sunset_02.JPG/1920px-MSM_sunset_02.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_67_mont_saint_michel_abbey_full.mp4"
+    },
+    {
+      "title": "Potala Palace — 5th Dalai Lama, 1649, Lhasa, Tibet, China",
+      "description": "Thirteen-story dzong fortress rising 117 meters atop Marpo Ri hill in the Lhasa Valley, comprising over a thousand rooms inside the monumental White and Red Palaces.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Potala.jpg/1920px-Potala.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_68_potala_palace_full.mp4"
+    },
+    {
+      "title": "Temple of Heaven (Hall of Prayer for Good Harvests) — Ming Dynasty, 1420, Beijing, China",
+      "description": "Triple-gabled circular imperial wooden hall resting on a three-tiered white marble terrace, built entirely without nails where Ming and Qing emperors prayed for abundant harvests.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Temple_of_Heaven%2C_Beijing%2C_China_-_010_edit.jpg/1920px-Temple_of_Heaven%2C_Beijing%2C_China_-_010_edit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_69_temple_of_heaven_hall_of_prayer_for_good_full.mp4"
+    },
+    {
+      "title": "Himeji Castle (Shirasagi-jō) — Ikeda Terumasa, 1609, Himeji, Hyōgo, Japan",
+      "description": "Japan's premier surviving feudal hilltop castle complex, nicknamed the White Egret Castle for its brilliant white plastered earthen walls and multi-layered winged roofs.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Ch%C3%A2teau_de_Himeji02.jpg/1920px-Ch%C3%A2teau_de_Himeji02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_70_himeji_castle_shirasagi_j_full.mp4"
+    },
+    {
+      "title": "Kinkaku-ji (Temple of the Golden Pavilion) — Ashikaga Yoshimitsu, 1397, Kyoto, Japan",
+      "description": "Muromachi-period Zen Buddhist pavilion in northern Kyoto whose top two stories are clad in pure gold leaf, mirrored in the tranquil waters of Kyōko-chi (Mirror Pond).",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Kinkaku-ji_in_November_2016_-02.jpg/1920px-Kinkaku-ji_in_November_2016_-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_71_kinkaku_ji_temple_of_the_golden_pavilion_left.mp4"
+    },
+    {
+      "title": "Meenakshi Amman Temple — Nayak Dynasty, 16th c., Madurai, Tamil Nadu, India",
+      "description": "Dravidian temple complex on the Vaigai River famed for its fourteen towering gopuram gateway towers encrusted with tens of thousands of vividly painted stucco deities.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Madurai%2C_India.jpg/1920px-Madurai%2C_India.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_72_meenakshi_amman_temple_full.mp4"
+    },
+    {
+      "title": "Hawa Mahal (Palace of Winds) — Maharaja Sawai Pratap Singh, 1799, Jaipur, Rajasthan, India",
+      "description": "Five-story red and pink sandstone honeycomb facade built by architect Lal Chand Ustad with 953 carved jharokha lattice windows that channel cooling breezes.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg/1920px-East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_73_hawa_mahal_palace_of_winds_full.mp4"
+    },
+    {
+      "title": "Shah Mosque (Imam Mosque) — Safavid Empire under Abbas the Great, 1629, Isfahan, Iran",
+      "description": "Masterpiece of Persian Safavid architecture on Naqsh-e Jahan Square, clad in seven-color mosaic tilework and crowned by a double-shelled turquoise dome.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Mezquita_Shah%2C_Isfah%C3%A1n%2C_Ir%C3%A1n%2C_2016-09-20%2C_DD_71-73_HDR.jpg/1920px-Mezquita_Shah%2C_Isfah%C3%A1n%2C_Ir%C3%A1n%2C_2016-09-20%2C_DD_71-73_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_74_shah_mosque_imam_mosque_right.mp4"
+    },
+    {
+      "title": "Dome of the Rock — Umayyad Caliphate under Abd al-Malik, 691 AD, Jerusalem",
+      "description": "Octagonal Early Islamic shrine on the Temple Mount, the world's oldest surviving work of Islamic architecture, crowned by a gleaming gilded dome above Ottoman Iznik tiles.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Jerusalem-2013-Temple_Mount-Dome_of_the_Rock_%26_Chain_02.jpg/1920px-Jerusalem-2013-Temple_Mount-Dome_of_the_Rock_%26_Chain_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_75_dome_of_the_rock_left.mp4"
+    },
+    {
+      "title": "Great Temple of Abu Simbel — Pharaoh Ramesses II, c. 1264 BC, Nubia / Aswan, Egypt",
+      "description": "Monumental rock-cut Nubian temple guarded by four 20-meter seated colossi of Ramesses II, relocated block by block in 1968 to save it from the rising waters of Lake Nasser.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Templo_de_Rams%C3%A9s_II%2C_Abu_Simbel%2C_Egipto%2C_2022-04-02%2C_DD_26-28_HDR.jpg/1920px-Templo_de_Rams%C3%A9s_II%2C_Abu_Simbel%2C_Egipto%2C_2022-04-02%2C_DD_26-28_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_76_great_temple_of_abu_simbel_full.mp4"
+    },
+    {
+      "title": "Sydney Opera House — Jørn Utzon, 1973, Sydney, New South Wales, Australia",
+      "description": "Twentieth-century expressionist architectural icon on Bennelong Point, composed of interlocking precast concrete shells clad in over one million Swedish ceramic tiles.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Sydney_%28AU%29%2C_Opera_House_--_2019_--_3054.jpg/1920px-Sydney_%28AU%29%2C_Opera_House_--_2019_--_3054.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_77_sydney_opera_house_full.mp4"
+    },
+    {
+      "title": "Florence Cathedral (Santa Maria del Fiore) — Filippo Brunelleschi, 1436, Florence, Italy",
+      "description": "Cradle of Renaissance engineering crowned by Filippo Brunelleschi's self-supporting herringbone brick double dome, the largest masonry vault ever constructed.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Dome_of_Cattedrale_di_Santa_Maria_del_Fiore_%28Florence%29.jpg/1920px-Dome_of_Cattedrale_di_Santa_Maria_del_Fiore_%28Florence%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_78_florence_cathedral_santa_maria_del_fiore_full.mp4"
+    },
+    {
+      "title": "Registan Square Madrasas (Ulugh Beg, Sher-Dor & Tilya-Kori) — Timurid & Shaybanid Dynasties, 15th–17th c., Samarkand, Uzbekistan",
+      "description": "Monumental ensemble of three grand Islamic madrasas framing the heart of ancient Samarkand along the Silk Road, adorned with azure ribbed domes and glazed majolica.",
+      "category": "architecture",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Registan_Samarkand_Uzbekistan.JPG/1920px-Registan_Samarkand_Uzbekistan.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "video-1080": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/art3d_79_registan_square_madrasas_ulugh_beg_sher__full.mp4"
     }
   ]
 }

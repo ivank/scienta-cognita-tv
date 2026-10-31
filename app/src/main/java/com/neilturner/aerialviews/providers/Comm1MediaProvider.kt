@@ -59,6 +59,10 @@ class Comm1MediaProvider(
                 val detailed = photo.details.ifBlank { photo.description }
                 val hasVideo = !photo.video1080.isNullOrBlank()
                 val mediaUri = if (hasVideo) photo.video1080.orEmpty().toUri() else photo.uriAtQuality(quality)
+                if (hasVideo) {
+                    metadata[mediaUri.filenameWithoutExtension.lowercase()] =
+                        Pair(photo.title, mapOf(0 to photo.title))
+                }
                 videos.add(
                     AerialMedia(
                         mediaUri,
@@ -69,6 +73,7 @@ class Comm1MediaProvider(
                                 shortDescription = photo.title,
                                 longDescription = detailed,
                                 category = photo.category,
+                                pointsOfInterest = mapOf(0 to photo.title),
                                 exif = AerialExifMetadata(description = photo.title),
                             ),
                     ),
