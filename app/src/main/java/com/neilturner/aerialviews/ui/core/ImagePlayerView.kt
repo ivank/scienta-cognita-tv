@@ -351,14 +351,19 @@ class ImagePlayerView : FrameLayout {
     ) {
         currentImageWidth = width
         currentImageHeight = height
-        val isPortrait = height > width && (height.toFloat() / width.toFloat()) >= 1.08f
+        val isPortrait = height > width && (height.toFloat() / width.toFloat()) >= 1.05f
 
-        if (isPainting(currentMedia)) {
+        if (isSculpture(currentMedia) || (isPortrait && isArchitecture(currentMedia))) {
+            if (isPortrait) {
+                currentDisplayMode = DisplayMode.SCULPTURE
+                setupSculptureMode(drawable, width, height)
+            } else {
+                currentDisplayMode = DisplayMode.STANDARD
+                setupStandardMode(drawable, width, height)
+            }
+        } else if (isPainting(currentMedia)) {
             currentDisplayMode = DisplayMode.GALLERY
             setupGalleryMode(drawable, width, height)
-        } else if (isPortrait && (isSculpture(currentMedia) || isArchitecture(currentMedia))) {
-            currentDisplayMode = DisplayMode.SCULPTURE
-            setupSculptureMode(drawable, width, height)
         } else {
             currentDisplayMode = DisplayMode.STANDARD
             setupStandardMode(drawable, width, height)
@@ -494,6 +499,7 @@ class ImagePlayerView : FrameLayout {
 
     private fun isPainting(media: AerialMedia?): Boolean {
         if (media == null) return false
+        if (isSculpture(media)) return false
         if (media.metadata.category.equals("painting", ignoreCase = true)) return true
         val text = ((media.metadata.shortDescription) + " " + (media.metadata.longDescription)).lowercase()
         return listOf(
@@ -512,8 +518,10 @@ class ImagePlayerView : FrameLayout {
         return listOf(
             "christ the redeemer", "david", "tutankhamun", "sphinx", "benin bronze",
             "ife head", "terracotta", "the thinker", "venus de milo", "winged victory",
-            "moai", "sun stone", "madara rider", "bronze horseman",
-            "statue", "sculpture", "sculptures", "bust", "relief",
+            "moai", "sun stone", "madara rider", "bronze horseman", "shiva nataraja",
+            "statue", "sculpture", "sculptures", "bust", "relief", "carving", "carved",
+            "fountain", "installation", "readymade", "anyanwu", "pumpkin", "mirror room",
+            "monolith", "stele", "moche portrait vessel", "canoe prow", "veranda post",
         ).any { text.contains(it) }
     }
 

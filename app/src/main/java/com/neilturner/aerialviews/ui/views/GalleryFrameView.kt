@@ -23,7 +23,7 @@ import com.neilturner.aerialviews.ui.helpers.FastBlurCompat
  * - Dignified architectural museum molding with smooth anti-aliased bevels and gold leaf fillet (zero pixel shimmer/crawling).
  * - Multi-layered physical wall shadows (tight contact AO, directional cast shadow, diffuse penumbra) anchoring the frame securely to the wall.
  * - Archival museum cotton matte (passe-partout) with angled inner core bevel & golden fillet.
- * - Material integration filters on the painting: linen weave micro-relief, molding overhang shadow, ambient room color wash, and satin varnish sheen.
+ * - Natural lighting integration filters on the painting: soft directional molding overhang shadow, ambient room color wash, and soft satin varnish sheen (pure soft gradients, pristine original image).
  * - Hardware layer acceleration for silky-smooth sub-pixel Ken Burns scaling on 4K/1080p TVs.
  */
 class GalleryFrameView @JvmOverloads constructor(
@@ -111,10 +111,6 @@ class GalleryFrameView @JvmOverloads constructor(
     private val goldFilletPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val mattePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val canvasFilterPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val linenTexturePaint = Paint(Paint.ANTI_ALIAS_FLAG)
-
-    // Reusable linen canvas texture bitmap
-    private var linenBitmap: Bitmap? = null
 
     // Cached soft-blurred physical wall shadow bitmap
     private var shadowBitmap: Bitmap? = null
@@ -126,30 +122,6 @@ class GalleryFrameView @JvmOverloads constructor(
         setWillNotDraw(false)
         // Enable hardware layer for silky-smooth sub-pixel bilinear interpolation during Ken Burns zoom
         setLayerType(LAYER_TYPE_HARDWARE, null)
-        createLinenTexture()
-    }
-
-    private fun createLinenTexture() {
-        val size = (16 * density).toInt().coerceAtLeast(8)
-        val bmp = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
-        val c = Canvas(bmp)
-        val p = Paint(Paint.ANTI_ALIAS_FLAG)
-
-        // Subtle weave pattern
-        p.color = Color.argb(12, 0, 0, 0)
-        p.strokeWidth = 1f * density
-        for (i in 0 until size step (3 * density).toInt().coerceAtLeast(2)) {
-            c.drawLine(0f, i.toFloat(), size.toFloat(), i.toFloat(), p)
-            c.drawLine(i.toFloat(), 0f, i.toFloat(), size.toFloat(), p)
-        }
-        p.color = Color.argb(8, 255, 255, 255)
-        for (i in 1 until size step (3 * density).toInt().coerceAtLeast(2)) {
-            c.drawLine(0f, i.toFloat(), size.toFloat(), i.toFloat(), p)
-            c.drawLine(i.toFloat(), 0f, i.toFloat(), size.toFloat(), p)
-        }
-
-        linenBitmap = bmp
-        linenTexturePaint.shader = android.graphics.BitmapShader(bmp, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -458,13 +430,7 @@ class GalleryFrameView @JvmOverloads constructor(
     }
 
     private fun drawCanvasMaterialAndLightingFilters(canvas: Canvas, r: RectF) {
-        // 1. Physical Linen Weave Micro-Relief Filter
-        // Gives flat digital JPEG pixels the authentic tactile surface of stretched museum linen
-        linenBitmap?.let {
-            canvas.drawRect(r, linenTexturePaint)
-        }
-
-        // 2. Room Ambient Lighting & Color Bleed (Unified Atmosphere)
+        // 1. Room Ambient Lighting & Color Bleed (Unified Atmosphere)
         // Binds the painting into the museum room's color temperature so it does not look like a cold digital sticker
         val tint = lightingProfile.spotlightWallColor
         val roomWashColor = Color.argb(0x18, Color.red(tint), Color.green(tint), Color.blue(tint))
@@ -477,7 +443,7 @@ class GalleryFrameView @JvmOverloads constructor(
         )
         canvas.drawRect(r, canvasFilterPaint)
 
-        // 3. Physical Frame Molding Overhang Cast Shadow
+        // 2. Physical Frame Molding Overhang Cast Shadow
         // The carved frame molding projects 3-4 cm out from canvas; overhead spotlight casts a natural shadow downward
         val topOverhangDepth = 12f * density
         canvasFilterPaint.shader = LinearGradient(
@@ -489,7 +455,7 @@ class GalleryFrameView @JvmOverloads constructor(
         )
         canvas.drawRect(r.left, r.top, r.right, r.top + topOverhangDepth, canvasFilterPaint)
 
-        // 4. Lateral molding overhang shadow from light-side frame edge
+        // 3. Lateral molding overhang shadow from light-side frame edge
         val sideOverhangDepth = 8f * density
         if (lightingProfile.direction == LightDirection.LEFT) {
             canvasFilterPaint.shader = LinearGradient(
@@ -511,7 +477,7 @@ class GalleryFrameView @JvmOverloads constructor(
             canvas.drawRect(r.right - sideOverhangDepth, r.top, r.right, r.bottom, canvasFilterPaint)
         }
 
-        // 5. Satin Museum Varnish Specular Sheen (Oil Painting Glaze)
+        // 4. Satin Museum Varnish Specular Sheen (Oil Painting Glaze)
         val cx = when (lightingProfile.direction) {
             LightDirection.LEFT -> r.left + r.width() * 0.32f
             LightDirection.CENTER -> r.centerX()
