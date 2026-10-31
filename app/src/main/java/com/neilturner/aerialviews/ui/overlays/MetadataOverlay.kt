@@ -55,7 +55,8 @@ class MetadataOverlay
 
         private var currentLocationText: String = ""
         private var currentDetailedText: String = ""
-        private var isRightSide: Boolean = true
+        var isRightSide: Boolean = true
+            private set
 
         private var detailsAnimator: ValueAnimator? = null
         var isDetailsMode: Boolean = false

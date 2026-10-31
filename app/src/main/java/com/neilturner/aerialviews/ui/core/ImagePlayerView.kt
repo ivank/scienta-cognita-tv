@@ -2,12 +2,16 @@ package com.neilturner.aerialviews.ui.core
 
 import android.animation.ValueAnimator
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Matrix
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
 import android.util.AttributeSet
+import android.view.Gravity
+import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
 import android.widget.ImageView
@@ -19,6 +23,7 @@ import coil3.request.ImageRequest
 import coil3.request.allowHardware
 import com.hierynomus.protocol.transport.TransportException
 import com.hierynomus.smbj.common.SMBRuntimeException
+import com.neilturner.aerialviews.R
 import com.neilturner.aerialviews.models.enums.AerialMediaSource
 import com.neilturner.aerialviews.models.enums.AspectRatio
 import com.neilturner.aerialviews.models.enums.PhotoScale
@@ -32,6 +37,7 @@ import com.neilturner.aerialviews.ui.controls.ProgressState
 import com.neilturner.aerialviews.ui.core.ImagePlayerHelper.buildGifDecoder
 import com.neilturner.aerialviews.ui.core.ImagePlayerHelper.buildOkHttpClient
 import com.neilturner.aerialviews.ui.helpers.BitmapHelper
+import com.neilturner.aerialviews.ui.views.GalleryFrameView
 import com.neilturner.aerialviews.utils.FirebaseHelper
 import com.neilturner.aerialviews.utils.filename
 import kotlinx.coroutines.CoroutineScope
@@ -85,30 +91,80 @@ class ImagePlayerView : FrameLayout {
     private val baseMatrix = Matrix()
     private val animMatrix = Matrix()
 
-    /**
-     * Two-token sync gate: ensures [runSetupFinishedRunnable] fires only after *both*
-     * the foreground image load (Coil onSuccess) and the background blur (potentially
-     * async on pre-S devices) have completed for the same image request.
-     *
-     * - [backgroundReadyToken] is set by [markBackgroundReady] when [BackgroundBlurHelper]
-     *   reports its background job is done.
-     * - [pendingSetupToken] is set by [setupFinishedRunnable] when the foreground load
-     *   finishes but the background isn't ready yet.
-     * - [runSetupFinishedRunnable] fires when both tokens agree on the same value.
-     */
+    private enum class DisplayMode {
+        STANDARD,
+        GALLERY,
+        SCULPTURE,
+    }
+
+    private var currentDisplayMode: DisplayMode = DisplayMode.STANDARD
+    private var currentMedia: AerialMedia? = null
+    private var currentDrawable: Drawable? = null
+    private var isOverlayOnRight: Boolean = true
+
+    fun setOverlayOnRight(onRight: Boolean) {
+        if (isOverlayOnRight != onRight) {
+            isOverlayOnRight = onRight
+            if (currentDisplayMode == DisplayMode.SCULPTURE) {
+                updateSculpturePosition()
+            }
+        }
+    }
+
     private var backgroundReadyToken: Long = -1
     private var pendingSetupToken: Long = -1
 
-    private val foregroundImageView =
-        AppCompatImageView(context).apply {
-            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-        }
+    // Background blurred photo
     private val backgroundImageView =
         AppCompatImageView(context).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
             scaleType = ImageView.ScaleType.CENTER_CROP
             visibility = GONE
         }
+
+    // Ambient dark scrim over blurred background for sculpture pop
+    private val backgroundDimOverlay =
+        View(context).apply {
+            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            setBackgroundColor(Color.parseColor("#4D000000")) // 30% black dim
+            visibility = GONE
+        }
+
+    // Ambient backlight shadow behind sculpture
+    private val sculptureShadowView =
+        View(context).apply {
+            layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER)
+            background =
+                GradientDrawable().apply {
+                    shape = GradientDrawable.OVAL
+                    gradientType = GradientDrawable.RADIAL_GRADIENT
+                    gradientRadius = 380f * context.resources.displayMetrics.density
+                    colors = intArrayOf(Color.parseColor("#99000000"), Color.TRANSPARENT)
+                }
+            visibility = GONE
+        }
+
+    // Foreground image view for standard photos and sculptures
+    private val foregroundImageView =
+        AppCompatImageView(context).apply {
+            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+        }
+
+    // Museum gallery background wall
+    private val galleryBackgroundImageView =
+        AppCompatImageView(context).apply {
+            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            scaleType = ImageView.ScaleType.CENTER_CROP
+            visibility = GONE
+        }
+
+    // Museum picture frame for portrait paintings
+    private val galleryFrameView =
+        GalleryFrameView(context).apply {
+            layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL)
+            visibility = GONE
+        }
+
     private val progressBar =
         GeneralPrefs.progressBarLocation != ProgressBarLocation.DISABLED &&
             GeneralPrefs.progressBarType != ProgressBarType.VIDEOS
@@ -124,7 +180,11 @@ class ImagePlayerView : FrameLayout {
 
     init {
         addView(backgroundImageView)
+        addView(backgroundDimOverlay)
+        addView(sculptureShadowView)
         addView(foregroundImageView)
+        addView(galleryBackgroundImageView)
+        addView(galleryFrameView)
     }
 
     fun release() {
@@ -140,7 +200,6 @@ class ImagePlayerView : FrameLayout {
         ImageLoader
             .Builder(context)
             .memoryCache(null)
-            // .logger(logger)
             .components {
                 add(OkHttpNetworkFetcherFactory(buildOkHttpClient()))
                 add(InputStreamFetcher.Factory())
@@ -148,6 +207,7 @@ class ImagePlayerView : FrameLayout {
             }.build()
 
     fun setImage(media: AerialMedia) {
+        currentMedia = media
         ioScope.launch {
             val baseStream = ImagePlayerHelper.streamFromMedia(context, media)
             if (baseStream == null) {
@@ -215,7 +275,6 @@ class ImagePlayerView : FrameLayout {
         media: AerialMedia,
         data: Any?,
     ) {
-        // Errors from the actual async network/disk load are delivered via onError, not here.
         try {
             val (targetWidth, targetHeight) = resolveTargetSize()
             val maxDim = maxOf(targetWidth, targetHeight)
@@ -224,21 +283,16 @@ class ImagePlayerView : FrameLayout {
                     .Builder(context)
                     .data(data)
                     .size(maxDim, maxDim)
-                    // The pre-S blurred background is a CPU bitmap operation. Coil hardware
-                    // bitmaps cannot be drawn into the software canvas used by Drawable.toBitmap().
                     .allowHardware(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S || !GeneralPrefs.photoBackgroundBlurEnabled)
                     .target(
-                        onStart = {
-                            // resetImageTransforms()
-                        },
+                        onStart = {},
                         onSuccess = { image ->
-                            val drawable = image.asDrawable(resources)
-                            blurHelper.update(drawable.takeIf { shouldShowBlurBackground(media, it) })
-                            setForegroundDrawable(drawable)
+                            currentDrawable = image.asDrawable(resources)
                         },
                     ).listener(
                         onSuccess = { _, result ->
-                            setScaleMode(result.image.width, result.image.height)
+                            val drawable = currentDrawable ?: result.image.asDrawable(resources)
+                            setupDisplay(drawable, result.image.width, result.image.height)
                             setupFinishedRunnable()
                         },
                         onError = { _, result ->
@@ -259,6 +313,156 @@ class ImagePlayerView : FrameLayout {
 
             listener?.onImageError()
         }
+    }
+
+    private fun setupDisplay(
+        drawable: Drawable,
+        width: Int,
+        height: Int,
+    ) {
+        currentImageWidth = width
+        currentImageHeight = height
+        val isPortrait = height > width && (height.toFloat() / width.toFloat()) >= 1.08f
+
+        if (isPortrait && isPainting(currentMedia)) {
+            currentDisplayMode = DisplayMode.GALLERY
+            setupGalleryMode(drawable, width, height)
+        } else if (isPortrait && (isSculpture(currentMedia) || isArchitecture(currentMedia))) {
+            currentDisplayMode = DisplayMode.SCULPTURE
+            setupSculptureMode(drawable, width, height)
+        } else {
+            currentDisplayMode = DisplayMode.STANDARD
+            setupStandardMode(drawable, width, height)
+        }
+    }
+
+    private fun setupGalleryMode(
+        drawable: Drawable,
+        width: Int,
+        height: Int,
+    ) {
+        foregroundImageView.visibility = GONE
+        backgroundDimOverlay.visibility = GONE
+        sculptureShadowView.visibility = GONE
+        blurHelper.cancel()
+
+        val text = ((currentMedia?.metadata?.shortDescription ?: "") + " " + (currentMedia?.metadata?.longDescription ?: "")).lowercase()
+        val isClassical =
+            listOf(
+                "mona lisa", "pearl earring", "las meninas", "creation of adam",
+                "birth of venus", "night watch", "fresco", "frescoes", "botticelli",
+                "velázquez", "vermeer", "da vinci", "michelangelo", "rembrandt",
+            ).any { text.contains(it) }
+
+        galleryBackgroundImageView.setImageResource(
+            if (isClassical) R.drawable.bg_gallery_classical else R.drawable.bg_gallery_modern,
+        )
+        galleryBackgroundImageView.visibility = VISIBLE
+
+        galleryFrameView.isClassicalStyle = isClassical
+        galleryFrameView.paintingAspectRatio = width.toFloat() / height.toFloat()
+        galleryFrameView.paintingDrawable = drawable
+        galleryFrameView.visibility = VISIBLE
+
+        val (_, vh) = resolveTargetSize()
+        galleryFrameView.translationY = vh * 0.035f
+        galleryFrameView.translationX = 0f
+        galleryFrameView.scaleX = 1f
+        galleryFrameView.scaleY = 1f
+
+        markBackgroundReady(blurHelper.currentToken)
+    }
+
+    private fun setupSculptureMode(
+        drawable: Drawable,
+        width: Int,
+        height: Int,
+    ) {
+        galleryBackgroundImageView.visibility = GONE
+        galleryFrameView.visibility = GONE
+        galleryFrameView.paintingDrawable = null
+
+        blurHelper.update(drawable)
+        backgroundDimOverlay.visibility = VISIBLE
+
+        foregroundImageView.visibility = VISIBLE
+        foregroundImageView.scaleType = ImageView.ScaleType.FIT_CENTER
+        setForegroundDrawable(drawable)
+
+        updateSculpturePosition()
+    }
+
+    private fun updateSculpturePosition() {
+        val (vw, vh) = resolveTargetSize()
+        if (currentImageWidth <= 0 || currentImageHeight <= 0) return
+
+        val targetH = vh * 0.90f
+        val targetW = targetH * (currentImageWidth.toFloat() / currentImageHeight.toFloat())
+
+        // Position on the side NOT occupied by the info bubble
+        val sideOffset = if (isOverlayOnRight) -(vw.toFloat() * 0.23f) else +(vw.toFloat() * 0.23f)
+
+        foregroundImageView.translationX = sideOffset
+        foregroundImageView.translationY = 0f
+        foregroundImageView.scaleX = 1f
+        foregroundImageView.scaleY = 1f
+
+        val shadowW = (targetW * 1.5f).toInt()
+        val shadowH = (targetH * 0.85f).toInt()
+        sculptureShadowView.layoutParams =
+            LayoutParams(shadowW, shadowH, Gravity.CENTER).apply {
+                sculptureShadowView.translationX = sideOffset
+            }
+        sculptureShadowView.visibility = VISIBLE
+    }
+
+    private fun setupStandardMode(
+        drawable: Drawable,
+        width: Int,
+        height: Int,
+    ) {
+        galleryBackgroundImageView.visibility = GONE
+        galleryFrameView.visibility = GONE
+        galleryFrameView.paintingDrawable = null
+        sculptureShadowView.visibility = GONE
+        backgroundDimOverlay.visibility = GONE
+
+        foregroundImageView.visibility = VISIBLE
+        blurHelper.update(drawable.takeIf { currentMedia != null && shouldShowBlurBackground(currentMedia!!, it) })
+        setForegroundDrawable(drawable)
+        setScaleMode(width, height)
+    }
+
+    private fun isPainting(media: AerialMedia?): Boolean {
+        if (media == null) return false
+        if (media.metadata.category.equals("painting", ignoreCase = true)) return true
+        val text = ((media.metadata.shortDescription) + " " + (media.metadata.longDescription)).lowercase()
+        return listOf(
+            "mona lisa", "starry night", "birth of venus", "creation of adam",
+            "the kiss", "pearl earring", "night watch", "the scream", "las meninas",
+            "wanderer", "american gothic", "nighthawks", "great wave", "qingming",
+            "fresco", "frescoes", "pine forest", "ninth wave", "barge haulers",
+            "painting", "portrait", "canvas", "oil on",
+        ).any { text.contains(it) }
+    }
+
+    private fun isSculpture(media: AerialMedia?): Boolean {
+        if (media == null) return false
+        if (media.metadata.category.equals("sculpture", ignoreCase = true)) return true
+        val text = ((media.metadata.shortDescription) + " " + (media.metadata.longDescription)).lowercase()
+        return listOf(
+            "christ the redeemer", "david", "tutankhamun", "sphinx", "benin bronze",
+            "ife head", "terracotta", "the thinker", "venus de milo", "winged victory",
+            "moai", "sun stone", "madara rider", "bronze horseman",
+            "statue", "sculpture", "sculptures", "bust", "relief",
+        ).any { text.contains(it) }
+    }
+
+    private fun isArchitecture(media: AerialMedia?): Boolean {
+        if (media == null) return false
+        if (media.metadata.category.equals("architecture", ignoreCase = true)) return true
+        val text = ((media.metadata.shortDescription) + " " + (media.metadata.longDescription)).lowercase()
+        return listOf("church", "temple", "cathedral", "monastery", "fortress", "pyramid", "castle").any { text.contains(it) }
     }
 
     private fun readUpTo(
@@ -302,7 +506,6 @@ class ImagePlayerView : FrameLayout {
         }
 
         val aspect = AspectRatio.fromDimensions(imageWidth, imageHeight)
-        // If tall portrait art is scaled edge-to-edge with natural center matrix, it covers 100% of the display
         if (aspect == AspectRatio.PORTRAIT && GeneralPrefs.photoScalePortrait == PhotoScale.CENTER_CROP) {
             return false
         }
@@ -332,7 +535,7 @@ class ImagePlayerView : FrameLayout {
     }
 
     companion object {
-        private const val STREAM_BUFFER_SIZE = 64 * 1024 // 64KB - helps reduce network round-trips
+        private const val STREAM_BUFFER_SIZE = 64 * 1024
     }
 
     private fun resolveTargetSize(): Pair<Int, Int> {
@@ -344,7 +547,6 @@ class ImagePlayerView : FrameLayout {
     private fun handleImageError(throwable: Throwable) {
         Timber.e(throwable, "Exception while loading image: ${throwable.message}")
         FirebaseHelper.crashlyticsException(throwable)
-
         onPlayerError()
     }
 
@@ -352,16 +554,28 @@ class ImagePlayerView : FrameLayout {
         stopKenBurns()
         removeCallbacks(finishedRunnable)
         setForegroundDrawable(null)
+        currentDrawable = null
+        currentMedia = null
         pausedTimestamp = 0
         remainingDuration = 0
         currentImageWidth = 0
         currentImageHeight = 0
         naturalFocalY = 0.5f
+
         foregroundImageView.translationX = 0f
         foregroundImageView.translationY = 0f
         baseMatrix.reset()
         animMatrix.reset()
         foregroundImageView.imageMatrix = baseMatrix
+
+        galleryBackgroundImageView.visibility = GONE
+        galleryFrameView.visibility = GONE
+        galleryFrameView.paintingDrawable = null
+        galleryFrameView.scaleX = 1f
+        galleryFrameView.scaleY = 1f
+
+        sculptureShadowView.visibility = GONE
+        backgroundDimOverlay.visibility = GONE
         blurHelper.cancel()
     }
 
@@ -378,7 +592,6 @@ class ImagePlayerView : FrameLayout {
                 kenBurnsAnimator?.resume()
                 postDelayed(finishedRunnable, remainingDuration)
             } else {
-                // If time has expired, finish immediately
                 listener?.onImageFinished()
             }
             pausedTimestamp = 0
@@ -407,10 +620,8 @@ class ImagePlayerView : FrameLayout {
             val scaledH = ih * scale
             val transX = (vw - scaledW) / 2f
 
-            // Natural center of the statue/portrait (head, face, upper sculpture)
             val focalScaledY = scaledH * naturalFocalY
             val targetScreenY = vh * 0.38f
-            // Coerce so that image top is <= 0 (no top gap) and bottom is >= vh (no bottom gap)
             val transY = (targetScreenY - focalScaledY).coerceIn(vh - scaledH, 0f)
 
             baseMatrix.reset()
@@ -433,9 +644,6 @@ class ImagePlayerView : FrameLayout {
         if (height <= width) return 0.5f
         val aspect = height.toFloat() / width.toFloat()
         if (aspect < 1.15f) return 0.5f
-
-        // For tall portrait art and statues (e.g. 2:3, 9:16), the natural center of interest
-        // (head, face, upper sculpture) is in the upper ~22%-30%
         return if (aspect >= 1.35f) 0.22f else 0.32f
     }
 
@@ -462,7 +670,7 @@ class ImagePlayerView : FrameLayout {
     private fun setupFinishedRunnable() {
         removeCallbacks(finishedRunnable)
         val token = blurHelper.currentToken
-        if (backgroundReadyToken == token) {
+        if (currentDisplayMode == DisplayMode.GALLERY || backgroundReadyToken == token) {
             runSetupFinishedRunnable()
         } else {
             pendingSetupToken = token
@@ -475,65 +683,112 @@ class ImagePlayerView : FrameLayout {
         val (viewW, viewH) = resolveTargetSize()
         val vw = viewW.toFloat()
         val vh = viewH.toFloat()
-        val iw = currentImageWidth.toFloat()
-        val ih = currentImageHeight.toFloat()
 
-        val isPortrait = ih > iw && (ih / iw) >= 1.15f
+        when (currentDisplayMode) {
+            DisplayMode.GALLERY -> {
+                val startScale = 1.0f
+                val endScale = 1.025f
 
-        if (isPortrait && iw > 0 && ih > 0 && vw > 0 && vh > 0 && GeneralPrefs.photoScalePortrait == PhotoScale.CENTER_CROP) {
-            val zoomIn = kotlin.random.Random.nextBoolean()
-            val startScale = if (zoomIn) 1.0f else 1.06f
-            val endScale = if (zoomIn) 1.06f else 1.0f
+                galleryFrameView.pivotX = galleryFrameView.width / 2f
+                galleryFrameView.pivotY = galleryFrameView.height / 2f
 
-            val panDownDistance = vh * 0.05f
-            val startPanY = if (zoomIn) 0f else panDownDistance
-            val endPanY = if (zoomIn) panDownDistance else 0f
-
-            val pivotX = vw / 2f
-            val pivotY = vh * 0.38f
-
-            kenBurnsAnimator =
-                ValueAnimator.ofFloat(0f, 1f).apply {
-                    duration = durationMs
-                    interpolator = LinearInterpolator()
-                    addUpdateListener { animator ->
-                        val f = animator.animatedFraction
-                        val curZoom = startScale + (endScale - startScale) * f
-                        val curPanY = -(startPanY + (endPanY - startPanY) * f)
-
-                        animMatrix.set(baseMatrix)
-                        animMatrix.postScale(curZoom, curZoom, pivotX, pivotY)
-                        animMatrix.postTranslate(0f, curPanY)
-                        foregroundImageView.imageMatrix = animMatrix
+                kenBurnsAnimator =
+                    ValueAnimator.ofFloat(0f, 1f).apply {
+                        duration = durationMs
+                        interpolator = LinearInterpolator()
+                        addUpdateListener { animator ->
+                            val f = animator.animatedFraction
+                            val s = startScale + (endScale - startScale) * f
+                            galleryFrameView.scaleX = s
+                            galleryFrameView.scaleY = s
+                        }
+                        start()
                     }
-                    start()
-                }
-        } else {
-            val zoomIn = kotlin.random.Random.nextBoolean()
-            val startScale = if (zoomIn) 1.02f else 1.12f
-            val endScale = if (zoomIn) 1.12f else 1.02f
+            }
+            DisplayMode.SCULPTURE -> {
+                val sideOffset = if (isOverlayOnRight) -(vw * 0.23f) else +(vw * 0.23f)
+                val zoomIn = kotlin.random.Random.nextBoolean()
+                val startScale = if (zoomIn) 1.0f else 1.03f
+                val endScale = if (zoomIn) 1.03f else 1.0f
 
-            val startTransX = (kotlin.random.Random.nextFloat() * 2f - 1f) * 20f
-            val endTransX = (kotlin.random.Random.nextFloat() * 2f - 1f) * 40f
-            val startTransY = (kotlin.random.Random.nextFloat() * 2f - 1f) * 15f
-            val endTransY = (kotlin.random.Random.nextFloat() * 2f - 1f) * 30f
-
-            foregroundImageView.pivotX = vw / 2f
-            foregroundImageView.pivotY = vh / 2f
-
-            kenBurnsAnimator =
-                ValueAnimator.ofFloat(0f, 1f).apply {
-                    duration = durationMs
-                    interpolator = LinearInterpolator()
-                    addUpdateListener { animator ->
-                        val f = animator.animatedFraction
-                        foregroundImageView.scaleX = startScale + (endScale - startScale) * f
-                        foregroundImageView.scaleY = startScale + (endScale - startScale) * f
-                        foregroundImageView.translationX = startTransX + (endTransX - startTransX) * f
-                        foregroundImageView.translationY = startTransY + (endTransY - startTransY) * f
+                kenBurnsAnimator =
+                    ValueAnimator.ofFloat(0f, 1f).apply {
+                        duration = durationMs
+                        interpolator = LinearInterpolator()
+                        addUpdateListener { animator ->
+                            val f = animator.animatedFraction
+                            val s = startScale + (endScale - startScale) * f
+                            foregroundImageView.scaleX = s
+                            foregroundImageView.scaleY = s
+                            foregroundImageView.translationX = sideOffset
+                            sculptureShadowView.scaleX = s
+                            sculptureShadowView.scaleY = s
+                            sculptureShadowView.translationX = sideOffset
+                        }
+                        start()
                     }
-                    start()
+            }
+            DisplayMode.STANDARD -> {
+                val iw = currentImageWidth.toFloat()
+                val ih = currentImageHeight.toFloat()
+                val isPortrait = ih > iw && (ih / iw) >= 1.15f
+
+                if (isPortrait && iw > 0 && ih > 0 && vw > 0 && vh > 0 && GeneralPrefs.photoScalePortrait == PhotoScale.CENTER_CROP) {
+                    val zoomIn = kotlin.random.Random.nextBoolean()
+                    val startScale = if (zoomIn) 1.0f else 1.06f
+                    val endScale = if (zoomIn) 1.06f else 1.0f
+
+                    val panDownDistance = vh * 0.05f
+                    val startPanY = if (zoomIn) 0f else panDownDistance
+                    val endPanY = if (zoomIn) panDownDistance else 0f
+
+                    val pivotX = vw / 2f
+                    val pivotY = vh * 0.38f
+
+                    kenBurnsAnimator =
+                        ValueAnimator.ofFloat(0f, 1f).apply {
+                            duration = durationMs
+                            interpolator = LinearInterpolator()
+                            addUpdateListener { animator ->
+                                val f = animator.animatedFraction
+                                val curZoom = startScale + (endScale - startScale) * f
+                                val curPanY = -(startPanY + (endPanY - startPanY) * f)
+
+                                animMatrix.set(baseMatrix)
+                                animMatrix.postScale(curZoom, curZoom, pivotX, pivotY)
+                                animMatrix.postTranslate(0f, curPanY)
+                                foregroundImageView.imageMatrix = animMatrix
+                            }
+                            start()
+                        }
+                } else {
+                    val zoomIn = kotlin.random.Random.nextBoolean()
+                    val startScale = if (zoomIn) 1.02f else 1.12f
+                    val endScale = if (zoomIn) 1.12f else 1.02f
+
+                    val startTransX = (kotlin.random.Random.nextFloat() * 2f - 1f) * 20f
+                    val endTransX = (kotlin.random.Random.nextFloat() * 2f - 1f) * 40f
+                    val startTransY = (kotlin.random.Random.nextFloat() * 2f - 1f) * 15f
+                    val endTransY = (kotlin.random.Random.nextFloat() * 2f - 1f) * 30f
+
+                    foregroundImageView.pivotX = vw / 2f
+                    foregroundImageView.pivotY = vh / 2f
+
+                    kenBurnsAnimator =
+                        ValueAnimator.ofFloat(0f, 1f).apply {
+                            duration = durationMs
+                            interpolator = LinearInterpolator()
+                            addUpdateListener { animator ->
+                                val f = animator.animatedFraction
+                                foregroundImageView.scaleX = startScale + (endScale - startScale) * f
+                                foregroundImageView.scaleY = startScale + (endScale - startScale) * f
+                                foregroundImageView.translationX = startTransX + (endTransX - startTransX) * f
+                                foregroundImageView.translationY = startTransY + (endTransY - startTransY) * f
+                            }
+                            start()
+                        }
                 }
+            }
         }
     }
 
@@ -547,6 +802,10 @@ class ImagePlayerView : FrameLayout {
         if (foregroundImageView.scaleType == ImageView.ScaleType.MATRIX) {
             foregroundImageView.imageMatrix = baseMatrix
         }
+        galleryFrameView.scaleX = 1f
+        galleryFrameView.scaleY = 1f
+        sculptureShadowView.scaleX = 1f
+        sculptureShadowView.scaleY = 1f
     }
 
     private fun runSetupFinishedRunnable() {
@@ -576,13 +835,10 @@ class ImagePlayerView : FrameLayout {
     }
 
     private fun onPlayerError() {
-        removeCallbacks(finishedRunnable)
-        // Notify immediately; the single error backoff is applied by
-        // ScreenController.handleError(). Delaying here too would double it.
         post(errorRunnable)
     }
 
-    fun setOnPlayerListener(listener: ScreenController) {
+    fun setOnPlayerListener(listener: OnImagePlayerEventListener) {
         this.listener = listener
     }
 

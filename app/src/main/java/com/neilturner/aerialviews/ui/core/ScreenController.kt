@@ -516,6 +516,8 @@ class ScreenController(
         // Images
         if (media.type == AerialMediaType.IMAGE) {
             videoPlayer.stop()
+            val isOverlayOnRight = overlayHelper.findOverlay<MetadataOverlay>().firstOrNull()?.isRightSide ?: true
+            imagePlayer.setOverlayOnRight(isOverlayOnRight)
             imagePlayer.setImage(media)
             imageViewBinding.root.visibility = View.VISIBLE
             videoViewBinding.root.visibility = View.INVISIBLE
@@ -793,6 +795,7 @@ class ScreenController(
 
     private fun renderMetadataOverlays(state: OverlayUiState) {
         overlayHelper.findOverlay<MetadataOverlay>().forEach { overlay ->
+            imagePlayer.setOverlayOnRight(overlay.isRightSide)
             state.metadata[overlay.type]?.let { overlay.render(it, videoPlayer) }
         }
     }

@@ -17,6 +17,7 @@ class Comm1Photo {
     val title: String = ""
     val description: String = ""
     val details: String = ""
+    val category: String = ""
 
     fun uriAtQuality(quality: VideoQuality?): Uri {
         val url =

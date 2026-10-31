@@ -65,6 +65,7 @@ class Comm1MediaProvider(
                             AerialMediaMetadata(
                                 shortDescription = photo.title,
                                 longDescription = detailed,
+                                category = photo.category,
                                 exif = AerialExifMetadata(description = photo.title),
                             ),
                     ),
