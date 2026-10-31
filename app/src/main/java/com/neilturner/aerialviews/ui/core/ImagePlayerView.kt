@@ -203,12 +203,27 @@ class ImagePlayerView : FrameLayout {
     private val imageLoader =
         ImageLoader
             .Builder(context)
-            .memoryCache(null)
             .components {
-                add(OkHttpNetworkFetcherFactory(buildOkHttpClient()))
+                add(OkHttpNetworkFetcherFactory(ImagePlayerHelper.buildOkHttpClient(context = context)))
                 add(InputStreamFetcher.Factory())
                 add(buildGifDecoder())
             }.build()
+
+    fun prefetch(media: AerialMedia) {
+        ioScope.launch {
+            try {
+                val targetUri = stripCredentialsForCoil(media)
+                val request =
+                    ImageRequest
+                        .Builder(context)
+                        .data(targetUri)
+                        .build()
+                imageLoader.enqueue(request)
+            } catch (e: Exception) {
+                Timber.d(e, "Prefetch failed: ${e.message}")
+            }
+        }
+    }
 
     fun setImage(media: AerialMedia) {
         currentMedia = media
@@ -328,7 +343,7 @@ class ImagePlayerView : FrameLayout {
         currentImageHeight = height
         val isPortrait = height > width && (height.toFloat() / width.toFloat()) >= 1.08f
 
-        if (isPortrait && isPainting(currentMedia)) {
+        if (isPainting(currentMedia)) {
             currentDisplayMode = DisplayMode.GALLERY
             setupGalleryMode(drawable, width, height)
         } else if (isPortrait && (isSculpture(currentMedia) || isArchitecture(currentMedia))) {
@@ -718,8 +733,9 @@ class ImagePlayerView : FrameLayout {
         when (currentDisplayMode) {
             DisplayMode.GALLERY -> {
                 val startScale = 1.0f
-                val endScale = 1.25f // Dolly in 25% towards painting details
-                val endWallScale = 1.10f // Subtle background wall parallax
+                val endFrameScale = 1.28f // Dolly in 28% towards painting details
+                val endSpotScale = 1.12f // Intermediate rate for ceiling spotlight
+                val endWallScale = 1.05f // Subtle background wall scale
 
                 val focalYOnFrame = galleryFrameView.getFocalPointY()
                 galleryFrameView.pivotX = galleryFrameView.width / 2f
@@ -735,22 +751,35 @@ class ImagePlayerView : FrameLayout {
                 gallerySpotlightView.pivotX = screenFocalX
                 gallerySpotlightView.pivotY = screenFocalY
 
-                Timber.i("Gallery Ken Burns started: pivotY=$focalYOnFrame, screenFocalY=$screenFocalY, duration=$durationMs")
+                val startFrameTransY = vh * 0.035f
+                val endFrameTransY = startFrameTransY - 12f * resources.displayMetrics.density
+                val density = resources.displayMetrics.density
+
+                Timber.i("Gallery 3D Dolly Ken Burns: pivotY=$focalYOnFrame, screenFocalY=$screenFocalY, duration=$durationMs")
                 kenBurnsAnimator =
                     ValueAnimator.ofFloat(0f, 1f).apply {
                         duration = durationMs
                         interpolator = LinearInterpolator()
                         addUpdateListener { animator ->
                             val f = animator.animatedFraction
-                            val frameScale = startScale + (endScale - startScale) * f
+
+                            // Plane 1: Foreground frame + painting dollies forward
+                            val frameScale = startScale + (endFrameScale - startScale) * f
                             galleryFrameView.scaleX = frameScale
                             galleryFrameView.scaleY = frameScale
+                            galleryFrameView.translationY = startFrameTransY + (endFrameTransY - startFrameTransY) * f
 
+                            // Plane 2: Ceiling spotlight expands at intermediate rate
+                            val spotScale = startScale + (endSpotScale - startScale) * f
+                            gallerySpotlightView.scaleX = spotScale
+                            gallerySpotlightView.scaleY = spotScale
+                            gallerySpotlightView.translationY = 8f * density * f
+
+                            // Plane 3: Background wall shifts with deep parallax drift
                             val wallScale = startScale + (endWallScale - startScale) * f
                             galleryBackgroundImageView.scaleX = wallScale
                             galleryBackgroundImageView.scaleY = wallScale
-                            gallerySpotlightView.scaleX = wallScale
-                            gallerySpotlightView.scaleY = wallScale
+                            galleryBackgroundImageView.translationY = 16f * density * f
                         }
                         start()
                     }
@@ -852,12 +881,16 @@ class ImagePlayerView : FrameLayout {
         if (foregroundImageView.scaleType == ImageView.ScaleType.MATRIX) {
             foregroundImageView.imageMatrix = baseMatrix
         }
+        val (_, vh) = resolveTargetSize()
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
+        galleryFrameView.translationY = vh * 0.035f
         galleryBackgroundImageView.scaleX = 1f
         galleryBackgroundImageView.scaleY = 1f
+        galleryBackgroundImageView.translationY = 0f
         gallerySpotlightView.scaleX = 1f
         gallerySpotlightView.scaleY = 1f
+        gallerySpotlightView.translationY = 0f
         sculptureBacklightView.scaleX = 1f
         sculptureBacklightView.scaleY = 1f
     }

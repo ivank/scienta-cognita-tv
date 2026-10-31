@@ -506,22 +506,18 @@ class ScreenController(
 
         // Videos
         if (media.type == AerialMediaType.VIDEO) {
-            imageViewBinding.imagePlayer.stop()
             videoPlayer.setVideo(media)
-            videoViewBinding.root.visibility = View.VISIBLE
-            imageViewBinding.root.visibility = View.INVISIBLE
             videoPlayer.start()
         }
 
         // Images
         if (media.type == AerialMediaType.IMAGE) {
-            videoPlayer.stop()
             val isOverlayOnRight = overlayHelper.findOverlay<MetadataOverlay>().firstOrNull()?.isRightSide ?: true
             imagePlayer.setOverlayOnRight(isOverlayOnRight)
             imagePlayer.setImage(media)
-            imageViewBinding.root.visibility = View.VISIBLE
-            videoViewBinding.root.visibility = View.INVISIBLE
         }
+
+        prefetchUpcomingMedia()
 
         if (isDetailsMode) {
             imagePlayer.setLooping(true)
@@ -660,18 +656,64 @@ class ScreenController(
             }
         }
 
-        // Fade out LoadingView
-        // Video should be playing underneath
-        loadingView
-            .animate()
-            .alpha(0f)
-            .setStartDelay(startDelay)
-            .setDuration(mediaFadeIn)
-            .withEndAction {
-                loadingView.alpha = 0f
-                loadingView.visibility = View.INVISIBLE
-                canSkip = true
-            }.start()
+        // Seamless crossfade between video and image without black screen gaps
+        if (currentMedia?.type == AerialMediaType.VIDEO) {
+            if (imageViewBinding.root.isVisible) {
+                videoViewBinding.root.alpha = 0f
+                videoViewBinding.root.visibility = View.VISIBLE
+                videoViewBinding.root
+                    .animate()
+                    .alpha(1f)
+                    .setDuration(mediaFadeIn)
+                    .withEndAction {
+                        imageViewBinding.imagePlayer.stop()
+                        imageViewBinding.root.visibility = View.INVISIBLE
+                    }.start()
+            } else {
+                videoViewBinding.root.alpha = 1f
+                videoViewBinding.root.visibility = View.VISIBLE
+            }
+        } else if (currentMedia?.type == AerialMediaType.IMAGE) {
+            if (videoViewBinding.root.isVisible) {
+                imageViewBinding.root.alpha = 0f
+                imageViewBinding.root.visibility = View.VISIBLE
+                imageViewBinding.root
+                    .animate()
+                    .alpha(1f)
+                    .setDuration(mediaFadeIn)
+                    .withEndAction {
+                        videoPlayer.stop()
+                        videoViewBinding.root.visibility = View.INVISIBLE
+                    }.start()
+            } else {
+                imageViewBinding.root.alpha = 1f
+                imageViewBinding.root.visibility = View.VISIBLE
+            }
+        }
+
+        // Fade out LoadingView (initial screensaver startup only)
+        if (loadingView.isVisible) {
+            loadingView
+                .animate()
+                .alpha(0f)
+                .setStartDelay(startDelay)
+                .setDuration(mediaFadeIn)
+                .withEndAction {
+                    loadingView.alpha = 0f
+                    loadingView.visibility = View.INVISIBLE
+                    canSkip = true
+                }.start()
+        } else {
+            canSkip = true
+        }
+    }
+
+    private fun prefetchUpcomingMedia() {
+        if (!this::playlist.isInitialized || playlist.size <= 1) return
+        val next = playlist.peekNextItem() ?: return
+        if (next.type == AerialMediaType.IMAGE) {
+            imagePlayer.prefetch(next)
+        }
     }
 
     private fun fadeOutCurrentItem() {
@@ -686,44 +728,27 @@ class ScreenController(
             videoPlayer.fadeOutAudio(mediaFadeOut)
         }
 
-        // Fade in LoadView (ie. black screen)
-        loadingView
-            .animate()
-            .alpha(1f)
-            .setDuration(mediaFadeOut)
-            .withStartAction {
-                loadingView.visibility = View.VISIBLE
-                loadingView.alpha = 0f
-            }.withEndAction {
-                // Hide content views after faded out
-                videoViewBinding.root.visibility = View.INVISIBLE
-                // Let setVideo() replace the source without forcing a Realtek codec teardown.
+        // Reset pause state when transitioning between items
+        isPaused = false
+        pauseStartTime = 0
 
-                imageViewBinding.root.visibility = View.INVISIBLE
-                imageViewBinding.imagePlayer.stop()
+        if (!blackOutMode) {
+            val wasExplicitSkip = explicitSkip
+            val loadPreviousItem = previousItem
+            explicitSkip = false
+            previousItem = false
 
-                // Reset pause state when transitioning between items
-                isPaused = false
-                pauseStartTime = 0
-
-                if (!blackOutMode) {
-                    val wasExplicitSkip = explicitSkip
-                    val loadPreviousItem = previousItem
-                    explicitSkip = false
-                    previousItem = false
-
-                    if (wasExplicitSkip) {
-                        loadNextItem(loadPreviousItem)
-                    } else if (loopUntilSkipped && currentMedia != null) {
-                        replayCurrentItem()
-                    } else {
-                        loadNextItem(false)
-                    }
-                } else {
-                    explicitSkip = false
-                    previousItem = false
-                }
-            }.start()
+            if (wasExplicitSkip) {
+                loadNextItem(loadPreviousItem)
+            } else if (loopUntilSkipped && currentMedia != null) {
+                replayCurrentItem()
+            } else {
+                loadNextItem(false)
+            }
+        } else {
+            explicitSkip = false
+            previousItem = false
+        }
     }
 
     private fun replayCurrentItem() {

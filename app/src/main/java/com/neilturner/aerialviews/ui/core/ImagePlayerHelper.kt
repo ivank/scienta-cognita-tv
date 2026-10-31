@@ -51,11 +51,22 @@ internal object ImagePlayerHelper {
     fun buildOkHttpClient(
         validateSsl: Boolean = true,
         source: AerialMediaSource? = null,
+        context: Context? = null,
     ): OkHttpClient {
         val serverConfig = ServerConfig("", validateSsl)
         val okHttpClient = SslHelper().createOkHttpClient(serverConfig)
         return okHttpClient
             .newBuilder()
+            .apply {
+                if (context != null) {
+                    try {
+                        val cacheDir = java.io.File(context.cacheDir, "http_image_cache")
+                        cache(okhttp3.Cache(cacheDir, 256L * 1024 * 1024))
+                    } catch (e: Exception) {
+                        Timber.w(e, "Could not setup OkHttp disk cache")
+                    }
+                }
+            }
             .addInterceptor { chain ->
                 val newRequest =
                     chain

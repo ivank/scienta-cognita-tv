@@ -74,6 +74,18 @@ class MediaPlaylist(
         return getItemAt(position) ?: skipForward()
     }
 
+    fun peekNextItem(): AerialMedia? {
+        if (servableSize == 0) return null
+        val nextPos = calculateNext(position + 1)
+        return getItemAt(nextPos)
+    }
+
+    fun peekPreviousItem(): AerialMedia? {
+        if (servableSize == 0) return null
+        val prevPos = calculateNext(position - 1)
+        return getItemAt(prevPos)
+    }
+
     /**
      * Resolves [absoluteIndex] from the window, refilling synchronously on a hard miss.
      * Returns null if the index cannot be served after attempting a refill.
