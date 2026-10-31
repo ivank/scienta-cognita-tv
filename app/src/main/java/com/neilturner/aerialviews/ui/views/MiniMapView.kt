@@ -51,13 +51,6 @@ class MiniMapView
                 color = Color.parseColor("#26000000") // 15% black backdrop
             }
 
-        private val mapBorderPaint =
-            Paint(Paint.ANTI_ALIAS_FLAG).apply {
-                style = Paint.Style.STROKE
-                strokeWidth = context.resources.displayMetrics.density * 0.75f
-                color = Color.parseColor("#33FFFFFF") // 20% white border
-            }
-
         private val clipPath = Path()
         private val clipRect = RectF()
 
@@ -162,10 +155,7 @@ class MiniMapView
             }
             canvas.restore()
 
-            // 3. Draw border
-            canvas.drawRoundRect(clipRect, cornerRadius, cornerRadius, mapBorderPaint)
-
-            // 4. Draw location pin
+            // 3. Draw location pin
             if (lat != null && lon != null) {
                 val px0 = ((lon + 180.0) / 360.0 * w).toFloat()
                 val py0 = ((90.0 - lat) / 180.0 * baseH).toFloat()
