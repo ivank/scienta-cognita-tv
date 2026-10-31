@@ -164,7 +164,7 @@ class ImagePlayerView : FrameLayout {
     // Museum picture frame for portrait paintings
     private val galleryFrameView =
         GalleryFrameView(context).apply {
-            layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL)
+            layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER)
             visibility = GONE
         }
 
@@ -393,7 +393,8 @@ class ImagePlayerView : FrameLayout {
         galleryFrameView.visibility = VISIBLE
 
         val (_, vh) = resolveTargetSize()
-        galleryFrameView.translationY = vh * 0.035f
+        val wallCenterOffsetY = if (isClassical) -vh * 0.015f else -vh * 0.075f
+        galleryFrameView.translationY = wallCenterOffsetY
         galleryFrameView.translationX = 0f
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
@@ -733,9 +734,9 @@ class ImagePlayerView : FrameLayout {
         when (currentDisplayMode) {
             DisplayMode.GALLERY -> {
                 val startScale = 1.0f
-                val endFrameScale = 1.28f // Dolly in 28% towards painting details
-                val endSpotScale = 1.12f // Intermediate rate for ceiling spotlight
-                val endWallScale = 1.05f // Subtle background wall scale
+                val endFrameScale = 1.20f // Refined, smooth 20% dolly in
+                val endSpotScale = 1.08f // Intermediate rate for ceiling spotlight
+                val endWallScale = 1.03f // Subtle background wall scale
 
                 val focalYOnFrame = galleryFrameView.getFocalPointY()
                 galleryFrameView.pivotX = galleryFrameView.width / 2f
@@ -751,8 +752,8 @@ class ImagePlayerView : FrameLayout {
                 gallerySpotlightView.pivotX = screenFocalX
                 gallerySpotlightView.pivotY = screenFocalY
 
-                val startFrameTransY = vh * 0.035f
-                val endFrameTransY = startFrameTransY - 12f * resources.displayMetrics.density
+                val startFrameTransY = galleryFrameView.translationY
+                val endFrameTransY = startFrameTransY - 6f * resources.displayMetrics.density
                 val density = resources.displayMetrics.density
 
                 Timber.i("Gallery 3D Dolly Ken Burns: pivotY=$focalYOnFrame, screenFocalY=$screenFocalY, duration=$durationMs")
@@ -773,13 +774,13 @@ class ImagePlayerView : FrameLayout {
                             val spotScale = startScale + (endSpotScale - startScale) * f
                             gallerySpotlightView.scaleX = spotScale
                             gallerySpotlightView.scaleY = spotScale
-                            gallerySpotlightView.translationY = 8f * density * f
+                            gallerySpotlightView.translationY = 4f * density * f
 
                             // Plane 3: Background wall shifts with deep parallax drift
                             val wallScale = startScale + (endWallScale - startScale) * f
                             galleryBackgroundImageView.scaleX = wallScale
                             galleryBackgroundImageView.scaleY = wallScale
-                            galleryBackgroundImageView.translationY = 16f * density * f
+                            galleryBackgroundImageView.translationY = 8f * density * f
                         }
                         start()
                     }
@@ -882,9 +883,10 @@ class ImagePlayerView : FrameLayout {
             foregroundImageView.imageMatrix = baseMatrix
         }
         val (_, vh) = resolveTargetSize()
+        val wallCenterOffsetY = if (galleryFrameView.isClassicalStyle) -vh * 0.015f else -vh * 0.075f
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
-        galleryFrameView.translationY = vh * 0.035f
+        galleryFrameView.translationY = wallCenterOffsetY
         galleryBackgroundImageView.scaleX = 1f
         galleryBackgroundImageView.scaleY = 1f
         galleryBackgroundImageView.translationY = 0f
