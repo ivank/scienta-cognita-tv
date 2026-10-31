@@ -310,59 +310,59 @@
     },
     {
       "timeOfDay": "day",
-      "accessibilityLabel": "Siberia, Russia",
-      "title": "Russian Taiga & Northern Forest I",
+      "accessibilityLabel": "Siberian Taiga, Russia",
+      "title": "Siberian Taiga & Inya River",
       "scene": "nature",
-      "id": "video_russia_taiga_1",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Aerial_views_of_Taiga_in_Russia.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Aerial_views_of_Taiga_in_Russia.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Aerial_views_of_Taiga_in_Russia.webm",
+      "id": "video_russia_siberia_taiga",
+      "url-4K-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_siberia_taiga.mp4",
+      "url-1080-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_siberia_taiga.mp4",
+      "url-1080-H264": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_siberia_taiga.mp4",
       "pointsOfInterest": {
-        "0": "video_russia_taiga_1_0"
+        "0": "video_russia_siberia_taiga_0"
       },
-      "details": "Endless pristine canopy of the Siberian taiga, the world's largest forested wilderness, stretching uninterrupted across vast boreal river basins."
+      "details": "The Siberian taiga represents the largest continuous forest biome on Earth, dominated by larch, spruce, and Siberian pine. Gliding above the winding Inya River, the dense untouched canopy stretches uninterrupted across thousands of kilometers of northern wilderness."
     },
     {
       "timeOfDay": "day",
-      "accessibilityLabel": "Siberia, Russia",
-      "title": "Russian Taiga & Wilderness II",
+      "accessibilityLabel": "Lake Baikal, Siberia, Russia",
+      "title": "Lake Baikal Winter Turquoise Ice",
       "scene": "nature",
-      "id": "video_russia_taiga_2",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Aerial_views_of_Taiga_in_Russia_2.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Aerial_views_of_Taiga_in_Russia_2.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Aerial_views_of_Taiga_in_Russia_2.webm",
+      "id": "video_russia_baikal_ice",
+      "url-4K-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_baikal_ice.mp4",
+      "url-1080-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_baikal_ice.mp4",
+      "url-1080-H264": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_baikal_ice.mp4",
       "pointsOfInterest": {
-        "0": "video_russia_taiga_2_0"
+        "0": "video_russia_baikal_ice_0"
       },
-      "details": "Vast Siberian wilderness of evergreen taiga and pristine winding rivers, capturing the untouched boreal expanse of northern Eurasia."
+      "details": "Lake Baikal is the world's oldest and deepest freshwater lake, containing over 20% of the world's unfrozen surface fresh water. In winter, the crystalline Siberian waters freeze into translucent turquoise ice sheets, towering hummocks, and intricate geometric fissures across an endless frozen horizon."
     },
     {
       "timeOfDay": "day",
-      "accessibilityLabel": "Siberia, Russia",
-      "title": "Russian Taiga River & Forest III",
+      "accessibilityLabel": "Altai Mountains, Siberia, Russia",
+      "title": "Golden Mountains of Altai",
       "scene": "nature",
-      "id": "video_russia_taiga_3",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Aerial_views_of_Taiga_in_Russia_3.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Aerial_views_of_Taiga_in_Russia_3.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Aerial_views_of_Taiga_in_Russia_3.webm",
+      "id": "video_russia_altai_mountains",
+      "url-4K-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_altai_mountains.mp4",
+      "url-1080-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_altai_mountains.mp4",
+      "url-1080-H264": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_altai_mountains.mp4",
       "pointsOfInterest": {
-        "0": "video_russia_taiga_3_0"
+        "0": "video_russia_altai_mountains_0"
       },
-      "details": "Sweeping flight over Siberian boreal riverbanks and ancient pine forests stretching toward the Arctic horizon."
+      "details": "A UNESCO World Heritage site situated at the junction of Russia, Kazakhstan, Mongolia, and China. The Altai Mountains showcase dramatic alpine ridges, glaciated cirques, and dense Siberian larch taiga valleys preserving one of Earth's most pristine high-altitude ecosystems."
     },
     {
       "timeOfDay": "day",
-      "accessibilityLabel": "Russia",
-      "title": "Russian Birch & Boreal Forest",
+      "accessibilityLabel": "Kamchatka Peninsula, Russia",
+      "title": "Kamchatka Volcanic Wilderness",
       "scene": "nature",
-      "id": "video_russia_forest",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/9/90/Aerial_views_of_forest_in_Russia.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/9/90/Aerial_views_of_forest_in_Russia.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/9/90/Aerial_views_of_forest_in_Russia.webm",
+      "id": "video_russia_kamchatka_volcano",
+      "url-4K-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_kamchatka_volcano.mp4",
+      "url-1080-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_kamchatka_volcano.mp4",
+      "url-1080-H264": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_russia_kamchatka_volcano.mp4",
       "pointsOfInterest": {
-        "0": "video_russia_forest_0"
+        "0": "video_russia_kamchatka_volcano_0"
       },
-      "details": "Sunlit flight above vibrant white birch groves and evergreen pine forests in rural Russia during peak seasonal autumn foliage."
+      "details": "The Kamchatka Peninsula in the Russian Far East is one of the most volcanically active regions on the Pacific Ring of Fire. Colossal stratovolcanoes rise majestically above wild boreal forests, geothermal river valleys, and pristine arctic wilderness."
     },
     {
       "timeOfDay": "day",

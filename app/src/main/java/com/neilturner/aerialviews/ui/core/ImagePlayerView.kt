@@ -382,6 +382,10 @@ class ImagePlayerView : FrameLayout {
         galleryFrameView.translationX = 0f
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
+        galleryBackgroundImageView.scaleX = 1f
+        galleryBackgroundImageView.scaleY = 1f
+        gallerySpotlightView.scaleX = 1f
+        gallerySpotlightView.scaleY = 1f
 
         markBackgroundReady(blurHelper.currentToken)
     }
@@ -594,6 +598,10 @@ class ImagePlayerView : FrameLayout {
         galleryFrameView.paintingDrawable = null
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
+        galleryBackgroundImageView.scaleX = 1f
+        galleryBackgroundImageView.scaleY = 1f
+        gallerySpotlightView.scaleX = 1f
+        gallerySpotlightView.scaleY = 1f
         galleryFrameView.kenBurnsScale = 1f
 
         sculptureBacklightView.visibility = GONE
@@ -709,27 +717,40 @@ class ImagePlayerView : FrameLayout {
 
         when (currentDisplayMode) {
             DisplayMode.GALLERY -> {
-                val startFrameScale = 1.0f
-                val endFrameScale = 1.04f
-                val startPaintingZoom = 1.0f
-                val endPaintingZoom = 1.30f // Zoom into painting details
+                val startScale = 1.0f
+                val endScale = 1.25f // Dolly in 25% towards painting details
+                val endWallScale = 1.10f // Subtle background wall parallax
 
+                val focalYOnFrame = galleryFrameView.getFocalPointY()
                 galleryFrameView.pivotX = galleryFrameView.width / 2f
-                galleryFrameView.pivotY = galleryFrameView.height / 2f
+                galleryFrameView.pivotY = focalYOnFrame
                 galleryFrameView.focalY = naturalFocalY
 
+                // Focal point in screen space for background wall & spotlight
+                val screenFocalX = vw / 2f
+                val screenFocalY = galleryFrameView.top + galleryFrameView.translationY + focalYOnFrame
+
+                galleryBackgroundImageView.pivotX = screenFocalX
+                galleryBackgroundImageView.pivotY = screenFocalY
+                gallerySpotlightView.pivotX = screenFocalX
+                gallerySpotlightView.pivotY = screenFocalY
+
+                Timber.i("Gallery Ken Burns started: pivotY=$focalYOnFrame, screenFocalY=$screenFocalY, duration=$durationMs")
                 kenBurnsAnimator =
                     ValueAnimator.ofFloat(0f, 1f).apply {
                         duration = durationMs
                         interpolator = LinearInterpolator()
                         addUpdateListener { animator ->
                             val f = animator.animatedFraction
-                            val fs = startFrameScale + (endFrameScale - startFrameScale) * f
-                            galleryFrameView.scaleX = fs
-                            galleryFrameView.scaleY = fs
+                            val frameScale = startScale + (endScale - startScale) * f
+                            galleryFrameView.scaleX = frameScale
+                            galleryFrameView.scaleY = frameScale
 
-                            galleryFrameView.kenBurnsScale =
-                                startPaintingZoom + (endPaintingZoom - startPaintingZoom) * f
+                            val wallScale = startScale + (endWallScale - startScale) * f
+                            galleryBackgroundImageView.scaleX = wallScale
+                            galleryBackgroundImageView.scaleY = wallScale
+                            gallerySpotlightView.scaleX = wallScale
+                            gallerySpotlightView.scaleY = wallScale
                         }
                         start()
                     }
@@ -833,6 +854,10 @@ class ImagePlayerView : FrameLayout {
         }
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
+        galleryBackgroundImageView.scaleX = 1f
+        galleryBackgroundImageView.scaleY = 1f
+        gallerySpotlightView.scaleX = 1f
+        gallerySpotlightView.scaleY = 1f
         sculptureBacklightView.scaleX = 1f
         sculptureBacklightView.scaleY = 1f
     }

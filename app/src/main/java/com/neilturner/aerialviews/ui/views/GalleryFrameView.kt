@@ -57,6 +57,16 @@ class GalleryFrameView @JvmOverloads constructor(
             }
         }
 
+    fun getFocalPointY(): Float {
+        val shadowPadY = 40f * density
+        val fTop = shadowPadY - 6f * density
+        val fBottom = height.toFloat() - shadowPadY - 6f * density
+        val cTop = fTop + totalBorderPerSide
+        val cBottom = fBottom - totalBorderPerSide
+        val cHeight = maxOf(1f, cBottom - cTop)
+        return cTop + cHeight * focalY
+    }
+
     var focalY: Float = 0.35f
         set(value) {
             if (field != value) {
@@ -181,11 +191,8 @@ class GalleryFrameView @JvmOverloads constructor(
             d.bounds = drawableBounds
 
             canvas.save()
-            // Ken Burns zoom clipped cleanly within the inner archival matte aperture
+            // Clip cleanly within the inner archival matte aperture
             canvas.clipRect(canvasRect)
-            val px = canvasRect.centerX()
-            val py = canvasRect.top + canvasRect.height() * focalY
-            canvas.scale(kenBurnsScale, kenBurnsScale, px, py)
             d.draw(canvas)
             canvas.restore()
 

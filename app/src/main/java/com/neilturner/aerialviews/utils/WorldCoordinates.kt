@@ -197,6 +197,10 @@ object WorldCoordinates {
             "red square" to Coordinates(55.7525, 37.6231),
             "baikal" to Coordinates(53.5587, 108.1650),
             "kamchatka" to Coordinates(56.1325, 159.5314),
+            "altai" to Coordinates(50.0000, 87.5000),
+            "inya" to Coordinates(51.6000, 86.6000),
+            "siberia" to Coordinates(58.0000, 92.0000),
+            "siberian" to Coordinates(58.0000, 92.0000),
             "russia" to Coordinates(61.5240, 105.3188),
             // Art masterpieces & museums
             "mona lisa" to Coordinates(48.8606, 2.3376),
