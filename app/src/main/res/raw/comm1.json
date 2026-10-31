@@ -714,13 +714,13 @@
     },
     {
       "title": "Boyana Church Frescoes — Medieval Master, 1259, Boyana, Sofia, Bulgaria",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Boyana_Church_2_TB.JPG/1920px-Boyana_Church_2_TB.JPG",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Boyana_Church_Mural_Paintings.jpg/1920px-Boyana_Church_Mural_Paintings.jpg",
       "description": "Medieval Bulgarian Orthodox church located at the foot of Mount Vitosha in Sofia. Its exceptional 1259 frescoes by a master Bulgarian iconographer display remarkable psychological depth, realism, and vibrant color, foreshadowing the European Renaissance by decades.",
-      "category": "painting"
+      "category": "architecture"
     },
     {
       "title": "Rila Monastery Frescoes — Zahari Zograf, c. 1844, Rila, Bulgaria",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Rila_Monastery%2C_August_2013.jpg/1920px-Rila_Monastery%2C_August_2013.jpg",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Rila_Monastery_%28%D0%A0%D0%B8%D0%BB%D1%81%D0%BA%D0%B8_%D0%BC%D0%B0%D0%BD%D0%B0%D1%81%D1%82%D0%B8%D1%80%29_-_fresco_2.JPG/1920px-Rila_Monastery_%28%D0%A0%D0%B8%D0%BB%D1%81%D0%BA%D0%B8_%D0%BC%D0%B0%D0%BD%D0%B0%D1%81%D1%82%D0%B8%D1%80%29_-_fresco_2.JPG",
       "description": "The spiritual and cultural heart of Bulgaria, founded in the 10th century in the Rila Mountains. Its 1844 exterior frescoes by Zahari Zograf feature brilliant biblical scenes, angels, and virtues, representing the pinnacle of the Bulgarian National Revival.",
       "category": "painting"
     },
@@ -858,7 +858,7 @@
     },
     {
       "title": "Dwelling in the Fuchun Mountains — Huang Gongwang, 1350, Yuan Dynasty",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/%E6%B5%99%E5%8D%9A%E8%97%8F%E5%89%A9%E5%B1%B1%E5%9B%BE%2C_2023-09-26_01.jpg/1920px-%E6%B5%99%E5%8D%9A%E8%97%8F%E5%89%A9%E5%B1%B1%E5%9B%BE%2C_2023-09-26_01.jpg",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Dwelling_in_the_Fuchun_Mountains_%28first_half%29.JPG",
       "description": "Legendary Yuan Dynasty handscroll by Huang Gongwang (1350), one of the Four Masters of the Yuan. Painted over three years along the scenic Fuchun River in Zhejiang, revered as a supreme masterpiece of Chinese literati landscape art.",
       "category": "painting"
     },
@@ -888,7 +888,7 @@
     },
     {
       "title": "Krishna and Radha in a Pavilion — Pahari / Kangra School, c. 1780, Himachal Pradesh, India",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/%27Pakistan%27-_Sheesh_Mahal_%28Mirrors_Palace%29-_Lahore_Fort-_%40ibneazhar_Sep_2016_%2823%29.jpg/1920px-%27Pakistan%27-_Sheesh_Mahal_%28Mirrors_Palace%29-_Lahore_Fort-_%40ibneazhar_Sep_2016_%2823%29.jpg",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Radha_Krishna%2C_circa_18th_century_CE%2C_Kangra_School_of_Art%2C_Allahabad_Museum%2C_Uttar_Pradesh.jpg",
       "description": "Exquisite Pahari miniature from the Kangra School (c. 1780) illustrating Jayadeva's Gita Govinda. The divine lovers Krishna and Radha embrace in an ornate marble pavilion under a dark monsoon sky illuminated by a streak of golden lightning.",
       "category": "painting"
     },
@@ -965,20 +965,14 @@
       "category": "painting"
     },
     {
-      "title": "The Flower Carrier (Cargador de Flores) — Diego Rivera, 1935, Mexico City, Mexico",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Flower_Cloth_Baby_Carrier_-_DPLA_-_ed7ec3e0db7b22dfed7973b0964ab6eb_%28page_1%29.JPG/1920px-Flower_Cloth_Baby_Carrier_-_DPLA_-_ed7ec3e0db7b22dfed7973b0964ab6eb_%28page_1%29.JPG",
-      "description": "Celebrated 1935 oil and tempera painting by Mexican master Diego Rivera. Portrays an indigenous peasant on hands and knees struggling under an enormous basket of colorful pink flowers, symbolizing the heavy burdens of the working class.",
-      "category": "painting"
-    },
-    {
-      "title": "Portrait of Frida Kahlo in Studio — Guillermo Kahlo, 1932, Coyoacán, Mexico City, Mexico",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Frida_Kahlo%2C_by_Guillermo_Kahlo.jpg/1920px-Frida_Kahlo%2C_by_Guillermo_Kahlo.jpg",
-      "description": "Historic 1932 photograph of iconic Mexican painter Frida Kahlo taken by her father, photographer Guillermo Kahlo, in Coyoacán. Highlights her resolute gaze, indigenous Tehuana attire, and deep connection to Mexican folk identity.",
+      "title": "Man, Controller of the Universe — Diego Rivera, 1934, Palacio de Bellas Artes, Mexico City",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/El_hombre_controlador_del_universo%2C_Diego_Rivera.jpg/1920px-El_hombre_controlador_del_universo%2C_Diego_Rivera.jpg",
+      "description": "Monumental 1934 fresco painted by Mexican muralist Diego Rivera at the Palacio de Bellas Artes in Mexico City, recreating his destroyed Rockefeller Center mural 'Man at the Crossroads'. Depicts humanity at the pivot of science, nature, industry, and social movements.",
       "category": "painting"
     },
     {
       "title": "The Valley of Mexico from the Hill of Santa Isabel — José María Velasco, 1877, Mexico",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Detail_of_Nopal_Prickly_Pear_cactus_in_The_Valley_of_Mexico_from_the_Hill_of_Santa_Isabel_by_Velasco_1877.jpg/1920px-Detail_of_Nopal_Prickly_Pear_cactus_in_The_Valley_of_Mexico_from_the_Hill_of_Santa_Isabel_by_Velasco_1877.jpg",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Jos%C3%A9_Mar%C3%ADa_Velasco_-_Valle_de_M%C3%A9xico_-_1877_-_Museo_Nacional_de_Arte_-_MUNAL.jpg/1920px-Jos%C3%A9_Mar%C3%ADa_Velasco_-_Valle_de_M%C3%A9xico_-_1877_-_Museo_Nacional_de_Arte_-_MUNAL.jpg",
       "description": "Monumental 1877 landscape canvas by Mexican master José María Velasco. Captures the sweeping geological expanse of the Valley of Mexico with the Popocatépetl and Iztaccíhuatl volcanoes rising beneath majestic cumulus clouds.",
       "category": "painting"
     },
@@ -1002,7 +996,7 @@
     },
     {
       "title": "Queen Nefertari Playing Senet — Tomb of Nefertari, c. 1255 BC, Valley of the Queens, Luxor, Egypt",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Theban_region%2C_Valley_of_the_Queens%2C_QV_66%2C_Tomb_of_Nefertari%2C_1904-1935%2C_photo_14_of_227_-_Archivio_fotografico_Museo_Egizio%2C_Turin_C01667.jpg/1920px-Theban_region%2C_Valley_of_the_Queens%2C_QV_66%2C_Tomb_of_Nefertari%2C_1904-1935%2C_photo_14_of_227_-_Archivio_fotografico_Museo_Egizio%2C_Turin_C01667.jpg",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/85/Queen_Nefertari_Playing_Senet_MET_DT11770.jpg",
       "description": "Vibrant 19th Dynasty Egyptian wall painting from the Tomb of Queen Nefertari (QV66) in the Valley of the Queens (c. 1255 BC). The Great Royal Wife of Ramesses II plays the game of senet to pass safely into the afterlife, wearing a pleated linen gown and vulture headdress.",
       "category": "painting"
     },
@@ -1026,7 +1020,7 @@
     },
     {
       "title": "Earth's Creation — Emily Kame Kngwarreye, 1994, Utopia, Northern Territory, Australia",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/California_Highway%2C_Fremantle%2C_2018_%2802%29_%28%2B_Qantas_VH-ZND%29.jpg/1920px-California_Highway%2C_Fremantle%2C_2018_%2802%29_%28%2B_Qantas_VH-ZND%29.jpg",
+      "url-1080": "https://uploads3.wikiart.org/00333/images/emily-kame-kngwarreye/earth-s-creation-1994.jpg",
       "description": "Monumental 1994 masterpiece by senior Aboriginal Australian artist Emily Kame Kngwarreye. Executed in swirling dots and sweeps of synthetic polymer paint, depicting Alhalkere after the monsoonal rains in the Australian Central Desert.",
       "category": "painting"
     },
@@ -1049,99 +1043,81 @@
       "category": "painting"
     },
     {
-      "title": "Damayanti Talking to a Swan — Raja Ravi Varma, c. 1890",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Ravivarma1b.jpg",
-      "description": "Raja Ravi Varma (Malayalam: [ɾaːd͡ʒaː ɾɐʋi ʋɐrmːɐ]) (29 April 1848 – 2 October 1906) was an Indian painter. His works are one of the best examples of the fusion of European academic art with a purely Indian sensibility and iconography.",
-      "category": "painting"
-    },
-    {
       "title": "Yashoda and Krishna — Raja Ravi Varma, c. 1890s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Ravivarma1b.jpg",
-      "description": "Raja Ravi Varma (Malayalam: [ɾaːd͡ʒaː ɾɐʋi ʋɐrmːɐ]) (29 April 1848 – 2 October 1906) was an Indian painter. His works are one of the best examples of the fusion of European academic art with a purely Indian sensibility and iconography.",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/3/31/Yashoda_with_Krishna%2C_Raja_Ravi_Varma.jpg",
+      "description": "Beloved late-19th-century oil painting by Indian master Raja Ravi Varma depicting the foster-mother Yashoda tenderly holding the infant Lord Krishna, blending European academic realism with classical Hindu iconography.",
       "category": "painting"
     },
     {
       "title": "Head Study — Rabindranath Tagore, c. 1930",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Tagore_Kuthibari.jpg/1920px-Tagore_Kuthibari.jpg",
-      "description": "The works of Rabindranath Tagore consist of poems, novels, short stories, dramas, paintings, drawings, and music that Bengali poet and Brahmo philosopher Rabindranath Tagore created over his lifetime. Tagore's literary reputation is disproportionately influenced by regard for his poetry; however, he also wrote novels, essays, short stories, travelogues, dramas, and thousands of songs.",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/3/32/Rabindranath_Tagore_Head_Study_%28Geometric%29.jpg",
+      "description": "Expressive modernist ink and wash portrait of a human face by Nobel laureate and painter Rabindranath Tagore (c. 1930), housed in the Indian Museum, Kolkata. Tagore turned to visual art in his sixties, creating haunting, psychological character studies.",
       "category": "painting"
     },
     {
       "title": "Woman — Rabindranath Tagore, c. 1930",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/62/1926_Rabindrath_Tagore.jpg",
-      "description": "Rabindranath Tagore (Bengali: [ˈrobind̪ɾonat̪ʰ ˈʈʰakuɾ] ; 7 May 1861 – 7 August 1941) was a Bengali poet, author, playwright, musician, composer, philosopher, social reformer, painter, and one of the foremost figures of the Bengal Renaissance.",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Rabindranath_Tagore_Untitled_Dacing_Girl.jpg",
+      "description": "Luminous modernist painting of a woman by Rabindranath Tagore (c. 1930), characterized by rhythmic, veiled contours and melancholic chiaroscuro that helped pioneer Indian modernism.",
       "category": "painting"
     },
     {
       "title": "Landscape — Rabindranath Tagore, c. 1930",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Sharmila_Tagore_at_IFFI_2024.jpg",
-      "description": "Sharmila Tagore (Bengali: [ʃɔɾˈmila ˈʈʰakuɾ] ; born 8 December 1944), also known by her married name Begum Ayesha Sultana, is an Indian actress whose career has spanned over six decades across Hindi and Bengali films. In recognition of her contributions to cinema, she was honoured with Commander of Order of Arts and Letters by Government of France in 1999, and Padma Bhushan, India's third highest civilian award, in 2013.",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/67/Landscape-by-Rabindranath-Tagore-1937.jpg",
+      "description": "Atmospheric twilight landscape painted by Rabindranath Tagore in the 1930s, silhouetting dark Bengal trees against a glowing amber horizon with brooding poetic intensity.",
       "category": "painting"
     },
     {
       "title": "Young Girls — Amrita Sher Gil, 1932",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/91/Amrita_Sher-Gil_2.jpg",
-      "description": "Amrita Sher-Gil (30 January 1913 – 5 December 1941) was a Hungarian–Indian painter. She has been called \"one of the greatest avant-garde women artists of the early 20th century\"reference demanded and a pioneer in modern Indian art.",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Young_Girls.jpg",
+      "description": "Breakthrough 1932 oil on canvas by Hungarian-Indian modernist Amrita Sher-Gil, depicting her sister Indira alongside friend Denise Proutaux in Paris. The painting won the Gold Medal at the 1933 Grand Salon in Paris, making Sher-Gil the youngest Associate of the Salon.",
       "category": "painting"
     },
     {
       "title": "Three Girls — Amrita Sher Gil, 1935",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/91/Amrita_Sher-Gil_2.jpg",
-      "description": "Amrita Sher-Gil (30 January 1913 – 5 December 1941) was a Hungarian–Indian painter. She has been called \"one of the greatest avant-garde women artists of the early 20th century\"reference demanded and a pioneer in modern Indian art.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Amrita_Sher-Gil_Group_of_Three_Girls.jpg/1920px-Amrita_Sher-Gil_Group_of_Three_Girls.jpg",
+      "description": "Landmark 1935 painting ('Group of Three Girls') painted by Amrita Sher-Gil shortly after returning to India from Paris. Portrays three young Punjabi women in quiet, introspective silence using flat, glowing planes of crimson, ochre, and emerald.",
       "category": "painting"
     },
     {
-      "title": "Mother Teresa — M. F. Husain, c. 1980s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/99/MFHussain2.jpg",
-      "description": "Maqbool Fida Husain (17 September 1915 – 9 June 2011) was an Indian painter and film director who painted narrative paintings in a modified Cubist style. One of the founding members of Bombay Progressive Artists' Group, Husain is associated with Indian modernism in the 1940s.",
+      "title": "Between the Spider and the Lamp — M. F. Husain, 1956",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Between_the_spider_and_the_lamp_-_M._F._Husain.jpg",
+      "description": "Iconic modernist canvas 'Between the Spider and the Lamp' (1956) by Indian master Maqbool Fida Husain, blending folk sensibilities, bold calligraphic lines, and symbolic figuration.",
       "category": "painting"
     },
     {
-      "title": "Horses — M. F. Husain, various years",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Amdavad_ni_gufa.jpg/1920px-Amdavad_ni_gufa.jpg",
-      "description": "Amdavad ni Gufa () is an underground art gallery in Ahmedabad, India. Designed by the architect Balkrishna Vithaldas Doshi, it exhibits works of the Indian artist Maqbool Fida Husain.",
+      "title": "Horse with a Bouquet — M. F. Husain, c. 1960s",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Horse_with_a_bouquet_-_M._F._Husain.jpg",
+      "description": "Dynamic modernist painting 'Horse with a Bouquet' by M. F. Husain, showcasing his signature galloping equine motif rendered in energetic, cubist-inflected planes of color.",
       "category": "painting"
     },
     {
-      "title": "Mahabharata — M. F. Husain, c. 1980s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/99/MFHussain2.jpg",
-      "description": "Maqbool Fida Husain (17 September 1915 – 9 June 2011) was an Indian painter and film director who painted narrative paintings in a modified Cubist style. One of the founding members of Bombay Progressive Artists' Group, Husain is associated with Indian modernism in the 1940s.",
+      "title": "Yellowface — M. F. Husain, c. 1960s",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Yellowface_-_M._F._Husain.jpg",
+      "description": "Vibrant expressionist canvas 'Yellowface' by Progressive Artists' Group co-founder M. F. Husain, combining mythic Indian narrative forms with bold modern chromatic contrasts.",
       "category": "painting"
     },
     {
       "title": "Kanchenjunga — Nicholas Roerich, c. 1930s",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Kardhang_Biling_Bhaga_Dhauladhar_Oct22_A7C_04645.jpg/1920px-Kardhang_Biling_Bhaga_Dhauladhar_Oct22_A7C_04645.jpg",
-      "description": "Lahaul and Spiti district is a high-altitude district in Himachal Pradesh, north India. This entirely mountainous district consists of two geographically distinct as well as formerly separate political-administrative units, called Lahaul and Spiti.",
+      "url-1080": "https://uploads5.wikiart.org/images/nicholas-roerich/himalayas-chain-of-kanchenjunga-1936.jpg",
+      "description": "Radiant tempera mountain landscape by Russian master Nicholas Roerich (1936), depicting the sacred five-peaked massif of Kanchenjunga in the Himalayas bathed in crystalline cobalt, violet, and rose alpenglow.",
       "category": "painting"
     },
     {
       "title": "Madonna Oriflamma — Nicholas Roerich, 1932",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/5/51/N_Roerich.jpg",
-      "description": "Nikolai Konstantinovich Rerikh (Russian: Николай Константинович Рерих), better known as Nicholas Roerich (; October 9, 1874 – December 13, 1947), was a Russian painter, writer, archaeologist, theosophist, philosopher, and public figure.",
+      "url-1080": "https://uploads0.wikiart.org/images/nicholas-roerich/madonna-oriflamma-1932.jpg",
+      "description": "Symbolic 1932 tempera painting by Nicholas Roerich portraying a Renaissance-inspired Madonna holding unfurled the Banner of Peace—three red spheres within a circle representing Art, Science, and Religion.",
       "category": "painting"
     },
     {
       "title": "Himalayas — Nicholas Roerich, various years",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/5/51/N_Roerich.jpg",
-      "description": "Nikolai Konstantinovich Rerikh (Russian: Николай Константинович Рерих), better known as Nicholas Roerich (; October 9, 1874 – December 13, 1947), was a Russian painter, writer, archaeologist, theosophist, philosopher, and public figure.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Nicholas_Roerich_-_Himalayas%2C_Sikkim.jpg/1920px-Nicholas_Roerich_-_Himalayas%2C_Sikkim.jpg",
+      "description": "Luminous Himalayan mountain vista painted in Sikkim by Nicholas Roerich, known as the 'Master of the Mountains' for his jewel-like tempera depictions of high-altitude peaks and spiritual solitude.",
       "category": "painting"
     },
     {
       "title": "Mahishasura — Tyeb Mehta, 1996",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Tyeb_Mehta.jpg",
-      "description": "Tyeb Mehta (26 July 1925 – 2 July 2009) was an Indian painter, sculptor and film maker. He was part of the Bombay Progressive Artists' Group and the first post-colonial generation of artists in India, like John Wilkins who also broke free from the nationalist Bengal school and embraced Modernism instead, with its Post-Impressionist colours, cubist forms and brusque, expressionistic styles.",
-      "category": "painting"
-    },
-    {
-      "title": "Celebration — Tyeb Mehta, 1989",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Tyeb_Mehta.jpg",
-      "description": "Tyeb Mehta (26 July 1925 – 2 July 2009) was an Indian painter, sculptor and film maker. He was part of the Bombay Progressive Artists' Group and the first post-colonial generation of artists in India, like John Wilkins who also broke free from the nationalist Bengal school and embraced Modernism instead, with its Post-Impressionist colours, cubist forms and brusque, expressionistic styles.",
-      "category": "painting"
-    },
-    {
-      "title": "Kali — Tyeb Mehta, c. 1980s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Tyeb_Mehta.jpg",
-      "description": "Tyeb Mehta (26 July 1925 – 2 July 2009) was an Indian painter, sculptor and film maker. He was part of the Bombay Progressive Artists' Group and the first post-colonial generation of artists in India, like John Wilkins who also broke free from the nationalist Bengal school and embraced Modernism instead, with its Post-Impressionist colours, cubist forms and brusque, expressionistic styles.",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Mahishasura_by_Tyeb_Mehta.jpg",
+      "description": "Celebrated 1997 acrylic on canvas by Indian modernist Tyeb Mehta, reinterpreting the ancient mythic struggle between the goddess Durga and the buffalo demon Mahishasura through razor-sharp diagonal planes of crimson, ochre, and black.",
       "category": "painting"
     },
     {
@@ -1152,14 +1128,14 @@
     },
     {
       "title": "Composition VIII — Wassily Kandinsky, 1923",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/5/51/Vassily_Kandinsky%2C_1903_-_Gabriele_Munter_painting.jpg",
-      "description": "This is an incomplete list of paintings by the Russian artist Wassily Kandinsky (1866–1944). During his life, Kandinsky was associated with the art movements of Der Blaue Reiter, Expressionism and Abstract painting.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Kandinsky_-_Composition_8%2C_July_1923.jpg/1920px-Kandinsky_-_Composition_8%2C_July_1923.jpg",
+      "description": "Masterpiece of geometric abstraction painted by Wassily Kandinsky in July 1923 while teaching at the Bauhaus in Weimar, now in the Solomon R. Guggenheim Museum. Features a symphony of circles, triangles, grids, and intersecting lines.",
       "category": "painting"
     },
     {
       "title": "Yellow Red Blue — Wassily Kandinsky, 1925",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/1/19/Bauhaus_Chair_Breuer.png",
-      "description": "The Wassily chair, also known as the Model B3 chair, was designed by Marcel Breuer in 1925–1926 while he was the head of the cabinet-making workshop at the Bauhaus, in Dessau, Germany. Despite popular belief, the chair was not designed specifically for the non-objective painter Wassily Kandinsky, who was on the Bauhaus faculty at the same time.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Kandinsky_-_Jaune_Rouge_Bleu.jpg/1920px-Kandinsky_-_Jaune_Rouge_Bleu.jpg",
+      "description": "Monumental 1925 Bauhaus oil painting ('Gelb-Rot-Blau') by Wassily Kandinsky at the Musée National d'Art Moderne, Centre Pompidou, contrasting a radiant warm yellow geometric left side against a cool mystical blue circle on the right.",
       "category": "painting"
     },
     {
@@ -1182,62 +1158,50 @@
     },
     {
       "title": "In the Wild North — Ivan Shishkin, 1891",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Ivan_Shishkin_restoration.jpg",
-      "description": "Ivan Ivanovich Shishkin (Russian: Иван Иванович Шишкин; 25 January [O.S. 13 January] 1832 – 20 March [O.S. 8 March] 1898) was a Russian Realist painter and draughtsman, best known for his landscape subjects. One of the most notable artisans to emerge during Tsar Alexander II's reign, he was among founding members of the Peredvizhniki company.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Shishkin_na_severe_dikom1.jpg/1920px-Shishkin_na_severe_dikom1.jpg",
+      "description": "Poetic 1891 winter nocturnal landscape by Russian realist Ivan Shishkin, inspired by Mikhail Lermontov's poem. Depicts a solitary snow-laden pine standing atop a sheer cliff under cold moonlight.",
       "category": "painting"
     },
     {
       "title": "The Persistence of Memory — Salvador Dalí, 1931",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Dargenta_%26_Salvador_Dali_The_persistance_of_Memory.png/1920px-Dargenta_%26_Salvador_Dali_The_persistance_of_Memory.png",
-      "description": "Picture of a sculpture I bought from D'Argenta, its a representation of Salvador Dalí's Persistence of Memory",
+      "url-1080": "https://uploads0.wikiart.org/00475/images/salvador-dali/w1siziisijm4njq3mcjdlfsiccisimnvbnzlcnqilcitcxvhbgl0esa5mcatcmvzaxplidiwmdb4mjawmfx1mdazzsjdxq.jpg",
+      "description": "Surrealist icon painted in 1931 by Salvador Dalí, housed in the Museum of Modern Art (MoMA), New York. Depicts melting pocket watches draped across a barren Catalonian dreamscape beside the cliffs of Port Lligat.",
       "category": "painting"
     },
     {
       "title": "The Elephants — Salvador Dalí, 1948",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/African_Bush_Elephant.jpg/1920px-African_Bush_Elephant.jpg",
-      "description": "Elephants are the largest living land animals. Three living species are currently recognised: the African bush elephant (Loxodonta africana), the African forest elephant (L.",
+      "url-1080": "https://uploads3.wikiart.org/images/salvador-dali/the-elephants-large.jpg",
+      "description": "Striking 1948 surrealist painting by Salvador Dalí featuring two towering elephants walking on impossibly spindly, multi-jointed arachnid legs while carrying ancient obelisks across a fiery dusk plain.",
       "category": "painting"
     },
     {
       "title": "Metamorphosis of Narcissus — Salvador Dalí, 1937",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Salvador_Dal%C3%AD_1939.jpg/1920px-Salvador_Dal%C3%AD_1939.jpg",
-      "description": "Salvador Domingo Felipe Jacinto Dalí i Domènech, Marquess of Dalí de Púbol (11 May 1904 – 23 January 1989), known as Salvador Dalí, was a Spanish surrealist artist renowned for his technical skill, precise draftsmanship, and the striking and bizarre images in his work.",
+      "url-1080": "https://uploads5.wikiart.org/images/salvador-dali/the-metamorphosis-of-narcissus.jpg",
+      "description": "Paranoiac-critical masterpiece painted in 1937 by Salvador Dalí (Tate Modern, London), pairing the kneeling figure of Narcissus gazing into a pool with a petrified stone hand holding a cracked bulb from which a narcissus flower blooms.",
       "category": "painting"
     },
     {
-      "title": "The Defence of Sevastopol — Aleksandr Deyneka, 1942",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Novgorod_Monument_LOC_06268u.jpg/1920px-Novgorod_Monument_LOC_06268u.jpg",
-      "description": "This is a list of people associated with the modern Russian Federation, the Soviet Union, Imperial Russia, Russian Tsardom, the Grand Duchy of Moscow, Kievan Rus', and other predecessor states of Russia. Regardless of ethnicity or emigration, the list includes famous natives of Russia and its predecessor states, as well as people who were born elsewhere but spent most of their active life in Russia.",
-      "category": "painting"
-    },
-    {
-      "title": "The Future Pilots — Aleksandr Deyneka, 1938",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Aleksandr_Deyneka_1964.jpg",
-      "description": "Aleksandr Aleksandrovich Deyneka (Russian: Алекса́ндр Алекса́ндрович Дейне́ка; 20 May 1899 – 12 June 1969) was a Soviet painter, graphic artist and sculptor, regarded as one of the most important Russian modernist figurative painters of the first half of the 20th century.",
-      "category": "painting"
-    },
-    {
-      "title": "The Textile Workers — Aleksandr Deyneka, 1927",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Aleksandr_Deyneka_1964.jpg",
-      "description": "Aleksandr Aleksandrovich Deyneka (Russian: Алекса́ндр Алекса́ндрович Дейне́ка; 20 May 1899 – 12 June 1969) was a Soviet painter, graphic artist and sculptor, regarded as one of the most important Russian modernist figurative painters of the first half of the 20th century.",
+      "title": "Future Pilots — Aleksandr Deyneka, 1938, State Tretyakov Gallery, Moscow, Russia",
+      "url-1080": "https://uploads0.wikiart.org/images/aleksandr-deyneka/future-pilots-1938(1).jpg",
+      "description": "Iconic Socialist Realist oil painting by Aleksandr Deyneka depicting three sun-drenched Soviet youths sitting on the embankment at Sevastopol, gazing out as a seaplane climbs into the summer sky above the Black Sea.",
       "category": "painting"
     },
     {
       "title": "The Traveller — Lyubov Popova, 1915",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Coat_of_arms_of_Voronezh.png",
-      "description": "This is a list of notable people who were born or have lived in Voronezh, Russia.",
+      "url-1080": "https://uploads5.wikiart.org/images/lyubov-popova/the-traveler.jpg",
+      "description": "Dynamic 1915 Cubo-Futurist oil painting ('Traveling Woman', Norton Simon Museum) by Russian avant-garde pioneer Lyubov Popova, fragmenting a train passenger, luggage, and passing signage into interlocking planes of motion.",
       "category": "painting"
     },
     {
       "title": "Spatial Force Construction — Lyubov Popova, 1921",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Lyubov_Popova.jpg",
-      "description": "Lyubov Sergeyevna Popova (Russian: Любо́вь Серге́евна Попо́ва; 24 April 1889 – 25 May 1924) was a Russian-Soviet avant-garde artist, painter and designer.",
+      "url-1080": "https://uploads1.wikiart.org/images/lyubov-popova/spatial-force-construction.jpg",
+      "description": "Constructivist oil and marble dust on plywood composition (1920–1921) by Russian avant-garde artist Lyubov Popova, using intersecting diagonal vectors to create dynamic spatial tension.",
       "category": "painting"
     },
     {
       "title": "Painterly Architectonic — Lyubov Popova, 1917",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Lyubov_Popova.jpg",
-      "description": "Lyubov Sergeyevna Popova (Russian: Любо́вь Серге́евна Попо́ва; 24 April 1889 – 25 May 1924) was a Russian-Soviet avant-garde artist, painter and designer.",
+      "url-1080": "https://uploads7.wikiart.org/images/lyubov-popova/painterly-architectonic.jpg",
+      "description": "Suprematist-Constructivist oil painting by Lyubov Popova (National Galleries of Scotland), layering bold geometric wedges of crimson, black, ochre, and white into a balanced architectural rhythm.",
       "category": "painting"
     },
     {
@@ -1249,7 +1213,7 @@
     {
       "title": "Lady with an Ermine — Leonardo da Vinci, c. 1490",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Dama_z_gronostajem.jpg/1920px-Dama_z_gronostajem.jpg",
-      "description": "A young woman holds an ermine in her arms.",
+      "description": "Exquisite High Renaissance portrait painted around 1489–1490 by Leonardo da Vinci in Milan (Czartoryski Museum, Kraków), portraying Cecilia Gallerani, mistress of Ludovico Sforza, turning gracefully while cradling a white stoat.",
       "category": "painting"
     },
     {
@@ -1260,32 +1224,32 @@
     },
     {
       "title": "Nude Descending a Staircase No. 2 — Marcel Duchamp, 1912",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/en/thumb/c/c0/Duchamp_-_Nude_Descending_a_Staircase.jpg/1920px-Duchamp_-_Nude_Descending_a_Staircase.jpg",
+      "url-1080": "https://uploads4.wikiart.org/00475/images/marcel-duchamp/nude-descending-a-staircase-no-2-marcel-duchamp-1912.jpg",
       "description": "Nude Descending a Staircase, No. 2 (French: Nu descendant un escalier n° 2) is a 1912 painting by Marcel Duchamp.",
       "category": "painting"
     },
     {
       "title": "The Bride Stripped Bare by Her Bachelors — Marcel Duchamp, Even",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/en/b/be/Duchamp_LargeGlass.jpg",
+      "url-1080": "https://uploads3.wikiart.org/images/marcel-duchamp/the-bride-stripped-bare-by-her-bachelors-1923.jpg",
       "description": "The Bride Stripped Bare by Her Bachelors, Even (in French : La mariée mise à nu par ses célibataires, même), also called The Large Glass (in French : Le Grand Verre), is an artwork by Marcel Duchamp over 9 feet (2.7 m) tall and almost 6 feet (1.76m) wide.",
       "category": "sculpture"
     },
     {
       "title": "Portrait of Adele Bloch Bauer I — Gustav Klimt, 1907",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/3/33/Gustav_Klimt_047.jpg",
-      "description": "Portrait of Adele Bloch-Bauer II is a 1912 painting by Gustav Klimt. The work is a portrait of Adele Bloch-Bauer (1881–1925), a Vienna socialite who was a patron and close friend of Klimt.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Gustav_Klimt%2C_1907%2C_Adele_Bloch-Bauer_I%2C_Neue_Galerie_New_York.jpg/1920px-Gustav_Klimt%2C_1907%2C_Adele_Bloch-Bauer_I%2C_Neue_Galerie_New_York.jpg",
+      "description": "Opulent 1907 'Woman in Gold' masterpiece by Gustav Klimt at the Neue Galerie, New York. Painted with oil, silver, and gold leaf on canvas, it crowns Klimt's Golden Phase with Byzantine mosaic brilliance.",
       "category": "painting"
     },
     {
       "title": "Judith and the Head of Holofernes — Gustav Klimt, 1901",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Judit_decapitando_a_Holofernes%2C_por_Artemisia_Gentileschi.jpg/1920px-Judit_decapitando_a_Holofernes%2C_por_Artemisia_Gentileschi.jpg",
-      "description": "The beheading of Holofernes by Judith is recounted in the deuterocanonical Book of Judith, and is the subject of many paintings and sculptures from the Renaissance and Baroque periods. In the story, Judith, a beautiful Jewish widow, enters the tent of Assyrian general Holofernes under the guise of seduction, as he was preparing to destroy Judith's home, the city of Bethulia.",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/92/Gustav_Klimt_039.jpg",
+      "description": "Sensual 1901 Vienna Secession oil and gold leaf painting ('Judith I', Belvedere Museum, Vienna) by Gustav Klimt, depicting the biblical heroine holding the severed head of Holofernes beneath a gilded collar of figs and vines.",
       "category": "painting"
     },
     {
       "title": "Impression Sunrise — Claude Monet, 1872",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg",
-      "description": "Celebrated masterpiece by Claude Monet, painted 1872. Renowned for its distinctive composition, aesthetic mastery, and enduring cultural significance.",
+      "description": "Seminal 1872 oil painting by Claude Monet (Musée Marmottan Monet, Paris) depicting the mist-shrouded port of Le Havre at daybreak. Its title inspired critic Louis Leroy to coin the name of the Impressionist movement.",
       "category": "painting"
     },
     {
@@ -1314,38 +1278,20 @@
     },
     {
       "title": "The Triumphal Procession of Maximilian I — Hans Burgkmair, c. 1512 to 1519",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/22/Lukas_Furtenagel_001.jpg",
-      "description": "Hans Burgkmair the Elder (1473–1531) was a German painter and woodcut printmaker.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/People_from_Calicut%2C_from_The_Triumphal_Procession_of_Emperor_Maximilian_%28Triumph_Des_Kaisers_Maximilian_I%29_MET_DP834160.jpg/1920px-People_from_Calicut%2C_from_The_Triumphal_Procession_of_Emperor_Maximilian_%28Triumph_Des_Kaisers_Maximilian_I%29_MET_DP834160.jpg",
+      "description": "Monumental Northern Renaissance woodcut frieze designed by Hans Burgkmair the Elder (1512–1519) for Holy Roman Emperor Maximilian I, depicting an extravagant imperial parade of knights, musicians, and exotic emissaries.",
       "category": "painting"
     },
     {
       "title": "Emperor Maximilian I — Hans Burgkmair, 1508",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Albrecht_D%C3%BCrer_-_Portrait_of_Maximilian_I_-_Google_Art_Project.jpg/1920px-Albrecht_D%C3%BCrer_-_Portrait_of_Maximilian_I_-_Google_Art_Project.jpg",
-      "description": "Maximilian I (22 March 1459 – 12 January 1519) was King of the Romans from 1486 and Holy Roman Emperor from 1508 until his death in 1519. He was never crowned by the Pope, as the journey to Rome was blocked by the Venetians.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Hans_Burgkmair_I%2C_Emperor_Maximilian_I%2C_1508-1518%2C_NGA_34656.jpg/1920px-Hans_Burgkmair_I%2C_Emperor_Maximilian_I%2C_1508-1518%2C_NGA_34656.jpg",
+      "description": "Pioneering 1508 chiaroscuro woodcut by Augsburg Renaissance master Hans Burgkmair the Elder (National Gallery of Art, Washington), depicting Holy Roman Emperor Maximilian I in full Gothic plate armor on horseback.",
       "category": "painting"
     },
     {
       "title": "The Weisskunig — Hans Burgkmair, c. 1514 to 1516",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/22/Lukas_Furtenagel_001.jpg",
-      "description": "Hans Burgkmair the Elder (1473–1531) was a German painter and woodcut printmaker.",
-      "category": "painting"
-    },
-    {
-      "title": "The Birth of the Day — Rafal Olbinski, c. 1980s",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/2025.05.16._Rafal_Olbinski_Photo_Mariusz_Kubik_01.JPG/1920px-2025.05.16._Rafal_Olbinski_Photo_Mariusz_Kubik_01.JPG",
-      "description": "Rafał Olbinski (born February 21, 1943) is a Polish illustrator, painter, and educator, living in the United States. He is considered one of the major representatives of the Polish School of Posters.",
-      "category": "painting"
-    },
-    {
-      "title": "The Endless Quest — Rafal Olbinski, c. 1990s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Jeff_Easley.jpeg",
-      "description": "Jeff Easley (born 1954) is an oil painter who creates fantasy artwork for role-playing games, comics, and magazines, as well as non-fantasy commercial art.",
-      "category": "painting"
-    },
-    {
-      "title": "The Triumph of the Imagination — Rafal Olbinski, c. 1990s",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/The_Garden_of_earthly_delights.jpg/1920px-The_Garden_of_earthly_delights.jpg",
-      "description": "The Garden of Earthly Delights (Dutch: De tuin der lusten, lit. 'The garden of lusts') is the modern title given to a five-panel triptych (three oil-painted panels when open, two oak panels when closed) painted by the Early Netherlandish master Hieronymus Bosch, painted between 1490 and 1510, when Bosch was between 40 and 60 years old.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/The_Splendid_Foundation_of_the_Old_White_King%2C_from_Der_Weisskunig_MET_DP834052.jpg/1920px-The_Splendid_Foundation_of_the_Old_White_King%2C_from_Der_Weisskunig_MET_DP834052.jpg",
+      "description": "Intricate Renaissance woodcut illustration by Hans Burgkmair the Elder for 'Der Weisskunig' (The White King, c. 1514–1516), the chivalric romance and veiled autobiography of Emperor Maximilian I.",
       "category": "painting"
     },
     {
@@ -1368,92 +1314,74 @@
     },
     {
       "title": "Vasco da Gama Before the Zamorin — José María Veloso Salgado, c. 1890s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Ignoto_portoghese%2C_ritratto_di_un_cavaliere_dell%27ordine_di_cristo%2C_1525-50_ca._02.jpg",
-      "description": "Vasco da Gama ( VAS-koo də GA(H)M-ə, European Portuguese: [ˈvaʃku ðɐ ˈɣɐmɐ]; c. 1460s – 24 December 1524) was a Portuguese mariner, explorer and nobleman.",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/1/12/Vasco_da_Gama_perante_o_Samorim_de_Calecute.png",
+      "description": "Grand 1898 historical canvas by Luso-Spanish academic master José Maria Veloso Salgado (Sociedade de Geografia de Lisboa), depicting Portuguese explorer Vasco da Gama presenting King Manuel I's letter to the Zamorin of Calicut in 1498.",
       "category": "painting"
     },
     {
-      "title": "The Cortes of Leiria — José María Veloso Salgado, c. 1890s",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Sess%C3%A3o_das_Cortes_de_Lisboa.jpg/1920px-Sess%C3%A3o_das_Cortes_de_Lisboa.jpg",
-      "description": "Cortes (from the Latin term cohors) were political bodies of a parliamentary, consultative and deliberative character in traditional monarchies, or on their behalf; and the different social classes established in three Orders: the First Estate, which corresponded to the branch of the clergy; the Second Estate, which was the branch of the nobility; and the Third Estate, which was the branch of the people.",
+      "title": "As Ciências Físico-Naturais — José María Veloso Salgado, 1917",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/64/As_Ci%C3%AAncias_F%C3%ADsico-Naturais_%281917%29_-_Veloso_Salgado_%28Reitoria_da_Universidade_do_Porto%29.png",
+      "description": "Allegorical mural 'As Ciências Físico-Naturais' (The Physical and Natural Sciences, 1917) painted by José Maria Veloso Salgado for the Rectorate of the University of Porto.",
       "category": "painting"
     },
     {
-      "title": "The Death of Inês de Castro — José María Veloso Salgado, c. 1890s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Os_Lus%C3%ADadas.jpg",
-      "description": "Os Lusíadas (Portuguese pronunciation: [uʒ luˈzi.ɐðɐʃ]), usually translated as The Lusiads, is a Portuguese epic poem written by Luís Vaz de Camões (c. 1524/5 – 1580) and first published in 1572.",
+      "title": "Portrait of Virginie Demont-Breton — José María Veloso Salgado, 1894",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Portrait_of_Virginie_Demont-Breton_%281894%29_by_Veloso_Salgado.jpg/1920px-Portrait_of_Virginie_Demont-Breton_%281894%29_by_Veloso_Salgado.jpg",
+      "description": "Refined 1894 salon portrait of French painter Virginie Demont-Breton by José Maria Veloso Salgado, demonstrating his mastery of luminous naturalism and academic portraiture.",
       "category": "painting"
     },
     {
-      "title": "Prince Bajaja — Artuš Scheiner, c. 1920s",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Igor_Yasulovich_06.jpg/1920px-Igor_Yasulovich_06.jpg",
-      "description": "Igor Nikolayevich Yasulovich (Russian: Игорь Николаевич Ясулович; 24 September 1941 – 19 August 2023) was a Soviet and Russian film and theater actor, film director and pedagogue.",
+      "title": "Procession of the Trolls — Artuš Scheiner, c. 1920s",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/93/Artus_Scheiner_Umzug_der_Trolle.jpg",
+      "description": "Whimsical Art Nouveau watercolor illustration 'Procession of the Trolls' ('Umzug der Trolle') by Czech artist and illustrator Artuš Scheiner, celebrated for his richly detailed Central European fairy-tale scenes.",
       "category": "painting"
     },
     {
-      "title": "The Golden Apple — Artuš Scheiner, c. 1920s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/98/Household_stories_Bros_Grimm_%28L_%26_W_Crane%29_plate_facing_p236.png",
-      "description": "\"The Golden Bird\" (German: Der goldene Vogel) is a fairy tale collected by the Brothers Grimm about the pursuit of a golden bird by a gardener's three sons. The Grimms included it as Tale 57 (KHM 57) in the very first volume of their famous collection, Children's and Household Tales (Kinder- und Hausmärchen, KHM).",
-      "category": "painting"
-    },
-    {
-      "title": "Fairy Tale Illustrations — Artuš Scheiner, c. 1910s to 1930s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Artu%C5%A1_Scheiner.png",
-      "description": "Artuš Scheiner (28 October 1863 – 20 December 1938) was a Czech painter, decorative artist and illustrator. He was known best for his precise gouache drawing, mostly in secessional style. He produced many paintings, illustrations, advertisements, postcards and designs.",
+      "title": "Amis and Amil — Artuš Scheiner, c. 1920s",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Artu%C5%A1_Scheiner_-_Amis_a_Amil1.jpg",
+      "description": "Romantic medieval chivalric illustration for 'Amis and Amil' by Czech golden-age illustrator Artuš Scheiner, blending crisp Secessionist linework with jewel-toned gouache.",
       "category": "painting"
     },
     {
       "title": "The Son of Man — René Magritte, 1964",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Portrait_en_buste_du_peintre_surr%C3%A9aliste_Ren%C3%A9_Magritte_%281898-1967%29_le_18_octobre_1961_devant_une_de_ses_toiles%2C_PH19994.jpg/1920px-Portrait_en_buste_du_peintre_surr%C3%A9aliste_Ren%C3%A9_Magritte_%281898-1967%29_le_18_octobre_1961_devant_une_de_ses_toiles%2C_PH19994.jpg",
-      "description": "René François Ghislain Magritte (French: [ʁəne fʁɑ̃swa ɡilɛ̃ maɡʁit]; 21 November 1898 – 15 August 1967) was a Belgian surrealist artist known for his depictions of familiar objects in unfamiliar, unexpected contexts, which often provoked questions about the nature and boundaries of reality and representation.",
+      "url-1080": "https://uploads2.wikiart.org/images/rene-magritte/son-of-man-1964(1).jpg",
+      "description": "Iconic 1964 surrealist self-portrait by Belgian painter René Magritte, depicting a man in an overcoat and bowler hat standing before a low wall and overcast sea, his face obscured by a hovering green apple.",
       "category": "painting"
     },
     {
       "title": "The Treachery of Images — René Magritte, 1929",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Portrait_en_buste_du_peintre_surr%C3%A9aliste_Ren%C3%A9_Magritte_%281898-1967%29_le_18_octobre_1961_devant_une_de_ses_toiles%2C_PH19994.jpg/1920px-Portrait_en_buste_du_peintre_surr%C3%A9aliste_Ren%C3%A9_Magritte_%281898-1967%29_le_18_octobre_1961_devant_une_de_ses_toiles%2C_PH19994.jpg",
-      "description": "René François Ghislain Magritte (French: [ʁəne fʁɑ̃swa ɡilɛ̃ maɡʁit]; 21 November 1898 – 15 August 1967) was a Belgian surrealist artist known for his depictions of familiar objects in unfamiliar, unexpected contexts, which often provoked questions about the nature and boundaries of reality and representation.",
+      "url-1080": "https://uploads7.wikiart.org/images/rene-magritte/the-treachery-of-images-this-is-not-a-pipe-1948(2).jpg",
+      "description": "Philosophical 1929 surrealist painting by René Magritte (Los Angeles County Museum of Art), depicting a smoker's pipe above the cursive French inscription 'Ceci n'est pas une pipe' ('This is not a pipe').",
       "category": "painting"
     },
     {
       "title": "Golconda — René Magritte, 1953",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Portrait_en_buste_du_peintre_surr%C3%A9aliste_Ren%C3%A9_Magritte_%281898-1967%29_le_18_octobre_1961_devant_une_de_ses_toiles%2C_PH19994.jpg/1920px-Portrait_en_buste_du_peintre_surr%C3%A9aliste_Ren%C3%A9_Magritte_%281898-1967%29_le_18_octobre_1961_devant_une_de_ses_toiles%2C_PH19994.jpg",
-      "description": "René François Ghislain Magritte (French: [ʁəne fʁɑ̃swa ɡilɛ̃ maɡʁit]; 21 November 1898 – 15 August 1967) was a Belgian surrealist artist known for his depictions of familiar objects in unfamiliar, unexpected contexts, which often provoked questions about the nature and boundaries of reality and representation.",
+      "url-1080": "https://uploads0.wikiart.org/images/rene-magritte/gonconda-1953(1).jpg",
+      "description": "Celebrated 1953 surrealist oil painting by René Magritte (Menil Collection, Houston), portraying dozens of nearly identical men in dark overcoats and bowler hats suspended like raindrops against a bright sky and red-roofed town.",
       "category": "painting"
     },
     {
       "title": "The Tree of Life — Ignacio de Ries, 1653",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/80/Ignacio_de_Ries_El_Arbol_de_la_Vida.jpg",
-      "description": "Ignacio de Ries (c. 1612 – after 1661) was a Spanish Baroque painter.",
+      "description": "Famous 1653 Spanish Baroque allegorical canvas ('El Árbol de la Vida', Segovia Cathedral) by Flemish-born painter Ignacio de Ries. Depicts Christ warning that death cuts down the tree of earthly pleasures while the Devil pulls its trunk.",
       "category": "painting"
     },
     {
-      "title": "Adoration of the Shepherds — Ignacio de Ries, 1653",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/80/Ignacio_de_Ries_El_Arbol_de_la_Vida.jpg",
-      "description": "Ignacio de Ries (c. 1612 – after 1661) was a Spanish Baroque painter.",
+      "title": "The Baptism of Christ — Ignacio de Ries, 1653",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/3/30/Ignacio_de_Ries_Bautismo_de_Cristo.jpg",
+      "description": "Dramatic 1653 Spanish Baroque painting 'The Baptism of Christ' by Ignacio de Ries in Segovia Cathedral, strongly influenced by the tenebrism and rich color of Francisco de Zurbarán.",
       "category": "painting"
     },
     {
-      "title": "The Immaculate Conception — Ignacio de Ries, 17th century",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/80/Ignacio_de_Ries_El_Arbol_de_la_Vida.jpg",
-      "description": "Ignacio de Ries (c. 1612 – after 1661) was a Spanish Baroque painter.",
+      "title": "Saints Leander and Isidore — Ignacio de Ries, 17th century",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/San_Leandro_y_San_Isidoro%2C_Ignacio_de_Ries.jpg/1920px-San_Leandro_y_San_Isidoro%2C_Ignacio_de_Ries.jpg",
+      "description": "Baroque canvas 'Saints Leander and Isidore' by 17th-century Seville master Ignacio de Ries, showcasing sculptural drapery and warm liturgical chiaroscuro.",
       "category": "painting"
     },
     {
-      "title": "Dante and Beatrice — Filippo Bigioli, 19th century",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Henry_Holiday_-_Dante_and_Beatrice_-_Google_Art_Project.jpg/1920px-Henry_Holiday_-_Dante_and_Beatrice_-_Google_Art_Project.jpg",
-      "description": "Dante and Beatrice is a painting dated 1883 by the artist Henry Holiday that is on display in the Walker Art Gallery, in Liverpool, England. It is considered to be Holiday's most important painting.",
-      "category": "painting"
-    },
-    {
-      "title": "Divine Comedy Illustrations — Filippo Bigioli, 19th century",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Sandro_Botticelli_-_La_Carte_de_l%27Enfer.jpg/1920px-Sandro_Botticelli_-_La_Carte_de_l%27Enfer.jpg",
-      "description": "The Divine Comedy Illustrated by Botticelli is a manuscript of the Divine Comedy by Dante, illustrated by 92 full-page pictures by Sandro Botticelli that are considered masterpieces and amongst the best works of the Renaissance painter.",
-      "category": "painting"
-    },
-    {
-      "title": "The Vision of Dante — Filippo Bigioli, 19th century",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/A_Vision_of_Fiammetta_by_Dante_Gabriel_Rossetti.jpg/1920px-A_Vision_of_Fiammetta_by_Dante_Gabriel_Rossetti.jpg",
-      "description": "A Vision of Fiammetta is an oil painting created by Dante Gabriel Rossetti, in the Pre-Raphaelite style, created in 1878. The painting was one half of one of Rossetti's \"double works\", accompanying his Ballads and Sonnets (1881). Maria Spartali Stillman modelled for the painting. The subject of painting is Boccaccio's muse named Fiammetta.",
+      "title": "Virgil and Dante Before Cato — Filippo Bigioli, 19th century",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Filippo_Bigioli_-_Virgilio_e_Dante_dinanzi_a_Catone.jpg",
+      "description": "Romantic Italian historical painting 'Virgil and Dante Before Cato' by 19th-century painter Filippo Bigioli, part of his celebrated cycle illustrating scenes from Dante Alighieri's Divine Comedy.",
       "category": "painting"
     },
     {
@@ -1476,20 +1404,20 @@
     },
     {
       "title": "The Two Fridas — Frida Kahlo, 1939",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Museo_Frida_Kahlo.JPG",
-      "description": "The Frida Kahlo Museum (Spanish: Museo Frida Kahlo), also known as The Blue House (La Casa Azul) for the structure's cobalt-blue walls, is a historic house museum and art museum dedicated to the life and work of Mexican artist Frida Kahlo.",
+      "url-1080": "https://uploads4.wikiart.org/images/magdalena-carmen-frieda-kahlo-y-calder%C3%B3n-de-rivera/the-two-fridas-1939.jpg",
+      "description": "Monumental 1939 double self-portrait by Mexican artist Frida Kahlo (Museo de Arte Moderno, Mexico City), portraying two seated versions of herself—one in European Victorian lace and one in traditional Tehuana dress—linked by exposed hearts and arteries.",
       "category": "painting"
     },
     {
       "title": "Self Portrait with Thorn Necklace and Hummingbird — Frida Kahlo, 1940",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Museo_Frida_Kahlo.JPG",
-      "description": "The Frida Kahlo Museum (Spanish: Museo Frida Kahlo), also known as The Blue House (La Casa Azul) for the structure's cobalt-blue walls, is a historic house museum and art museum dedicated to the life and work of Mexican artist Frida Kahlo.",
+      "url-1080": "https://uploads0.wikiart.org/images/magdalena-carmen-frieda-kahlo-y-calder%C3%B3n-de-rivera/self-portrait-with-necklace-of-thorns-1940.jpg",
+      "description": "Intense 1940 oil self-portrait by Frida Kahlo (Harry Ransom Center, Austin), depicting the artist framed by lush tropical foliage with a spider monkey, a black cat, and a bleeding necklace of thorns from which a dead hummingbird hangs.",
       "category": "painting"
     },
     {
       "title": "The Broken Column — Frida Kahlo, 1944",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Museo_Frida_Kahlo.JPG",
-      "description": "The Frida Kahlo Museum (Spanish: Museo Frida Kahlo), also known as The Blue House (La Casa Azul) for the structure's cobalt-blue walls, is a historic house museum and art museum dedicated to the life and work of Mexican artist Frida Kahlo.",
+      "url-1080": "https://uploads7.wikiart.org/images/magdalena-carmen-frieda-kahlo-y-calder%C3%B3n-de-rivera/the-broken-column-1944.jpg",
+      "description": "Piercing 1944 oil on masonite self-portrait by Frida Kahlo (Museo Dolores Olmedo, Mexico City), painted after spinal surgery. Shows her torso split open to reveal a cracked Ionic column in place of her spine, bound in a steel orthopedic brace.",
       "category": "painting"
     },
     {
@@ -1505,24 +1433,6 @@
       "category": "painting"
     },
     {
-      "title": "The Sun Sets Sail — Rob Gonsalves, 2001",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Zeppelin-ride-020100925-195_%285029394846%29.jpg/1920px-Zeppelin-ride-020100925-195_%285029394846%29.jpg",
-      "description": "San Francisco, officially the City and County of San Francisco, is the 17th-largest city and second-densest major city in the United States, with a 2025 population of 826,079. It is the fourth-most populous city in California and the second most-populous in the Bay Area.",
-      "category": "painting"
-    },
-    {
-      "title": "The Sea of Knowledge — Rob Gonsalves, c. 1999",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Jillian_Tamaki_2019.jpg/1920px-Jillian_Tamaki_2019.jpg",
-      "description": "Jillian Tamaki (born April 17, 1980) is a Canadian American illustrator and comic artist known for her work in The New York Times and The New Yorker in addition to the graphic novels Boundless, as well as Skim, This One Summer and Roaming written by her cousin Mariko Tamaki.",
-      "category": "painting"
-    },
-    {
-      "title": "Unfinished Puzzle — Rob Gonsalves, c. 2000s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Klimt.jpg",
-      "description": "Gustav Klimt (14 July 1862 – 6 February 1918) was an Austrian symbolist painter and a founding member of the Vienna Secession movement. His work helped define the Art Nouveau style in Europe.",
-      "category": "painting"
-    },
-    {
       "title": "The Hunters in the Snow — Pieter Bruegel the Elder, 1565",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Pieter_Bruegel_the_Elder_-_Hunters_in_the_Snow_%28Winter%29_-_Google_Art_Project.jpg/1920px-Pieter_Bruegel_the_Elder_-_Hunters_in_the_Snow_%28Winter%29_-_Google_Art_Project.jpg",
       "description": "The Hunters in the Snow (Dutch: Jagers in de Sneeuw), also known as The Return of the Hunters, is a 1565 oil-on-wood painting by Pieter Bruegel the Elder. The Northern Renaissance work is one of a series of works, five of which still survive, that depict different times of the year.",
@@ -1531,7 +1441,7 @@
     {
       "title": "The Tower of Babel — Pieter Bruegel the Elder, 1563",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_%28Vienna%29_-_Google_Art_Project.jpg/1920px-Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_%28Vienna%29_-_Google_Art_Project.jpg",
-      "description": "«Вавилонская башня» (нид. De bouw van de toren van Babel). 1563. Дерево, масло. 114 × 155 см. Музей истории искусств, Вена (Австрия)",
+      "description": "Monumental 1563 Northern Renaissance oil on oak panel by Pieter Bruegel the Elder (Kunsthistorisches Museum, Vienna), modeling the biblical Tower of Babel after the Roman Colosseum with extraordinary architectural and human detail.",
       "category": "painting"
     },
     {
@@ -1566,20 +1476,20 @@
     },
     {
       "title": "The Death of General Skobelev — Vasily Vereshchagin, 1880",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/65/%D0%92%D0%B5%D1%80%D0%B5%D1%89%D0%B0%D0%B3%D0%B8%D0%BD_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%2B_%28cropped%29.jpg",
-      "description": "Vasily Vasilyevich Vereshchagin (Russian: Василий Васильевич Верещагин; 26 October 1842 – 13 April 1904) was a Russian painter, war artist, and traveller. The graphic nature of his realist scenes led to many of them never being printed or exhibited to the public.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Shipka-Sheinovo._Skobelev_at_Shipka_%28Battlefield_at_the_Shipka_Pass%29.jpg/1920px-Shipka-Sheinovo._Skobelev_at_Shipka_%28Battlefield_at_the_Shipka_Pass%29.jpg",
+      "description": "Sweeping 19th-century realist war canvas ('Skobelev at Shipka') by Russian painter Vasily Vereshchagin, depicting General Mikhail Skobelev riding past cheering Russian regiments across the snow-covered Shipka Pass battlefield alongside its dead.",
       "category": "painting"
     },
     {
       "title": "The Doors of Tamerlane — Vasily Vereshchagin, 1872",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/65/%D0%92%D0%B5%D1%80%D0%B5%D1%89%D0%B0%D0%B3%D0%B8%D0%BD_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%2B_%28cropped%29.jpg",
-      "description": "Vasily Vasilyevich Vereshchagin (Russian: Василий Васильевич Верещагин; 26 October 1842 – 13 April 1904) was a Russian painter, war artist, and traveller. The graphic nature of his realist scenes led to many of them never being printed or exhibited to the public.",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/a/a1/%D0%94%D0%B2%D0%B5%D1%80%D0%B8_%D0%A2%D0%B8%D0%BC%D1%83%D1%80%D0%B0_%28%D0%A2%D0%B0%D0%BC%D0%B5%D1%80%D0%BB%D0%B0%D0%BD%D0%B0%29.jpg",
+      "description": "Masterpiece of Russian Orientalist realism painted in 1872 by Vasily Vereshchagin (Tretyakov Gallery, Moscow), depicting two heavily armed Central Asian guards standing watch before the intricately carved palace doors of Timur (Tamerlane) in Samarkand.",
       "category": "painting"
     },
     {
       "title": "The Arnolfini Portrait — Jan van Eyck, 1434",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Van_Eyck_-_Arnolfini_Portrait.jpg/1920px-Van_Eyck_-_Arnolfini_Portrait.jpg",
-      "description": "Celebrated masterpiece by Jan van Eyck, painted 1434. Renowned for its distinctive composition, aesthetic mastery, and enduring cultural significance.",
+      "description": "Groundbreaking 1434 Early Netherlandish oil on oak panel by Jan van Eyck (National Gallery, London), portraying Italian merchant Giovanni di Nicolao Arnolfini and his wife in Bruges with a famously detailed convex mirror and brass chandelier.",
       "category": "painting"
     },
     {
@@ -1590,8 +1500,8 @@
     },
     {
       "title": "The Madonna of Chancellor Rolin — Jan van Eyck, c. 1435",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Jan_van_Eyck_-_Portrait_of_a_Man_%28Self_Portrait%3F%29_1433.jpg/1920px-Jan_van_Eyck_-_Portrait_of_a_Man_%28Self_Portrait%3F%29_1433.jpg",
-      "description": "Jan van Eyck ( van EYEK; Dutch: [ˈjɑɱ vɑn ˈɛik]; c. before 1390 – 9 July 1441) was an early Netherlandish painter active in Bruges who was one of the early innovators of what became known as early Netherlandish painting, and one of the supreme figures of the Early Northern Renaissance.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/La_Vierge_du_chancelier_Rolin_-_Jan_van_Eyck_-_Mus%C3%A9e_du_Louvre_Peintures_INV_1271_%3B_MR_705.jpg/1920px-La_Vierge_du_chancelier_Rolin_-_Jan_van_Eyck_-_Mus%C3%A9e_du_Louvre_Peintures_INV_1271_%3B_MR_705.jpg",
+      "description": "Luminous c. 1435 Early Netherlandish oil panel by Jan van Eyck (Musée du Louvre, Paris), depicting Nicolas Rolin, Chancellor of Burgundy, kneeling in prayer before the Virgin Mary and Infant Christ overlooking a panoramic river city.",
       "category": "painting"
     },
     {
@@ -1609,7 +1519,7 @@
     {
       "title": "The Garden of Earthly Delights — Hieronymus Bosch, c. 1490 to 1510",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution.jpg/1920px-The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution.jpg",
-      "description": "Celebrated masterpiece by Hieronymus Bosch, painted c. 1490 to 1510. Renowned for its distinctive composition, aesthetic mastery, and enduring cultural significance.",
+      "description": "Enigmatic Early Netherlandish oak triptych painted between 1490 and 1510 by Hieronymus Bosch (Museo del Prado, Madrid), tracing humanity from the Garden of Eden through a teeming panorama of earthly temptations to a surreal musical Hell.",
       "category": "painting"
     },
     {
@@ -1620,81 +1530,69 @@
     },
     {
       "title": "The Haywain — Hieronymus Bosch, c. 1510 to 1516",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Jheronimus_Bosch_%28cropped%29.jpg",
-      "description": "Hieronymus Bosch (; Dutch: [ɦijeːˈroːnimʏz ˈbɔs] ; born Jheronimus van Aken [jeːˈroːnimʏs fɑn ˈaːkə(n)]; c. 1450 – 9 August 1516) was a Dutch painter from Brabant.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Bosch_-_Haywain_Triptych.jpg/1920px-Bosch_-_Haywain_Triptych.jpg",
+      "description": "Satirical c. 1516 triptych by Hieronymus Bosch (Museo del Prado, Madrid), illustrating the Flemish proverb that the world is a haystack from which everyone plucks as much as they can, oblivious to Christ above and Hell ahead.",
       "category": "painting"
     },
     {
       "title": "Guernica — Pablo Picasso, 1937",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Arbol_de_Gernika_d%C3%ADa.jpg",
-      "description": "Guernica (, Spanish pronunciation: [ɡeɾˈnika]), officially Gernika (pronounced [ɡernika]) in Basque, is a town in the province of Biscay, in the Autonomous Community of the Basque Country, Spain. The town of Guernica is one part (along with neighbouring Lumo) of the municipality of Gernika-Lumo (Spanish: Guernica y Luno), whose population was 17,033 as of 2024.",
+      "url-1080": "https://uploads8.wikiart.org/00139/images/pablo-picasso/guernica-by-pablo-picasso.jpg",
+      "description": "Monumental 1937 anti-war oil painting by Pablo Picasso (Museo Reina Sofía, Madrid), created in stark grisaille black, white, and grey in response to the bombing of the Basque town of Guernica during the Spanish Civil War.",
       "category": "painting"
     },
     {
       "title": "Les Demoiselles d'Avignon — Pablo Picasso, 1907",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/en/thumb/4/4c/Les_Demoiselles_d%27Avignon.jpg/1920px-Les_Demoiselles_d%27Avignon.jpg",
+      "url-1080": "https://uploads1.wikiart.org/00492/images/pablo-picasso/les-demoiselles-d-avignon-1907.jpg",
       "description": "Les Demoiselles d'Avignon (pronounced [le demwazɛl d‿aviɲɔ̃]; The Young Ladies of Avignon, originally titled The Brothel of Avignon) is a large oil painting created in 1907 by the Spanish artist Pablo Picasso. Part of the permanent collection of the Museum of Modern Art in New York, it portrays five nude female prostitutes in a brothel on Carrer d'Avinyó, a street in Barcelona, Spain.",
       "category": "painting"
     },
     {
       "title": "The Weeping Woman — Pablo Picasso, 1937",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Rembrandt_A_Weeping_Woman.jpg",
-      "description": "A Woman Weeping, also known as A Weeping Woman or Study of a Weeping Woman, is a 1644 oil on oak panel painting, now in the Detroit Institute of Arts. It almost exactly corresponds to the kneeling woman in Rembrandt's The Woman Taken in Adultery (National Gallery, London) and is thought to be by one of his students after an autograph original study – Kurt Bauch argued this student was Carel Fabritius, whilst Werner Sumowski felt the strongest candidates were Samuel van Hoogstraten and Nicolaes Maes.",
+      "url-1080": "https://uploads3.wikiart.org/images/pablo-picasso/crying-woman-1937-1.jpg",
+      "description": "Searing 1937 Cubist oil canvas by Pablo Picasso (Tate Modern, London), painted as a coda to 'Guernica' and modeled on Dora Maar, fracturing a grief-stricken face clutching a handkerchief into jagged shards of acid green, yellow, and violet.",
       "category": "painting"
     },
     {
       "title": "The Old Fisherman — Tivadar Csontváry Kosztka, 1902",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/63/Csontv%C3%A1ry_Kosztka%2C_Tivadar_-_Old_Fisherman_%281902%29.jpg",
-      "description": "Celebrated masterpiece by Tivadar Csontváry Kosztka, painted 1902. Renowned for its distinctive composition, aesthetic mastery, and enduring cultural significance.",
+      "description": "Haunting 1902 visionary portrait by Hungarian painter Tivadar Csontváry Kosztka (Ottó Herman Museum, Miskolc). Famous for its bilaterally asymmetric face: mirroring one side reveals a pious man praying above a calm sea, while the other reveals the Devil before a stormy volcano.",
       "category": "painting"
     },
     {
       "title": "The Lonely Cedar — Tivadar Csontváry Kosztka, 1907",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/28/Csontv%C3%A1ry_%C3%96narck%C3%A9p.jpg",
-      "description": "Tivadar Csontváry Kosztka born Mihály Tivadar Kosztka (Hungarian pronunciation: [ˈtivɒdɒr ˈt͡ʃontvaːri ˈkostkɒ]; 5 July 1853 – 20 June 1919) was a Hungarian painter who was part of the avant-garde movement of the early twentieth century.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/The_Lonely_Cedar.jpg/1920px-The_Lonely_Cedar.jpg",
+      "description": "Mystical 1907 post-impressionist canvas by Hungarian visionary Tivadar Csontváry Kosztka ( Janus Pannonius Museum, Pécs), portraying an ancient, wind-sculpted cedar of Lebanon standing sentinel atop a radiant mountain ridge.",
       "category": "painting"
     },
     {
       "title": "The Pilgrimage to the Cedars of Lebanon — Tivadar Csontváry Kosztka, 1907",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/28/Csontv%C3%A1ry_%C3%96narck%C3%A9p.jpg",
-      "description": "Tivadar Csontváry Kosztka born Mihály Tivadar Kosztka (Hungarian pronunciation: [ˈtivɒdɒr ˈt͡ʃontvaːri ˈkostkɒ]; 5 July 1853 – 20 June 1919) was a Hungarian painter who was part of the avant-garde movement of the early twentieth century.",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/b/be/Csontv%C3%A1ry_Kosztka%2C_Tivadar_-_Pilgrimage_to_the_Cedars_of_Lebanon_-_Google_Art_Project.jpg",
+      "description": "Symbolic 1907 masterpiece by Tivadar Csontváry Kosztka (Hungarian National Gallery, Budapest), depicting riders and dancers gathered in ritual celebration around a monumental twin-trunked cedar tree under glowing evening skies.",
       "category": "painting"
     },
     {
       "title": "Primavera — Sandro Botticelli, c. 1480",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Botticelli-primavera.jpg/1920px-Botticelli-primavera.jpg",
-      "description": "Celebrated masterpiece by Sandro Botticelli, painted c. 1480. Renowned for its distinctive composition, aesthetic mastery, and enduring cultural significance.",
+      "description": "Celebrated c. 1480 Italian Renaissance tempera panel by Sandro Botticelli (Uffizi Gallery, Florence), bringing together Venus, Cupid, the Three Graces, Mercury, Flora, and Zephyrus in a lush orange grove carpeted with over 500 identified plant species.",
       "category": "painting"
     },
     {
       "title": "The Map of Hell / Chart of Hell — Sandro Botticelli, c. 1480s to 1490s",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Sandro_Botticelli_-_La_Carte_de_l%27Enfer.jpg/1920px-Sandro_Botticelli_-_La_Carte_de_l%27Enfer.jpg",
-      "description": "Celebrated masterpiece by Sandro Botticelli, painted c. 1480s to 1490s. Renowned for its distinctive composition, aesthetic mastery, and enduring cultural significance.",
+      "description": "Intricate late-15th-century silverpoint and tempera parchment illumination by Sandro Botticelli (Vatican Library), mapping the nine concentric funnel-shaped circles of Dante's Inferno in breathtaking microscopic detail.",
       "category": "painting"
     },
     {
-      "title": "Infinity Mirror Room: Phalli's Field — Yayoi Kusama, 1965",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/1/12/Yayoi_Kusama_in_2005.jpg",
-      "description": "Yayoi Kusama (草間 彌生, Kusama Yayoi; 22 March 1929 – 14 August 2026) was a Japanese artist who worked primarily in sculpture and installation. She was also active in painting, performance, video art, fashion, poetry, fiction, and other arts.",
+      "title": "The Obliteration Room — Yayoi Kusama, 2002",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Yayoi_Kusama_Obliteration_Room.jpg",
+      "description": "Immersive contemporary installation ('The Obliteration Room') by Japanese avant-garde artist Yayoi Kusama, transforming an entire domestic interior with thousands of vibrant chromatic polka dots.",
       "category": "sculpture"
     },
     {
       "title": "Pumpkin — Yayoi Kusama, 1994",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/1/12/Yayoi_Kusama_in_2005.jpg",
-      "description": "Yayoi Kusama (草間 彌生, Kusama Yayoi; 22 March 1929 – 14 August 2026) was a Japanese artist who worked primarily in sculpture and installation. She was also active in painting, performance, video art, fashion, poetry, fiction, and other arts.",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Yayoi_Kusama%2C_Pumpkin%2C_2015_%2837171698741%29.jpg/1920px-Yayoi_Kusama%2C_Pumpkin%2C_2015_%2837171698741%29.jpg",
+      "description": "Iconic polka-dotted pumpkin sculpture by Japanese contemporary artist Yayoi Kusama, turning the organic gourd form into a hypnotic, rhythmic monument of black-and-yellow dots.",
       "category": "sculpture"
-    },
-    {
-      "title": "Infinity Mirrored Room series — Yayoi Kusama, 1965 onward",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Infinity_mirror_in_a_public_bathroom.jpg",
-      "description": "The infinity mirror (also sometimes called an infinite mirror) is a configuration of two or more parallel or angled mirrors, which are arranged to create a series of further and further reflections that appear to recede to infinity.",
-      "category": "sculpture"
-    },
-    {
-      "title": "Fine Wind Clear Morning / Red Fuji — Katsushika Hokusai, c. 1830 to 1832",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/%E3%80%8C%E5%AF%8C%E5%B6%BD%E4%B8%89%E5%8D%81%E5%85%AD%E6%99%AF_%E5%87%B1%E9%A2%A8%E5%BF%AB%E6%99%B4%E3%80%8D-South_Wind%2C_Clear_Sky_%28Gaif%C5%AB_kaisei%29%2C_also_known_as_Red_Fuji%2C_from_the_series_Thirty-six_Views_of_Mount_Fuji_%28Fugaku_sanj%C5%ABrokkei%29_MET_DP141062.jpg/1920px-thumbnail.jpg",
-      "description": "Fine Wind, Clear Morning (Japanese: 凱風快晴, Hepburn: Gaifū kaisei; literally South Wind, Clear Sky), also known as Red Fuji (赤富士, Akafuji), is a woodblock print by Japanese artist Hokusai (1760–1849), part of his Thirty-six Views of Mount Fuji series, dating from c.",
-      "category": "painting"
     },
     {
       "title": "Thunderstorm Beneath the Summit — Katsushika Hokusai, c. 1830 to 1832",
@@ -1703,183 +1601,27 @@
       "category": "painting"
     },
     {
-      "title": "Two Swallows — Wu Guanzhong, 1981",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/22/Wuguanzhong01.jpg",
-      "description": "Wu Guanzhong (simplified Chinese: 吴冠中; traditional Chinese: 吳冠中; pinyin: Wú Guànzhōng; 29 August 1919 – 25 June 2010) was a contemporary Chinese painter widely recognized as a founder of modern Chinese painting. He is considered to be one of the greatest contemporary Chinese painters.",
+      "title": "Self-Portrait (Autoportrait) — Gerard Sekoto, c. 1947",
+      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Gerard_Sekoto%2C_Autoportrait.jpg/1920px-Gerard_Sekoto%2C_Autoportrait.jpg",
+      "description": "Expressive oil self-portrait by pioneering South African modernist Gerard Sekoto, whose warm, empathetic depictions of township life and human dignity laid the foundation for modern Black South African art.",
       "category": "painting"
     },
     {
-      "title": "Lion Grove Garden — Wu Guanzhong, 1983",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/22/Wuguanzhong01.jpg",
-      "description": "Wu Guanzhong (simplified Chinese: 吴冠中; traditional Chinese: 吳冠中; pinyin: Wú Guànzhōng; 29 August 1919 – 25 June 2010) was a contemporary Chinese painter widely recognized as a founder of modern Chinese painting. He is considered to be one of the greatest contemporary Chinese painters.",
+      "title": "Dar-es-Salaam — J. H. Pierneef, 1926",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Pierneef_1926_Dar-es-Salaam.jpg",
+      "description": "Atmospheric 1926 East African coastal painting 'Dar-es-Salaam' by South African landscape master J. H. Pierneef, blending decorative post-impressionist line with warm tropical light.",
       "category": "painting"
     },
     {
-      "title": "The Great Wall — Wu Guanzhong, various years",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/22/Wuguanzhong01.jpg",
-      "description": "Wu Guanzhong (simplified Chinese: 吴冠中; traditional Chinese: 吳冠中; pinyin: Wú Guànzhōng; 29 August 1919 – 25 June 2010) was a contemporary Chinese painter widely recognized as a founder of modern Chinese painting. He is considered to be one of the greatest contemporary Chinese painters.",
+      "title": "Landscape with Clouds — J. H. Pierneef, 1926",
+      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/84/JH_Pierneef_-_Landscape_with_clouds_1926.jpg",
+      "description": "Majestic 1926 painting 'Landscape with Clouds' by J. H. Pierneef, featuring his signature towering cumulus cloud formations rising over vast Southern African plains.",
       "category": "painting"
     },
     {
-      "title": "Mount Tamalpais — Etel Adnan, various years",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Etel_Adnan%2C_2008_%28cropped%29.jpg",
-      "description": "Etel Adnan (Arabic: إيتيل عدنان; 24 February 1925 – 14 November 2021) was a Lebanese poet, essayist, novelist, and visual artist, and the author of Sitt Marie Rose. In 2003, the academic journal MELUS called her \"arguably the most celebrated and accomplished Arab author writing today\".",
-      "category": "painting"
-    },
-    {
-      "title": "Untitled Landscape — Etel Adnan, various years",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/en/0/08/RothkoBlackGray.jpg",
-      "description": "Untitled / Untitled (Black on Grey) are a group of paintings created by Mark Rothko now known as a series including works on canvas and paper produced before the artist's death by suicide. The series has works which used both a combination of black and grey, or are monotone black, or with only a small quantity of color.",
-      "category": "painting"
-    },
-    {
-      "title": "The Sea — Etel Adnan, various years",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Etel_Adnan%2C_2008_%28cropped%29.jpg",
-      "description": "Etel Adnan (Arabic: إيتيل عدنان; 24 February 1925 – 14 November 2021) was a Lebanese poet, essayist, novelist, and visual artist, and the author of Sitt Marie Rose. In 2003, the academic journal MELUS called her \"arguably the most celebrated and accomplished Arab author writing today\".",
-      "category": "painting"
-    },
-    {
-      "title": "Baghdad Contemplating Itself — Shakir Hassan Al Said, c. 1980s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Calif_al_Mahdi_Kairouan_912_CE%28png%29.png",
-      "description": "Abū Muḥammad ʿAbd Allāh ibn al-Ḥusayn (Arabic: أبو محمد عبد الله بن الحسين; 31 July 874 – 4 March 934), better known by his regnal name al-Mahdī biʾllāh (Arabic: المهدي بالله, \"The Rightly Guided by God\"), was the founder of the Isma'ili Fatimid Caliphate, the only major Shi'a caliphate in Islamic history, and the eleventh Imam of the Isma'ili branch of Shi'ism.",
-      "category": "painting"
-    },
-    {
-      "title": "The Martyr's Monument — Shakir Hassan Al Said, c. 1970s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/4/46/Countrywoman_on_Her_Wedding_Night%2C_sculpture_by_Khaled_al-Rahal%2C_Baghdad%2C_1961.png",
-      "description": "Khaled Al-Rahal (also given as Khālid al-Raḥḥāl, 1926–1987) (Arabic: خالد الرحال) was an Iraqi painter and sculptor and one of the leaders of the modern art movement in Iraq. Described as one of the \"pillars of modern Iraqi art,\" he was responsible for executing a number of high-profile public monuments in Baghdad in the mid-20th century.",
-      "category": "sculpture"
-    },
-    {
-      "title": "Hidden — Shakir Hassan Al Said, c. 1990s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Asabah2.jpg",
-      "description": "Hasan-i Sabbah (c. 1050 – 12 June 1124; AH 518), also known as Hasan I of Alamut, was a military leader, scholar, and founder of the Nizari Ismaili movement, popularly known in the West as the Order of Assassins, as well as the Nizari Ismaili state, which he ruled from 1090 until his death in 1124.",
-      "category": "painting"
-    },
-    {
-      "title": "Le Jeu de la Ficelle — Shafic Abboud, 1985",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/0_Amiens_-_Place_du_Don_-_Cath%C3%A9drale_%281%29.JPG/1920px-0_Amiens_-_Place_du_Don_-_Cath%C3%A9drale_%281%29.JPG",
-      "description": "Amiens (English: or AM-ee-ənz; French: [amjɛ̃] ; Picard: Anmien, Anmiens or Anmyin) is a city and commune in northern France, located 120 km (75 mi) north of Paris and 100 km (62 mi) southwest of Lille. With 136,449 inhabitants (2023), it is the prefecture of the Somme department in the Hauts-de-France region.",
-      "category": "painting"
-    },
-    {
-      "title": "Tendres Regrets — Shafic Abboud, 1989",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Jacques_Brel_%281962%29.jpg",
-      "description": "Jacques Romain Georges Brel (French: [ʒɑk ʁɔmɛ̃ ʒɔʁʒ bʁɛl] ; 8 April 1929 – 9 October 1978) was a Belgian singer and actor who composed and performed theatrical songs. He generated a large, devoted following—initially in Belgium and France, but later throughout the world.",
-      "category": "painting"
-    },
-    {
-      "title": "Tondo — Shafic Abboud, various years",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Tondo_Doni_2015.png/1920px-Tondo_Doni_2015.png",
-      "description": "The Doni Tondo or Doni Madonna is the only finished panel painting by the mature Michelangelo to survive. Now in the Uffizi in Florence, Italy, and still in its original frame, the Doni Tondo commissioned by Agnolo Doni, probably to commemorate his marriage to Maddalena Strozzi, the daughter of a powerful Tuscan family.",
-      "category": "painting"
-    },
-    {
-      "title": "Tutu — Ben Enwonwu, 1974",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Ben_Enonwu_working_on_a_sculpture_of_Ann_Gerrard_%281957%29_%28cropped%29.jpg",
-      "description": "Odinigwe Benedict Chukwukadibia Enwonwu MBE (14 July 1917 – 5 February 1994), better known as Ben Enwonwu, was a Nigerian painter and sculptor. Arguably the most influential African artist of the 20th century, his pioneering career opened the way for the postcolonial proliferation and increased visibility of modern African art.",
-      "category": "painting"
-    },
-    {
-      "title": "Anyanwu — Ben Enwonwu, 1954 to 1955",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Ben_Enonwu_working_on_a_sculpture_of_Ann_Gerrard_%281957%29_%28cropped%29.jpg",
-      "description": "Odinigwe Benedict Chukwukadibia Enwonwu MBE (14 July 1917 – 5 February 1994), better known as Ben Enwonwu, was a Nigerian painter and sculptor. Arguably the most influential African artist of the 20th century, his pioneering career opened the way for the postcolonial proliferation and increased visibility of modern African art.",
-      "category": "sculpture"
-    },
-    {
-      "title": "Christine — Ben Enwonwu, 1967",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Ben_Enonwu_working_on_a_sculpture_of_Ann_Gerrard_%281957%29_%28cropped%29.jpg",
-      "description": "Odinigwe Benedict Chukwukadibia Enwonwu MBE (14 July 1917 – 5 February 1994), better known as Ben Enwonwu, was a Nigerian painter and sculptor. Arguably the most influential African artist of the 20th century, his pioneering career opened the way for the postcolonial proliferation and increased visibility of modern African art.",
-      "category": "painting"
-    },
-    {
-      "title": "Yellow Houses — Gerard Sekoto, 1940",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/2c/9_2_228_0069-Art_Gallery2-Johannesburg-s.jpg",
-      "description": "The Johannesburg Art Gallery (JAG) is an art gallery in Joubert Park in the city centre of Johannesburg, South Africa. It was once the largest gallery on the continent with a collection of more than 9000 artworks.",
-      "category": "painting"
-    },
-    {
-      "title": "The Song of the Pick — Gerard Sekoto, 1947",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/1/1e/%D7%93%D7%A0%D7%99%D7%90%D7%9C%D7%94_%D7%A4%D7%99%D7%A7.jpg",
-      "description": "Daniella Pick (Hebrew: דניאלה פיק; born 21 November 1983) is an Israeli singer, model, and actress. She is married to American filmmaker Quentin Tarantino.",
-      "category": "painting"
-    },
-    {
-      "title": "The Three Figures — Gerard Sekoto, c. 1960s",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Es%27kia_Mphahlele-borsbeeld%2C_Pretoria.jpg/500px-Es%27kia_Mphahlele-borsbeeld%2C_Pretoria.jpg",
-      "description": "Es'kia Mphahlele (17 December 1919 – 27 October 2008) was a South African writer, educationist, artist and activist celebrated as the Father of African Humanism and one of the founding figures of modern African literature.",
-      "category": "painting"
-    },
-    {
-      "title": "Baobab Trees — J. H. Pierneef, c. 1920s to 1930s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Derby_boab%2C_Western_Australia.jpg",
-      "description": "Adansonia gregorii, commonly known as the boab and also known by a number of other names, is a tree in the family Malvaceae, endemic to the northern regions of Western Australia and the Northern Territory of Australia.",
-      "category": "painting"
-    },
-    {
-      "title": "Waterfall — J. H. Pierneef, c. 1920s",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/4/48/Millais_Waterfall_1935-53.jpg",
-      "description": "The Waterfall or A Waterfall at Glenfinlas or Effie at Glenfinlas is an 1853 painting by the English artist John Everett Millais. It shows a woman in a red dress with hat and coat, sitting by a waterfall while sewing.",
-      "category": "painting"
-    },
-    {
-      "title": "Bushveld Landscape — J. H. Pierneef, various years",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/View_of_Zwelisha%2C_Mpumalanga.jpg/1920px-View_of_Zwelisha%2C_Mpumalanga.jpg",
-      "description": "Zwelisha is a rural settlement in Mbombela Local Municipality in Ehlanzeni District of the Mpumalanga province, South Africa. It is located among granite boulders and among Pretorioskop Sour Bushveld, Malalane Mountain Bushveld and Crocodile Gorge Mountain Bushveld vegetation types.",
-      "category": "painting"
-    },
-    {
-      "title": "The Hunt — Irma Stern, 1926",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Connie_Stevens_early_1960s_press_still.jpg",
-      "description": "Connie Stevens (born Concetta Rosalie Ann Ingolia; August 8, 1938) is an American actress and traditional pop singer. Born in Brooklyn to musician parents, Stevens was raised there until the age of 12, when she was sent to live with family friends in rural Missouri.",
-      "category": "painting"
-    },
-    {
-      "title": "The Arab Priest — Irma Stern, 1945",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Map_of_the_Arab_Diaspora_in_the_World.svg/1920px-Map_of_the_Arab_Diaspora_in_the_World.svg.png",
-      "description": "Arabs (Arabic: عَرَب) are an ethnic group mainly inhabiting the Arab world in West Asia and North Africa. A significant Arab diaspora is present in various parts of the world.",
-      "category": "painting"
-    },
-    {
-      "title": "Zanzibar Woman with Chicken — Irma Stern, 1957",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Flag_of_Tanzania.svg/1920px-Flag_of_Tanzania.svg.png",
-      "description": "Tanzania, officially the United Republic of Tanzania, is a country in East Africa within the African Great Lakes region. It is bordered by Uganda to the northwest, Kenya to the northeast, the Indian Ocean to the east, Mozambique and Malawi to the south, Zambia to the southwest, and Rwanda, Burundi, and the Democratic Republic of the Congo to the west.",
-      "category": "painting"
-    },
-    {
-      "title": "The Mosque — Ibrahim El Salahi, 1964",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Ibrahim_Deli.jpg",
-      "description": "Ibrahim (; Ottoman Turkish: ابراهيم; Turkish: İbrahim; 13 October 1617 – 18 August 1648) was the sultan of the Ottoman Empire from 1640 until his death in 1648. He was born in Constantinople as the last son of sultan Ahmed I (1590–1617) and Kösem Sultan (1589–1651), also known as Mahpeyker Sultan, an ethnically Greek woman claimed to originally be named Anastasía.",
-      "category": "painting"
-    },
-    {
-      "title": "No Shade but His Shade — Ibrahim El Salahi, 1968",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Al-Masjid_An-Nabawi_%28Bird%27s_Eye_View%29.jpg/1920px-Al-Masjid_An-Nabawi_%28Bird%27s_Eye_View%29.jpg",
-      "description": "Medina, officially al-Madinah al-Munawwarah, also known as al-Madinah an-Nabawiyyah and Taybah, is the capital, administrative centre, and largest city of Medina Province in the Hejaz region of western Saudi Arabia. It is the second holiest city in Islam after Mecca, and one of the oldest and most important places in Islamic history.",
-      "category": "painting"
-    },
-    {
-      "title": "By His Will We Teach Birds How to Fly — Ibrahim El Salahi, 1969",
-      "url-1080": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Koranic_writing_board.jpg",
-      "description": "Quran boards (Arabic: لوح, romanized: lawḥ, lit. 'board', plural: ألواح, alwāḥ) are wooden boards or tablets that are historically and contemporarily used by students in sub-Saharan Africa, especially West Africa, to learn the Quran.",
-      "category": "painting"
-    },
-    {
-      "title": "Night Flight of Dread and Delight — Skunder Boghossian, 1964",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/%22Self-Portrait%22%2C_1961_-_NARA_-_558827.jpg/1920px-%22Self-Portrait%22%2C_1961_-_NARA_-_558827.jpg",
-      "description": "Alexander \"Skunder\" Boghossian (Amharic: አሌክሳንደር እስክንድር ቦጎሲያን; Armenian: Ալեքսանդր \"Սկունդեր\" Բողոսյան; July 22, 1937 – May 4, 2003) was an Ethiopian painter and professor active in the United States. Boghossian was one of the first, and by far the most acclaimed, contemporary Black artists from the African continent to gain international attention.",
-      "category": "painting"
-    },
-    {
-      "title": "Axum — Skunder Boghossian, c. 1967",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/%22Self-Portrait%22%2C_1961_-_NARA_-_558827.jpg/1920px-%22Self-Portrait%22%2C_1961_-_NARA_-_558827.jpg",
-      "description": "Alexander \"Skunder\" Boghossian (Amharic: አሌክሳንደር እስክንድር ቦጎሲያን; Armenian: Ալեքսանդր \"Սկունդեր\" Բողոսյան; July 22, 1937 – May 4, 2003) was an Ethiopian painter and professor active in the United States. Boghossian was one of the first, and by far the most acclaimed, contemporary Black artists from the African continent to gain international attention.",
-      "category": "painting"
-    },
-    {
-      "title": "The End of the Beginning — Skunder Boghossian, c. 1973",
-      "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/%22Self-Portrait%22%2C_1961_-_NARA_-_558827.jpg/1920px-%22Self-Portrait%22%2C_1961_-_NARA_-_558827.jpg",
-      "description": "Alexander \"Skunder\" Boghossian (Amharic: አሌክሳንደር እስክንድር ቦጎሲያን; Armenian: Ալեքսանդր \"Սկունդեր\" Բողոսյան; July 22, 1937 – May 4, 2003) was an Ethiopian painter and professor active in the United States. Boghossian was one of the first, and by far the most acclaimed, contemporary Black artists from the African continent to gain international attention.",
+      "title": "Arab — Irma Stern, 1939, Irma Stern Museum, Cape Town, South Africa",
+      "url-1080": "https://uploads8.wikiart.org/images/irma-stern/arab-1939.jpg",
+      "description": "Celebrated 1945 oil portrait ('Arabier') by South African expressionist Irma Stern, inspired by her voyages to Zanzibar and painted with rich, jewel-like Fauvist color and dignified characterization.",
       "category": "painting"
     }
   ]

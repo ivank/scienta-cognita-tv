@@ -147,64 +147,26 @@ class GallerySpotlightOverlay @JvmOverloads constructor(
         val cb = Color.blue(c)
         val ca = Color.alpha(c)
 
-        // 1. Soft ambient radial wash across wall and painting
+        // 1. Soft radial color-temperature wash complementing the Blender Cycles baked light layers
         paint.shader = RadialGradient(
-            lampX, h * 0.35f, w * 0.52f,
+            lampX, h * 0.38f, w * 0.50f,
             intArrayOf(
-                c,
-                Color.argb((ca * 0.60f).toInt(), cr, cg, cb),
+                Color.argb((ca * 0.55f).toInt(), cr, cg, cb),
+                Color.argb((ca * 0.25f).toInt(), cr, cg, cb),
                 Color.TRANSPARENT,
             ),
-            floatArrayOf(0f, 0.42f, 1f),
+            floatArrayOf(0f, 0.50f, 1f),
             Shader.TileMode.CLAMP,
         )
         canvas.drawRect(0f, 0f, w, h, paint)
 
-        // 2. Volumetric directional spotlight cone (scattering from ceiling fixture onto painting)
-        beamPath.reset()
-        val topHalfW = 28f * resources.displayMetrics.density
-        val bottomHalfW = w * 0.36f
-        val floorY = h * 0.86f
-
-        beamPath.moveTo(lampX - topHalfW, lampY)
-        beamPath.lineTo(lampX + topHalfW, lampY)
-        beamPath.lineTo(lampX + bottomHalfW, floorY)
-        beamPath.lineTo(lampX - bottomHalfW, floorY)
-        beamPath.close()
-
-        paint.shader = LinearGradient(
-            lampX, lampY,
-            lampX, floorY,
-            intArrayOf(
-                Color.argb((ca * 0.85f).toInt().coerceAtMost(255), cr, cg, cb),
-                Color.argb((ca * 0.45f).toInt(), cr, cg, cb),
-                Color.argb((ca * 0.15f).toInt(), cr, cg, cb),
-                Color.TRANSPARENT,
-            ),
-            floatArrayOf(0f, 0.35f, 0.75f, 1f),
-            Shader.TileMode.CLAMP,
-        )
-        canvas.drawPath(beamPath, paint)
-
-        // 3. Ceiling lamp aperture bloom (bright point of origin)
-        paint.shader = RadialGradient(
-            lampX, lampY, 40f * resources.displayMetrics.density,
-            intArrayOf(
-                Color.argb((ca * 1.25f).toInt().coerceAtMost(255), cr, cg, cb),
-                Color.argb((ca * 0.40f).toInt(), cr, cg, cb),
-                Color.TRANSPARENT,
-            ),
-            floatArrayOf(0f, 0.45f, 1f),
-            Shader.TileMode.CLAMP,
-        )
-        canvas.drawCircle(lampX, lampY, 40f * resources.displayMetrics.density, paint)
-
-        // 4. Subtle floor reflection pool on the polished parquet
+        // 2. Subtle floor reflection pool on the polished parquet
+        val floorY = h * 0.88f
         floorRect.set(lampX - w * 0.28f, floorY - 14f * resources.displayMetrics.density, lampX + w * 0.28f, floorY + 32f * resources.displayMetrics.density)
         paint.shader = RadialGradient(
             lampX, floorY, w * 0.26f,
             intArrayOf(
-                Color.argb((ca * 0.30f).toInt(), cr, cg, cb),
+                Color.argb((ca * 0.25f).toInt(), cr, cg, cb),
                 Color.TRANSPARENT,
             ),
             floatArrayOf(0f, 1f),

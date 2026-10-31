@@ -91,8 +91,8 @@ class GalleryFrameView @JvmOverloads constructor(
     private val shadowPadY = 52f * density
 
     // Scaled dimensions
-    private val frameMoldingWidth = 22f * density
-    private val matteWidth = 12f * density
+    private val frameMoldingWidth = 18f * density
+    private val matteWidth = 9f * density
     private val innerBevelWidth = 2.5f * density
     private val totalBorderPerSide = frameMoldingWidth + matteWidth
 
@@ -133,11 +133,10 @@ class GalleryFrameView @JvmOverloads constructor(
             return
         }
 
-        // On a 1080p screen, the vertical wall span is ~580px (between crown molding and baseboard).
-        // Target an authentic frame height occupying ~52% of screen height (e.g. ~560px on 1080p)
-        // so it hangs squarely on the wall with breathing room above and below.
-        val maxAllowedH = availableH * 0.53f
-        val maxAllowedW = availableW * 0.68f
+        // Start with a prominent gallery frame height (~68% of screen height) so paintings
+        // command the screen right from the start before zooming in further.
+        val maxAllowedH = availableH * 0.68f
+        val maxAllowedW = availableW * 0.64f
 
         var targetCanvasH = maxAllowedH - 2 * totalBorderPerSide
         var targetCanvasW = targetCanvasH * paintingAspectRatio
@@ -455,42 +454,13 @@ class GalleryFrameView @JvmOverloads constructor(
         )
         canvas.drawRect(r.left, r.top, r.right, r.top + topOverhangDepth, canvasFilterPaint)
 
-        // 3. Lateral molding overhang shadow from light-side frame edge
-        val sideOverhangDepth = 8f * density
-        if (lightingProfile.direction == LightDirection.LEFT) {
-            canvasFilterPaint.shader = LinearGradient(
-                r.left, 0f,
-                r.left + sideOverhangDepth, 0f,
-                Color.argb(0x30, 0, 0, 0),
-                Color.TRANSPARENT,
-                Shader.TileMode.CLAMP
-            )
-            canvas.drawRect(r.left, r.top, r.left + sideOverhangDepth, r.bottom, canvasFilterPaint)
-        } else if (lightingProfile.direction == LightDirection.RIGHT) {
-            canvasFilterPaint.shader = LinearGradient(
-                r.right, 0f,
-                r.right - sideOverhangDepth, 0f,
-                Color.argb(0x30, 0, 0, 0),
-                Color.TRANSPARENT,
-                Shader.TileMode.CLAMP
-            )
-            canvas.drawRect(r.right - sideOverhangDepth, r.top, r.right, r.bottom, canvasFilterPaint)
-        }
-
-        // 4. Satin Museum Varnish Specular Sheen (Oil Painting Glaze)
-        val cx = when (lightingProfile.direction) {
-            LightDirection.LEFT -> r.left + r.width() * 0.32f
-            LightDirection.CENTER -> r.centerX()
-            LightDirection.RIGHT -> r.left + r.width() * 0.68f
-        }
-        val cy = r.top + r.height() * 0.28f
-        val radius = maxOf(r.width(), r.height()) * 0.65f
-        val sheenColor = Color.argb(0x20, Color.red(tint), Color.green(tint), Color.blue(tint))
-
-        canvasFilterPaint.shader = RadialGradient(
-            cx, cy, radius,
-            intArrayOf(sheenColor, Color.TRANSPARENT),
-            floatArrayOf(0f, 1f),
+        // 3. Soft centered overhead satin glaze (no off-center cone)
+        val sheenColor = Color.argb(0x16, Color.red(tint), Color.green(tint), Color.blue(tint))
+        canvasFilterPaint.shader = LinearGradient(
+            0f, r.top,
+            0f, r.top + r.height() * 0.55f,
+            sheenColor,
+            Color.TRANSPARENT,
             Shader.TileMode.CLAMP
         )
         canvas.drawRect(r, canvasFilterPaint)

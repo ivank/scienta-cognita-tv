@@ -110,6 +110,9 @@ class ImagePlayerView : FrameLayout {
             isOverlayOnRight = onRight
             if (currentDisplayMode == DisplayMode.SCULPTURE) {
                 updateSculpturePosition()
+            } else if (currentDisplayMode == DisplayMode.GALLERY) {
+                val (vw, _) = resolveTargetSize()
+                galleryFrameView.translationX = if (isOverlayOnRight) -(vw * 0.11f) else +(vw * 0.11f)
             }
         }
     }
@@ -146,7 +149,7 @@ class ImagePlayerView : FrameLayout {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
         }
 
-    // Museum gallery background wall
+    // Plane 1: Far Background 3D Museum Room (Wall, Marble Wainscot, Herringbone Parquet Floor)
     private val galleryBackgroundImageView =
         AppCompatImageView(context).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
@@ -154,26 +157,49 @@ class ImagePlayerView : FrameLayout {
             visibility = GONE
         }
 
-    // Dynamic museum ceiling track spotlight on the gallery wall
-    private val gallerySpotlightView =
-        GallerySpotlightOverlay(context).apply {
+    // Plane 2: Cycles-Baked Behind-Canvas Dramatic Spotlight Halo (sits behind frame)
+    private val galleryBehindLightView =
+        AppCompatImageView(context).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            scaleType = ImageView.ScaleType.CENTER_CROP
             visibility = GONE
         }
 
-    // Museum picture frame for portrait paintings
+    // Plane 3: Museum Picture Frame & Painting Canvas
     private val galleryFrameView =
         GalleryFrameView(context).apply {
             layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER)
             visibility = GONE
         }
 
-    // Stationary foreground ceiling with museum lighting fixtures (sits in front of wall and artwork)
-    private val galleryCeilingForegroundView =
-        ImageView(context).apply {
-            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, Gravity.TOP)
-            scaleType = ImageView.ScaleType.FIT_XY
-            adjustViewBounds = true
+    // Plane 4a: Cycles-Baked In-Front-Of-Canvas Volumetric Spotlight Scatter & Vignette
+    private val galleryFrontLightView =
+        AppCompatImageView(context).apply {
+            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            scaleType = ImageView.ScaleType.CENTER_CROP
+            visibility = GONE
+        }
+
+    // Plane 4b: Dynamic Per-Artwork Directional Spotlight Wash
+    private val gallerySpotlightView =
+        GallerySpotlightOverlay(context).apply {
+            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            visibility = GONE
+        }
+
+    // Plane 5: Midground 3D Parallax (Suspended Track Bar, 5 Spotlights & Flanking Marble Pilasters)
+    private val galleryMidgroundParallaxView =
+        AppCompatImageView(context).apply {
+            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            scaleType = ImageView.ScaleType.CENTER_CROP
+            visibility = GONE
+        }
+
+    // Plane 6: Near-Foreground 3D Parallax (Brass Stanchion Posts & Velvet Rope with Optical Bokeh)
+    private val galleryForegroundParallaxView =
+        AppCompatImageView(context).apply {
+            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            scaleType = ImageView.ScaleType.CENTER_CROP
             visibility = GONE
         }
 
@@ -196,9 +222,12 @@ class ImagePlayerView : FrameLayout {
         addView(sculptureBacklightView)
         addView(foregroundImageView)
         addView(galleryBackgroundImageView)
+        addView(galleryBehindLightView)
         addView(galleryFrameView)
+        addView(galleryFrontLightView)
         addView(gallerySpotlightView)
-        addView(galleryCeilingForegroundView)
+        addView(galleryMidgroundParallaxView)
+        addView(galleryForegroundParallaxView)
     }
 
     fun release() {
@@ -352,9 +381,10 @@ class ImagePlayerView : FrameLayout {
         currentImageWidth = width
         currentImageHeight = height
         val isPortrait = height > width && (height.toFloat() / width.toFloat()) >= 1.05f
+        val isPortraitOrSquare = height.toFloat() >= width.toFloat() * 0.95f
 
         if (isSculpture(currentMedia) || (isPortrait && isArchitecture(currentMedia))) {
-            if (isPortrait) {
+            if (isPortraitOrSquare) {
                 currentDisplayMode = DisplayMode.SCULPTURE
                 setupSculptureMode(drawable, width, height)
             } else {
@@ -387,24 +417,43 @@ class ImagePlayerView : FrameLayout {
                 "birth of venus", "night watch", "fresco", "frescoes", "botticelli",
                 "velázquez", "vermeer", "da vinci", "michelangelo", "rembrandt",
                 "qianlong", "court ladies", "immortal", "mughal", "persian",
+                "renaissance", "baroque", "rococo", "romantic", "neoclassical",
+                "caravaggio", "raphael", "titian", "rubens", "goya", "delacroix",
+                "turner", "constable", "friedrich", "ingres", "david", "bruegel",
+                "bosch", "van eyck", "dürer", "holbein", "el greco", "poussin",
+                "watteau", "fragonard", "boucher", "gainsborough", "reynolds",
+                "bierstadt", "church", "cole", "homer", "sargent", "whistler",
+                "courbet", "millet", "manet", "degas", "renoir", "monet",
+                "hokusai", "hiroshige", "utamaro", "korin", "kano", "sesshu",
+                "scroll", "dynasty", "edo", "meiji", "ming", "qing", "song",
+                "tang", "yuan", "shahnameh", "miniature", "byzantine", "altarpiece",
+                "15th", "16th", "17th", "18th", "19th", "14", "15", "16", "17", "18",
             ).any { text.contains(it) }
 
+        // Plane 1: Far Background 3D Museum Room
         galleryBackgroundImageView.setImageResource(
             if (isClassical) R.drawable.bg_gallery_classical else R.drawable.bg_gallery_modern,
         )
         galleryBackgroundImageView.visibility = VISIBLE
 
-        // Stationary foreground ceiling with museum track lights
-        galleryCeilingForegroundView.setImageResource(
-            if (isClassical) R.drawable.fg_gallery_ceiling_classical else R.drawable.fg_gallery_ceiling_modern,
-        )
-        galleryCeilingForegroundView.visibility = VISIBLE
-        galleryCeilingForegroundView.translationY = 0f
+        // Disable extra floating/off-center light cones; use the baked 3D gallery lighting directly
+        galleryBehindLightView.visibility = GONE
+        galleryFrontLightView.visibility = GONE
+        gallerySpotlightView.visibility = GONE
 
-        // Dynamic lighting profile
+        // Plane 5: Midground 3D Parallax (Ceiling Track Spotlights & Flanking Marble Pilasters)
+        galleryMidgroundParallaxView.setImageResource(
+            if (isClassical) R.drawable.mid_gallery_classical else R.drawable.mid_gallery_modern,
+        )
+        galleryMidgroundParallaxView.visibility = VISIBLE
+
+        // Plane 6: Near-Foreground 3D Parallax (Brass Stanchions & Velvet Rope with Bokeh)
+        galleryForegroundParallaxView.setImageResource(
+            if (isClassical) R.drawable.fg_gallery_classical else R.drawable.fg_gallery_modern,
+        )
+        galleryForegroundParallaxView.visibility = VISIBLE
+
         val lightingProfile = ArtLightingManager.getProfile(currentMedia)
-        gallerySpotlightView.setLightingProfile(lightingProfile)
-        gallerySpotlightView.visibility = VISIBLE
 
         galleryFrameView.lightingProfile = lightingProfile
         galleryFrameView.focalY = naturalFocalY
@@ -414,16 +463,30 @@ class ImagePlayerView : FrameLayout {
         galleryFrameView.paintingDrawable = drawable
         galleryFrameView.visibility = VISIBLE
 
-        val (_, vh) = resolveTargetSize()
-        val wallCenterOffsetY = if (isClassical) -vh * 0.015f else -vh * 0.075f
+        val (vw, vh) = resolveTargetSize()
+        val density = resources.displayMetrics.density
+        val wallCenterOffsetY = vh * 0.015f
+        val gallerySideOffsetX = if (isOverlayOnRight) -(vw * 0.11f) else +(vw * 0.11f)
+
         galleryFrameView.translationY = wallCenterOffsetY
-        galleryFrameView.translationX = 0f
+        galleryFrameView.translationX = gallerySideOffsetX
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
+
         galleryBackgroundImageView.scaleX = 1f
         galleryBackgroundImageView.scaleY = 1f
-        gallerySpotlightView.scaleX = 1f
-        gallerySpotlightView.scaleY = 1f
+        galleryBackgroundImageView.translationX = 0f
+        galleryBackgroundImageView.translationY = 0f
+
+        galleryMidgroundParallaxView.scaleX = 1f
+        galleryMidgroundParallaxView.scaleY = 1f
+        galleryMidgroundParallaxView.translationX = 0f
+        galleryMidgroundParallaxView.translationY = -28f * density
+
+        galleryForegroundParallaxView.scaleX = 1f
+        galleryForegroundParallaxView.scaleY = 1f
+        galleryForegroundParallaxView.translationX = 0f
+        galleryForegroundParallaxView.translationY = -20f * density
 
         markBackgroundReady(blurHelper.currentToken)
     }
@@ -434,8 +497,11 @@ class ImagePlayerView : FrameLayout {
         height: Int,
     ) {
         galleryBackgroundImageView.visibility = GONE
+        galleryBehindLightView.visibility = GONE
+        galleryFrontLightView.visibility = GONE
         gallerySpotlightView.visibility = GONE
-        galleryCeilingForegroundView.visibility = GONE
+        galleryMidgroundParallaxView.visibility = GONE
+        galleryForegroundParallaxView.visibility = GONE
         galleryFrameView.visibility = GONE
         galleryFrameView.paintingDrawable = null
 
@@ -468,13 +534,7 @@ class ImagePlayerView : FrameLayout {
         foregroundImageView.scaleX = 1f
         foregroundImageView.scaleY = 1f
 
-        val shadowW = (targetW * 1.55f).toInt()
-        val shadowH = (targetH * 0.95f).toInt()
-        sculptureBacklightView.layoutParams =
-            LayoutParams(shadowW, shadowH, Gravity.CENTER).apply {
-                sculptureBacklightView.translationX = sideOffset
-            }
-        sculptureBacklightView.visibility = VISIBLE
+        sculptureBacklightView.visibility = GONE
     }
 
     private fun setupStandardMode(
@@ -483,8 +543,11 @@ class ImagePlayerView : FrameLayout {
         height: Int,
     ) {
         galleryBackgroundImageView.visibility = GONE
+        galleryBehindLightView.visibility = GONE
+        galleryFrontLightView.visibility = GONE
         gallerySpotlightView.visibility = GONE
-        galleryCeilingForegroundView.visibility = GONE
+        galleryMidgroundParallaxView.visibility = GONE
+        galleryForegroundParallaxView.visibility = GONE
         galleryFrameView.visibility = GONE
         galleryFrameView.paintingDrawable = null
         sculptureBacklightView.visibility = GONE
@@ -499,8 +562,10 @@ class ImagePlayerView : FrameLayout {
 
     private fun isPainting(media: AerialMedia?): Boolean {
         if (media == null) return false
+        if (media.metadata.category.isNotBlank()) {
+            return media.metadata.category.equals("painting", ignoreCase = true)
+        }
         if (isSculpture(media)) return false
-        if (media.metadata.category.equals("painting", ignoreCase = true)) return true
         val text = ((media.metadata.shortDescription) + " " + (media.metadata.longDescription)).lowercase()
         return listOf(
             "mona lisa", "starry night", "birth of venus", "creation of adam",
@@ -513,10 +578,12 @@ class ImagePlayerView : FrameLayout {
 
     private fun isSculpture(media: AerialMedia?): Boolean {
         if (media == null) return false
-        if (media.metadata.category.equals("sculpture", ignoreCase = true)) return true
+        if (media.metadata.category.isNotBlank()) {
+            return media.metadata.category.equals("sculpture", ignoreCase = true)
+        }
         val text = ((media.metadata.shortDescription) + " " + (media.metadata.longDescription)).lowercase()
         return listOf(
-            "christ the redeemer", "david", "tutankhamun", "sphinx", "benin bronze",
+            "christ the redeemer", "tutankhamun", "sphinx", "benin bronze",
             "ife head", "terracotta", "the thinker", "venus de milo", "winged victory",
             "moai", "sun stone", "madara rider", "bronze horseman", "shiva nataraja",
             "statue", "sculpture", "sculptures", "bust", "relief", "carving", "carved",
@@ -527,7 +594,9 @@ class ImagePlayerView : FrameLayout {
 
     private fun isArchitecture(media: AerialMedia?): Boolean {
         if (media == null) return false
-        if (media.metadata.category.equals("architecture", ignoreCase = true)) return true
+        if (media.metadata.category.isNotBlank()) {
+            return media.metadata.category.equals("architecture", ignoreCase = true)
+        }
         val text = ((media.metadata.shortDescription) + " " + (media.metadata.longDescription)).lowercase()
         return listOf("church", "temple", "cathedral", "monastery", "fortress", "pyramid", "castle").any { text.contains(it) }
     }
@@ -636,16 +705,27 @@ class ImagePlayerView : FrameLayout {
         foregroundImageView.imageMatrix = baseMatrix
 
         galleryBackgroundImageView.visibility = GONE
+        galleryBehindLightView.visibility = GONE
+        galleryFrontLightView.visibility = GONE
         gallerySpotlightView.visibility = GONE
-        galleryCeilingForegroundView.visibility = GONE
+        galleryMidgroundParallaxView.visibility = GONE
+        galleryForegroundParallaxView.visibility = GONE
         galleryFrameView.visibility = GONE
         galleryFrameView.paintingDrawable = null
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
         galleryBackgroundImageView.scaleX = 1f
         galleryBackgroundImageView.scaleY = 1f
+        galleryBehindLightView.scaleX = 1f
+        galleryBehindLightView.scaleY = 1f
+        galleryFrontLightView.scaleX = 1f
+        galleryFrontLightView.scaleY = 1f
         gallerySpotlightView.scaleX = 1f
         gallerySpotlightView.scaleY = 1f
+        galleryMidgroundParallaxView.scaleX = 1f
+        galleryMidgroundParallaxView.scaleY = 1f
+        galleryForegroundParallaxView.scaleX = 1f
+        galleryForegroundParallaxView.scaleY = 1f
         galleryFrameView.kenBurnsScale = 1f
 
         sculptureBacklightView.visibility = GONE
@@ -762,29 +842,32 @@ class ImagePlayerView : FrameLayout {
         when (currentDisplayMode) {
             DisplayMode.GALLERY -> {
                 val startScale = 1.0f
-                val endFrameScale = 1.20f // Refined, smooth 20% dolly in
-                val endSpotScale = 1.08f // Intermediate rate for ceiling spotlight
-                val endWallScale = 1.03f // Subtle background wall scale
+                val endWallScale = 1.24f // Plane 1: Far background room (d = 6.5m)
+                val endFrameScale = 1.34f // Plane 3: Painting & museum frame (starts large and zooms in deeply)
+                val endMidParallaxScale = 1.52f // Plane 5: Midground 3D fixtures & flanking pilasters (d = 4.7m)
+                val endFgParallaxScale = 1.68f // Plane 6: Near-foreground 3D stanchions & velvet rope (d = 2.95m)
 
+                val gallerySideOffsetX = if (isOverlayOnRight) -(vw * 0.11f) else +(vw * 0.11f)
                 val focalYOnFrame = galleryFrameView.getFocalPointY()
                 galleryFrameView.pivotX = galleryFrameView.width / 2f
                 galleryFrameView.pivotY = focalYOnFrame
                 galleryFrameView.focalY = naturalFocalY
 
-                // Focal point in screen space for background wall & spotlight
-                val screenFocalX = vw / 2f
+                val screenFocalX = vw / 2f + gallerySideOffsetX
                 val screenFocalY = galleryFrameView.top + galleryFrameView.translationY + focalYOnFrame
 
                 galleryBackgroundImageView.pivotX = screenFocalX
                 galleryBackgroundImageView.pivotY = screenFocalY
-                gallerySpotlightView.pivotX = screenFocalX
-                gallerySpotlightView.pivotY = screenFocalY
+                galleryMidgroundParallaxView.pivotX = screenFocalX
+                galleryMidgroundParallaxView.pivotY = vh * 0.44f
+                galleryForegroundParallaxView.pivotX = screenFocalX
+                galleryForegroundParallaxView.pivotY = vh * 0.65f
 
                 val startFrameTransY = galleryFrameView.translationY
                 val endFrameTransY = startFrameTransY - 6f * resources.displayMetrics.density
                 val density = resources.displayMetrics.density
 
-                Timber.i("Gallery 3D Dolly Ken Burns: pivotY=$focalYOnFrame, screenFocalY=$screenFocalY, duration=$durationMs")
+                Timber.i("Gallery 3D Multi-Plane Dolly Ken Burns: pivotY=$focalYOnFrame, screenFocalX=$screenFocalX, duration=$durationMs")
                 kenBurnsAnimator =
                     ValueAnimator.ofFloat(0f, 1f).apply {
                         duration = durationMs
@@ -792,23 +875,30 @@ class ImagePlayerView : FrameLayout {
                         addUpdateListener { animator ->
                             val f = animator.animatedFraction
 
-                            // Plane 1: Foreground frame + painting dollies forward
-                            val frameScale = startScale + (endFrameScale - startScale) * f
-                            galleryFrameView.scaleX = frameScale
-                            galleryFrameView.scaleY = frameScale
-                            galleryFrameView.translationY = startFrameTransY + (endFrameTransY - startFrameTransY) * f
-
-                            // Plane 2: Ceiling spotlight expands at intermediate rate
-                            val spotScale = startScale + (endSpotScale - startScale) * f
-                            gallerySpotlightView.scaleX = spotScale
-                            gallerySpotlightView.scaleY = spotScale
-                            gallerySpotlightView.translationY = 4f * density * f
-
-                            // Plane 3: Background wall shifts with deep parallax drift
+                            // Plane 1: Far Background Room
                             val wallScale = startScale + (endWallScale - startScale) * f
                             galleryBackgroundImageView.scaleX = wallScale
                             galleryBackgroundImageView.scaleY = wallScale
-                            galleryBackgroundImageView.translationY = 8f * density * f
+                            galleryBackgroundImageView.translationY = 6f * density * f
+
+                            // Plane 3: Painting & Museum Frame
+                            val frameScale = startScale + (endFrameScale - startScale) * f
+                            galleryFrameView.scaleX = frameScale
+                            galleryFrameView.scaleY = frameScale
+                            galleryFrameView.translationX = gallerySideOffsetX
+                            galleryFrameView.translationY = startFrameTransY + (endFrameTransY - startFrameTransY) * f
+
+                            // Plane 5: Midground 3D Parallax (Ceiling Track Spotlights & Flanking Pilasters)
+                            val midScale = startScale + (endMidParallaxScale - startScale) * f
+                            galleryMidgroundParallaxView.scaleX = midScale
+                            galleryMidgroundParallaxView.scaleY = midScale
+                            galleryMidgroundParallaxView.translationY = (-28f - 14f * f) * density
+
+                            // Plane 6: Near-Foreground 3D Parallax (Stanchion Posts & Velvet Rope with Bokeh)
+                            val fgScale = startScale + (endFgParallaxScale - startScale) * f
+                            galleryForegroundParallaxView.scaleX = fgScale
+                            galleryForegroundParallaxView.scaleY = fgScale
+                            galleryForegroundParallaxView.translationY = (-20f + 26f * f) * density
                         }
                         start()
                     }
@@ -910,17 +1000,32 @@ class ImagePlayerView : FrameLayout {
         if (foregroundImageView.scaleType == ImageView.ScaleType.MATRIX) {
             foregroundImageView.imageMatrix = baseMatrix
         }
-        val (_, vh) = resolveTargetSize()
-        val wallCenterOffsetY = if (galleryFrameView.isClassicalStyle) -vh * 0.015f else -vh * 0.075f
+        val (vw, vh) = resolveTargetSize()
+        val density = resources.displayMetrics.density
+        val wallCenterOffsetY = vh * 0.015f
+        val gallerySideOffsetX = if (isOverlayOnRight) -(vw * 0.11f) else +(vw * 0.11f)
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
+        galleryFrameView.translationX = gallerySideOffsetX
         galleryFrameView.translationY = wallCenterOffsetY
         galleryBackgroundImageView.scaleX = 1f
         galleryBackgroundImageView.scaleY = 1f
         galleryBackgroundImageView.translationY = 0f
+        galleryBehindLightView.scaleX = 1f
+        galleryBehindLightView.scaleY = 1f
+        galleryBehindLightView.translationY = 0f
+        galleryFrontLightView.scaleX = 1f
+        galleryFrontLightView.scaleY = 1f
+        galleryFrontLightView.translationY = 0f
         gallerySpotlightView.scaleX = 1f
         gallerySpotlightView.scaleY = 1f
         gallerySpotlightView.translationY = 0f
+        galleryMidgroundParallaxView.scaleX = 1f
+        galleryMidgroundParallaxView.scaleY = 1f
+        galleryMidgroundParallaxView.translationY = -28f * density
+        galleryForegroundParallaxView.scaleX = 1f
+        galleryForegroundParallaxView.scaleY = 1f
+        galleryForegroundParallaxView.translationY = -20f * density
         sculptureBacklightView.scaleX = 1f
         sculptureBacklightView.scaleY = 1f
     }
