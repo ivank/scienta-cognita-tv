@@ -56,7 +56,15 @@ internal object ImagePlayerHelper {
         val okHttpClient = SslHelper().createOkHttpClient(serverConfig)
         return okHttpClient
             .newBuilder()
-            .also { builder ->
+            .addInterceptor { chain ->
+                val newRequest =
+                    chain
+                        .request()
+                        .newBuilder()
+                        .header("User-Agent", "AerialViews/1.52 (Android TV Screensaver; https://github.com/glouel/AerialViews)")
+                        .build()
+                chain.proceed(newRequest)
+            }.also { builder ->
                 when (source) {
                     AerialMediaSource.IMMICH -> {
                         builder.addInterceptor(ImmichApiKeyInterceptor())

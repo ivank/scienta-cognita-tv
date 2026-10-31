@@ -9,6 +9,7 @@ import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.datasource.DefaultDataSource
+import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
@@ -270,7 +271,11 @@ object VideoPlayerHelper {
         }
 
         else -> {
-            val dataSourceFactory = DefaultDataSource.Factory(context)
+            val httpFactory =
+                DefaultHttpDataSource
+                    .Factory()
+                    .setUserAgent("AerialViews/1.52 (Android TV Screensaver; https://github.com/glouel/AerialViews)")
+            val dataSourceFactory = DefaultDataSource.Factory(context, httpFactory)
             ProgressiveMediaSource
                 .Factory(dataSourceFactory)
                 .createMediaSource(mediaItem)
@@ -282,56 +287,37 @@ object VideoPlayerHelper {
         prefs: GeneralPrefs,
         type: AerialMediaSource,
     ): Pair<Long, Long> {
-        val maxVideoLength = prefs.maxVideoLength.toLong() * 1000
-        val isLengthLimited = maxVideoLength >= TEN_SECONDS
-        val isShortVideo = player.duration in 1..<maxVideoLength
+        val configuredMax = (prefs.maxVideoLength.toLongOrNull() ?: 0L) * 1000L
+        val slideshowMs = (prefs.slideshowSpeed.toLongOrNull() ?: 30L) * 1000L
+        val targetLength = if (configuredMax >= TEN_SECONDS) configuredMax else maxOf(TEN_SECONDS.toLong(), slideshowMs)
+        val isShortVideo = player.duration in 1..<targetLength
 
         if (type == AerialMediaSource.RTSP) {
             Timber.i("Calculating RTSP stream length...")
-            val duration = if (isLengthLimited) maxVideoLength else 0
-            return Pair(0, duration)
+            return Pair(0, targetLength)
         }
 
-        if (!isLengthLimited && prefs.randomStartPosition) {
-            Timber.i("Calculating random start position...")
-            val range = GeneralPrefs.randomStartPositionRange.toInt()
-            return calculateRandomStartPosition(player.duration, range)
+        if (prefs.loopUntilSkipped) {
+            Timber.i("Calculating loop until skipped...")
+            return Pair(0, player.duration)
         }
 
-        if (isShortVideo && isLengthLimited && prefs.loopShortVideos) {
+        if (isShortVideo && prefs.loopShortVideos) {
             Timber.i("Calculating looping short video...")
-            return calculateLoopingVideo(player.duration, maxVideoLength)
+            return calculateLoopingVideo(player.duration, targetLength)
         }
 
-        if (!isShortVideo && isLengthLimited) {
-            when (prefs.limitLongerVideos) {
-                LimitLongerVideos.LIMIT -> {
-                    Timber.i("Calculating long video type... obey limit, play until time limit")
-                    val duration =
-                        if (maxVideoLength >= player.duration) {
-                            Timber.i("Using video duration as limit (shorter than max!)")
-                            player.duration
-                        } else {
-                            Timber.i("Using user limit")
-                            maxVideoLength
-                        }
-                    return Pair(0, duration)
-                }
-
-                LimitLongerVideos.SEGMENT -> {
-                    Timber.i("Calculating long video type... play random segment")
-                    return calculateRandomSegment(player.duration, maxVideoLength)
-                }
-
-                else -> {
-                    Timber.i("Calculating long video type... ignore limit, play full video")
-                    return Pair(0, player.duration)
-                }
-            }
+        if (player.duration > targetLength) {
+            val maxStart = player.duration - targetLength
+            val startPosition = Random.nextLong(0, maxStart + 1)
+            val endPosition = startPosition + targetLength
+            Timber.i(
+                "Playing random slice: ${startPosition.milliseconds} to ${endPosition.milliseconds} (target: ${targetLength.milliseconds}, duration: ${player.duration.milliseconds})",
+            )
+            return Pair(startPosition, endPosition)
         }
 
-        // Use normal start + end/duration
-        Timber.i("Calculating normal video type...")
+        Timber.i("Video length within target: playing 0 to ${player.duration.milliseconds}")
         return Pair(0, player.duration)
     }
 

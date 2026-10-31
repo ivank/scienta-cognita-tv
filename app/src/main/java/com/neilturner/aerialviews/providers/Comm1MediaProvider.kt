@@ -10,6 +10,7 @@ import com.neilturner.aerialviews.models.enums.ProviderSourceType
 import com.neilturner.aerialviews.models.enums.SceneType
 import com.neilturner.aerialviews.models.enums.TimeOfDay
 import com.neilturner.aerialviews.models.prefs.ProviderPreferences
+import com.neilturner.aerialviews.models.videos.AerialExifMetadata
 import com.neilturner.aerialviews.models.videos.AerialMedia
 import com.neilturner.aerialviews.models.videos.AerialMediaMetadata
 import com.neilturner.aerialviews.models.videos.Comm1Videos
@@ -51,6 +52,23 @@ class Comm1MediaProvider(
         val quality = prefs.quality
         val strings = parseJsonMap(context, R.raw.comm1_strings)
         val wrapper = parseJson<Comm1Videos>(context, R.raw.comm1)
+
+        wrapper.photos?.forEach { photo ->
+            if (prefs.enabled) {
+                videos.add(
+                    AerialMedia(
+                        photo.uriAtQuality(quality),
+                        type = AerialMediaType.IMAGE,
+                        source = AerialMediaSource.COMM1,
+                        metadata =
+                            AerialMediaMetadata(
+                                shortDescription = photo.title,
+                                exif = AerialExifMetadata(description = photo.title),
+                            ),
+                    ),
+                )
+            }
+        }
 
         wrapper.assets?.forEach { asset ->
             val timeOfDay = TimeOfDay.fromString(asset.timeOfDay)

@@ -289,10 +289,11 @@ class VideoPlayerView
                 state.endPosition = result.second
 
                 // Dynamically set repeat mode based on whether it's a short video that should loop
-                val maxVideoLength = GeneralPrefs.maxVideoLength.toLong() * 1000
-                val isLengthLimited = maxVideoLength >= 10000
-                val isShortVideo = exoPlayer.duration in 1..<maxVideoLength
-                if (isShortVideo && isLengthLimited && GeneralPrefs.loopShortVideos) {
+                val configuredMax = (GeneralPrefs.maxVideoLength.toLongOrNull() ?: 0L) * 1000L
+                val slideshowMs = (GeneralPrefs.slideshowSpeed.toLongOrNull() ?: 30L) * 1000L
+                val targetLength = if (configuredMax >= 10000L) configuredMax else maxOf(10000L, slideshowMs)
+                val isShortVideo = exoPlayer.duration in 1..<targetLength
+                if (isShortVideo && GeneralPrefs.loopShortVideos) {
                     player?.repeatMode = Player.REPEAT_MODE_ALL
                 } else {
                     player?.repeatMode = Player.REPEAT_MODE_OFF

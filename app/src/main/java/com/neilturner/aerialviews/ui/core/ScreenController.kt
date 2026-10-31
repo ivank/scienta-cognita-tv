@@ -506,13 +506,16 @@ class ScreenController(
 
         // Videos
         if (media.type == AerialMediaType.VIDEO) {
+            imageViewBinding.imagePlayer.stop()
             videoPlayer.setVideo(media)
             videoViewBinding.root.visibility = View.VISIBLE
             imageViewBinding.root.visibility = View.INVISIBLE
+            videoPlayer.start()
         }
 
         // Images
         if (media.type == AerialMediaType.IMAGE) {
+            videoPlayer.stop()
             imagePlayer.setImage(media)
             imageViewBinding.root.visibility = View.VISIBLE
             videoViewBinding.root.visibility = View.INVISIBLE
@@ -522,8 +525,6 @@ class ScreenController(
         if (GeneralPrefs.progressBarLocation != ProgressBarLocation.DISABLED) {
             GlobalBus.post(ProgressBarEvent(ProgressState.RESET))
         }
-
-        videoPlayer.start()
     }
 
     private fun fadeOutLoadingText() {
@@ -1197,13 +1198,23 @@ class ScreenController(
 
     override fun onVideoPlaybackSpeedChanged() = handlePlaybackSpeedChanged()
 
-    override fun onVideoAlmostFinished() = fadeOutCurrentItem()
-
-    override fun onVideoPrepared() {
-        if (!blackOutMode) fadeInNextItem()
+    override fun onVideoAlmostFinished() {
+        if (currentMedia?.type == AerialMediaType.VIDEO) {
+            fadeOutCurrentItem()
+        }
     }
 
-    override fun onVideoError() = handleError()
+    override fun onVideoPrepared() {
+        if (!blackOutMode && currentMedia?.type == AerialMediaType.VIDEO) {
+            fadeInNextItem()
+        }
+    }
+
+    override fun onVideoError() {
+        if (currentMedia?.type == AerialMediaType.VIDEO) {
+            handleError()
+        }
+    }
 
     override fun onVideoMetadataExtracted(metadata: ExtractedVideoMetadata) {
         val media = currentMedia ?: return
@@ -1215,9 +1226,17 @@ class ScreenController(
         }
     }
 
-    override fun onImageFinished() = fadeOutCurrentItem()
+    override fun onImageFinished() {
+        if (currentMedia?.type == AerialMediaType.IMAGE) {
+            fadeOutCurrentItem()
+        }
+    }
 
-    override fun onImageError() = handleError()
+    override fun onImageError() {
+        if (currentMedia?.type == AerialMediaType.IMAGE) {
+            handleError()
+        }
+    }
 
     private fun updateMetadataOverlayData(media: AerialMedia) {
         val metadataSlots =

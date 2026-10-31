@@ -25,9 +25,7 @@ class AerialApp : Application() {
             LogcatCapture.start(applicationContext)
         }
 
-        if (BuildConfig.DEBUG || BuildConfig.FLAVOR.contains("beta", false)) {
-            Timber.plant(Timber.DebugTree())
-        }
+        Timber.plant(Timber.DebugTree())
 
         @Suppress("ControlFlowWithEmptyBody")
         if (BuildConfig.DEBUG) {

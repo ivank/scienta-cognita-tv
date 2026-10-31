@@ -1,11 +1,14 @@
 package com.neilturner.aerialviews.ui.core
 
+import android.animation.ValueAnimator
 import android.content.Context
+import android.graphics.Matrix
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.util.AttributeSet
+import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
@@ -59,6 +62,12 @@ class ImagePlayerView : FrameLayout {
     private var pausedTimestamp: Long = 0
     private var totalDuration: Long = 0
     private var remainingDuration: Long = 0
+    private var kenBurnsAnimator: ValueAnimator? = null
+    private var naturalFocalY: Float = 0.5f
+    private var currentImageWidth: Int = 0
+    private var currentImageHeight: Int = 0
+    private val baseMatrix = Matrix()
+    private val animMatrix = Matrix()
 
     /**
      * Two-token sync gate: ensures [runSetupFinishedRunnable] fires only after *both*
@@ -103,6 +112,7 @@ class ImagePlayerView : FrameLayout {
     }
 
     fun release() {
+        stopKenBurns()
         ioJob.cancel()
         mainJob.cancel()
         removeCallbacks(finishedRunnable)
@@ -192,11 +202,12 @@ class ImagePlayerView : FrameLayout {
         // Errors from the actual async network/disk load are delivered via onError, not here.
         try {
             val (targetWidth, targetHeight) = resolveTargetSize()
+            val maxDim = maxOf(targetWidth, targetHeight)
             val request =
                 ImageRequest
                     .Builder(context)
                     .data(data)
-                    .size(targetWidth, targetHeight)
+                    .size(maxDim, maxDim)
                     // The pre-S blurred background is a CPU bitmap operation. Coil hardware
                     // bitmaps cannot be drawn into the software canvas used by Drawable.toBitmap().
                     .allowHardware(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S || !GeneralPrefs.photoBackgroundBlurEnabled)
@@ -274,6 +285,12 @@ class ImagePlayerView : FrameLayout {
             return false
         }
 
+        val aspect = AspectRatio.fromDimensions(imageWidth, imageHeight)
+        // If tall portrait art is scaled edge-to-edge with natural center matrix, it covers 100% of the display
+        if (aspect == AspectRatio.PORTRAIT && GeneralPrefs.photoScalePortrait == PhotoScale.CENTER_CROP) {
+            return false
+        }
+
         val (containerWidth, containerHeight) = resolveTargetSize()
         if (containerWidth <= 0 || containerHeight <= 0) {
             return false
@@ -316,22 +333,33 @@ class ImagePlayerView : FrameLayout {
     }
 
     fun stop() {
+        stopKenBurns()
         removeCallbacks(finishedRunnable)
         setForegroundDrawable(null)
         pausedTimestamp = 0
         remainingDuration = 0
+        currentImageWidth = 0
+        currentImageHeight = 0
+        naturalFocalY = 0.5f
+        foregroundImageView.translationX = 0f
+        foregroundImageView.translationY = 0f
+        baseMatrix.reset()
+        animMatrix.reset()
+        foregroundImageView.imageMatrix = baseMatrix
         blurHelper.cancel()
     }
 
     fun pauseTimer() {
         pausedTimestamp = System.currentTimeMillis()
         removeCallbacks(finishedRunnable)
+        kenBurnsAnimator?.pause()
     }
 
     fun resumeTimer(pauseDuration: Long) {
         if (pausedTimestamp > 0) {
             remainingDuration = maxOf(0, remainingDuration - pauseDuration)
             if (remainingDuration > 0) {
+                kenBurnsAnimator?.resume()
                 postDelayed(finishedRunnable, remainingDuration)
             } else {
                 // If time has expired, finish immediately
@@ -345,7 +373,54 @@ class ImagePlayerView : FrameLayout {
         width: Int,
         height: Int,
     ) {
-        foregroundImageView.scaleType = resolveForegroundScaleType(width, height)
+        currentImageWidth = width
+        currentImageHeight = height
+        naturalFocalY = calculateFocalY(width, height)
+
+        val (viewW, viewH) = resolveTargetSize()
+        val vw = viewW.toFloat()
+        val vh = viewH.toFloat()
+        val iw = width.toFloat()
+        val ih = height.toFloat()
+
+        val isPortrait = ih > iw && (ih / iw) >= 1.15f
+        if (isPortrait && iw > 0f && ih > 0f && vw > 0f && vh > 0f && GeneralPrefs.photoScalePortrait == PhotoScale.CENTER_CROP) {
+            foregroundImageView.scaleType = ImageView.ScaleType.MATRIX
+            val scale = maxOf(vw / iw, vh / ih)
+            val scaledW = iw * scale
+            val scaledH = ih * scale
+            val transX = (vw - scaledW) / 2f
+
+            // Natural center of the statue/portrait (head, face, upper sculpture)
+            val focalScaledY = scaledH * naturalFocalY
+            val targetScreenY = vh * 0.38f
+            // Coerce so that image top is <= 0 (no top gap) and bottom is >= vh (no bottom gap)
+            val transY = (targetScreenY - focalScaledY).coerceIn(vh - scaledH, 0f)
+
+            baseMatrix.reset()
+            baseMatrix.postScale(scale, scale)
+            baseMatrix.postTranslate(transX, transY)
+            foregroundImageView.imageMatrix = baseMatrix
+            foregroundImageView.translationX = 0f
+            foregroundImageView.translationY = 0f
+        } else {
+            foregroundImageView.scaleType = resolveForegroundScaleType(width, height)
+            foregroundImageView.translationX = 0f
+            foregroundImageView.translationY = 0f
+        }
+    }
+
+    private fun calculateFocalY(
+        width: Int,
+        height: Int,
+    ): Float {
+        if (height <= width) return 0.5f
+        val aspect = height.toFloat() / width.toFloat()
+        if (aspect < 1.15f) return 0.5f
+
+        // For tall portrait art and statues (e.g. 2:3, 9:16), the natural center of interest
+        // (head, face, upper sculpture) is in the upper ~22%-30%
+        return if (aspect >= 1.35f) 0.22f else 0.32f
     }
 
     private fun resolveForegroundScaleType(
@@ -378,17 +453,100 @@ class ImagePlayerView : FrameLayout {
         }
     }
 
+    private fun startKenBurns(durationMs: Long) {
+        stopKenBurns()
+
+        val (viewW, viewH) = resolveTargetSize()
+        val vw = viewW.toFloat()
+        val vh = viewH.toFloat()
+        val iw = currentImageWidth.toFloat()
+        val ih = currentImageHeight.toFloat()
+
+        val isPortrait = ih > iw && (ih / iw) >= 1.15f
+
+        if (isPortrait && iw > 0 && ih > 0 && vw > 0 && vh > 0 && GeneralPrefs.photoScalePortrait == PhotoScale.CENTER_CROP) {
+            val zoomIn = kotlin.random.Random.nextBoolean()
+            val startScale = if (zoomIn) 1.0f else 1.06f
+            val endScale = if (zoomIn) 1.06f else 1.0f
+
+            val panDownDistance = vh * 0.05f
+            val startPanY = if (zoomIn) 0f else panDownDistance
+            val endPanY = if (zoomIn) panDownDistance else 0f
+
+            val pivotX = vw / 2f
+            val pivotY = vh * 0.38f
+
+            kenBurnsAnimator =
+                ValueAnimator.ofFloat(0f, 1f).apply {
+                    duration = durationMs
+                    interpolator = LinearInterpolator()
+                    addUpdateListener { animator ->
+                        val f = animator.animatedFraction
+                        val curZoom = startScale + (endScale - startScale) * f
+                        val curPanY = -(startPanY + (endPanY - startPanY) * f)
+
+                        animMatrix.set(baseMatrix)
+                        animMatrix.postScale(curZoom, curZoom, pivotX, pivotY)
+                        animMatrix.postTranslate(0f, curPanY)
+                        foregroundImageView.imageMatrix = animMatrix
+                    }
+                    start()
+                }
+        } else {
+            val zoomIn = kotlin.random.Random.nextBoolean()
+            val startScale = if (zoomIn) 1.02f else 1.12f
+            val endScale = if (zoomIn) 1.12f else 1.02f
+
+            val startTransX = (kotlin.random.Random.nextFloat() * 2f - 1f) * 20f
+            val endTransX = (kotlin.random.Random.nextFloat() * 2f - 1f) * 40f
+            val startTransY = (kotlin.random.Random.nextFloat() * 2f - 1f) * 15f
+            val endTransY = (kotlin.random.Random.nextFloat() * 2f - 1f) * 30f
+
+            foregroundImageView.pivotX = vw / 2f
+            foregroundImageView.pivotY = vh / 2f
+
+            kenBurnsAnimator =
+                ValueAnimator.ofFloat(0f, 1f).apply {
+                    duration = durationMs
+                    interpolator = LinearInterpolator()
+                    addUpdateListener { animator ->
+                        val f = animator.animatedFraction
+                        foregroundImageView.scaleX = startScale + (endScale - startScale) * f
+                        foregroundImageView.scaleY = startScale + (endScale - startScale) * f
+                        foregroundImageView.translationX = startTransX + (endTransX - startTransX) * f
+                        foregroundImageView.translationY = startTransY + (endTransY - startTransY) * f
+                    }
+                    start()
+                }
+        }
+    }
+
+    private fun stopKenBurns() {
+        kenBurnsAnimator?.cancel()
+        kenBurnsAnimator = null
+        foregroundImageView.scaleX = 1f
+        foregroundImageView.scaleY = 1f
+        foregroundImageView.translationX = 0f
+        foregroundImageView.translationY = 0f
+        if (foregroundImageView.scaleType == ImageView.ScaleType.MATRIX) {
+            foregroundImageView.imageMatrix = baseMatrix
+        }
+    }
+
     private fun runSetupFinishedRunnable() {
         listener?.onImagePrepared()
 
-        val duration = GeneralPrefs.slideshowSpeed.toLong() * 1000
-        val fadeDuration = GeneralPrefs.mediaFadeOutDuration.toLong()
-        val durationMinusFade = duration - fadeDuration
+        val speedSeconds = GeneralPrefs.slideshowSpeed.toLongOrNull() ?: 30L
+        val duration = maxOf(20000L, speedSeconds * 1000L)
+        val fadeDuration = GeneralPrefs.mediaFadeOutDuration.toLongOrNull() ?: 800L
+        val durationMinusFade = maxOf(1000L, duration - fadeDuration)
 
         totalDuration = duration
         remainingDuration = durationMinusFade
 
-        Timber.i("Delay: ${durationMinusFade.milliseconds}")
+        startKenBurns(duration)
+
+        Timber.i("Image display duration: ${duration.milliseconds}, delay: ${durationMinusFade.milliseconds}")
         if (progressBar) GlobalBus.post(ProgressBarEvent(ProgressState.START, 0, duration))
         postDelayed(finishedRunnable, durationMinusFade)
     }

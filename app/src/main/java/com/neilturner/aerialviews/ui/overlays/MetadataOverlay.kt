@@ -1,133 +1,315 @@
 package com.neilturner.aerialviews.ui.overlays
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
+import android.util.TypedValue
+import android.view.Gravity
+import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 import androidx.core.widget.TextViewCompat
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.neilturner.aerialviews.R
 import com.neilturner.aerialviews.models.enums.MetadataType
 import com.neilturner.aerialviews.models.enums.OverlayType
+import com.neilturner.aerialviews.models.prefs.GeneralPrefs
 import com.neilturner.aerialviews.ui.core.VideoPlayerView
+import com.neilturner.aerialviews.ui.helpers.ColourHelper
+import com.neilturner.aerialviews.ui.helpers.FontHelper
 import com.neilturner.aerialviews.ui.helpers.OverlayOpacityHelper
 import com.neilturner.aerialviews.ui.overlays.state.MetadataOverlayState
+import com.neilturner.aerialviews.ui.views.MiniMapView
+import com.neilturner.aerialviews.utils.WorldCoordinates
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.milliseconds
 
-class MetadataOverlay : AppCompatTextView {
-    // replace with https://juliensalvi.medium.com/safe-delay-in-android-views-goodbye-handlers-hello-coroutines-cd47f53f0fbf
-    private var poiJob: Job? = null
-    private val visibleAlpha = OverlayOpacityHelper.visibleAlpha(context)
-    var isFadingOutMedia = false // Stops POI change + fade as video is ending
-    var type: OverlayType = OverlayType.METADATA1
+class MetadataOverlay
+    @JvmOverloads
+    constructor(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0,
+    ) : LinearLayout(context, attrs, defStyleAttr) {
+        private var poiJob: Job? = null
+        private val visibleAlpha = OverlayOpacityHelper.visibleAlpha(context)
+        var isFadingOutMedia = false
+        var type: OverlayType = OverlayType.METADATA1
 
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+        private val miniMapView: MiniMapView
+        private val textLayout: LinearLayout
+        private val titleView: AppCompatTextView
+        private val subtitleView: AppCompatTextView
 
-    init {
-        TextViewCompat.setTextAppearance(this, R.style.OverlayText)
-    }
+        private var currentLocationText: String = ""
+        private var isRightSide: Boolean = true
 
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        poiJob?.cancel()
-        poiJob = null
-    }
+        init {
+            orientation = HORIZONTAL
+            gravity = Gravity.CENTER_VERTICAL
+            background = ContextCompat.getDrawable(context, R.drawable.bg_minimap_card)
 
-    fun updateLocationData(
-        location: String,
-        poi: Map<Int, String>,
-        metadataType: MetadataType,
-        player: VideoPlayerView,
-    ) {
-        isFadingOutMedia = false
-        this.visibility = VISIBLE
+            miniMapView = MiniMapView(context)
 
-        // If POI, set POI text, if empty use location, or else use location
-        this.text =
-            if (metadataType == MetadataType.DYNAMIC) {
-                poi[0]?.replace("\n", " ") ?: location
-            } else {
-                location
-            }
+            textLayout =
+                LinearLayout(context).apply {
+                    orientation = VERTICAL
+                    layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+                }
 
-        // Hide TextView if POI/location text is blank
-        if (this.text.isBlank()) {
-            this.visibility = GONE
+            titleView =
+                AppCompatTextView(context).apply {
+                    TextViewCompat.setTextAppearance(this, R.style.OverlayText)
+                    includeFontPadding = false
+                    maxLines = 3
+                    setLineSpacing(0f, 1.15f)
+                }
+
+            subtitleView =
+                AppCompatTextView(context).apply {
+                    TextViewCompat.setTextAppearance(this, R.style.OverlayText)
+                    includeFontPadding = false
+                    setTextColor(Color.parseColor("#B3FFFFFF")) // Soft 70% white
+                    visibility = GONE
+                    maxLines = 2
+                    setLineSpacing(0f, 1.15f)
+                }
+
+            textLayout.addView(titleView)
+            textLayout.addView(subtitleView)
+
+            applyLayoutForSide(isRightSide)
         }
 
-        // If set to POI, set timer to update text when interval is reached
-        if (metadataType == MetadataType.DYNAMIC && poi.size > 1) { // everything else is static anyways
-            updatePointsOfInterest(poi, player)
-        } else {
-            // POI is off or empty, so disable handler
+        fun setAlignment(isRight: Boolean) {
+            if (isRightSide == isRight && childCount > 0) return
+            isRightSide = isRight
+            applyLayoutForSide(isRight)
+        }
+
+        private fun applyLayoutForSide(isRight: Boolean) {
+            val density = context.resources.displayMetrics.density
+            val padMapSide = (6 * density).toInt()
+            val padTextSide = (16 * density).toInt()
+            val padV = (6 * density).toInt()
+
+            val mapW = (104 * density).toInt()
+            val mapH = (52 * density).toInt()
+            val gap = (14 * density).toInt()
+
+            if (isRight) {
+                // Card in right corner: text on left (right-aligned), map on outer right edge
+                setPadding(padTextSide, padV, padMapSide, padV)
+
+                titleView.gravity = Gravity.END
+                titleView.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+                subtitleView.gravity = Gravity.END
+                subtitleView.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+                textLayout.gravity = Gravity.CENTER_VERTICAL or Gravity.END
+
+                miniMapView.layoutParams =
+                    LayoutParams(mapW, mapH).apply {
+                        marginStart = gap
+                        marginEnd = 0
+                    }
+
+                removeAllViews()
+                addView(textLayout)
+                addView(miniMapView)
+            } else {
+                // Card in left corner: map on outer left edge, text on right (left-aligned)
+                setPadding(padMapSide, padV, padTextSide, padV)
+
+                titleView.gravity = Gravity.START
+                titleView.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                subtitleView.gravity = Gravity.START
+                subtitleView.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                textLayout.gravity = Gravity.CENTER_VERTICAL or Gravity.START
+
+                miniMapView.layoutParams =
+                    LayoutParams(mapW, mapH).apply {
+                        marginStart = 0
+                        marginEnd = gap
+                    }
+
+                removeAllViews()
+                addView(miniMapView)
+                addView(textLayout)
+            }
+        }
+
+        override fun onLayout(
+            changed: Boolean,
+            left: Int,
+            top: Int,
+            right: Int,
+            bottom: Int,
+        ) {
+            super.onLayout(changed, left, top, right, bottom)
+            if (width <= 0) return
+            val screenWidth = context.resources.displayMetrics.widthPixels
+            val rightSide = (left + right) / 2 > screenWidth / 2
+            if (rightSide != isRightSide) {
+                isRightSide = rightSide
+                post {
+                    applyLayoutForSide(rightSide)
+                }
+            }
+        }
+
+        override fun onDetachedFromWindow() {
+            super.onDetachedFromWindow()
             poiJob?.cancel()
             poiJob = null
         }
-    }
 
-    fun render(
-        state: MetadataOverlayState,
-        player: VideoPlayerView,
-    ) {
-        updateLocationData(state.text, state.poi, state.metadataType, player)
-    }
+        fun style(
+            font: String,
+            sizeSp: Float,
+            weight: String,
+        ) {
+            // Main title size: compact, refined HUD text to fit more description in the bubble
+            val titleSize = if (sizeSp > 0) (sizeSp * 0.60f).coerceIn(10.5f, 13f) else 12f
+            titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, titleSize)
+            titleView.typeface = FontHelper.getTypeface(context, font, weight)
+            titleView.setTextColor(ColourHelper.overlayColour(GeneralPrefs.overlayColour))
 
-    private fun updatePointsOfInterest(
-        poi: Map<Int, String>,
-        player: VideoPlayerView,
-    ) {
-        val poiTimes = poi.keys.sorted() // sort ahead of time?
-        var lastPoi = 0
+            // Subtitle size: 2sp smaller than title
+            subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (titleSize - 2f).coerceAtLeast(9.5f))
+            subtitleView.typeface = FontHelper.getTypeface(context, font, "400")
 
-        poiJob?.cancel()
-        poiJob =
-            findViewTreeLifecycleOwner()?.lifecycleScope?.launch {
-                delay(1000.milliseconds)
-                while (isActive) {
-                    // Find POI string at current position/time
-                    val time = player.currentPosition / 1000 // player current position
-                    val newPoi = poiTimes.findLast { it <= time } ?: 0
-                    val shouldUpdate = newPoi != lastPoi
+            val density = context.resources.displayMetrics.density
+            val screenWidth = context.resources.displayMetrics.widthPixels
+            val mapW = (104 * density).toInt()
+            val gap = (14 * density).toInt()
+            val padTotal = (22 * density).toInt()
+            val maxTextWidth = ((screenWidth * 0.45f) - mapW - gap - padTotal).toInt()
+            titleView.maxWidth = maxTextWidth.coerceIn((200 * density).toInt(), (450 * density).toInt())
+            subtitleView.maxWidth = maxTextWidth.coerceIn((200 * density).toInt(), (450 * density).toInt())
+        }
 
-                    // If new string and not fading in/out + loading new video
-                    if (shouldUpdate && !isFadingOutMedia) {
-                        val nextText = poi[newPoi]?.replace("\n", " ") ?: ""
-                        lastPoi = newPoi // Compiler bug?
+        fun updateLocationData(
+            location: String,
+            poi: Map<Int, String>,
+            metadataType: MetadataType,
+            player: VideoPlayerView,
+        ) {
+            isFadingOutMedia = false
+            this.visibility = VISIBLE
+            currentLocationText = location
 
-                        // If auto-hide has already faded this overlay out, update text silently.
-                        // Do not animate alpha back to the visible alpha.
-                        if (!OverlayOpacityHelper.isVisible(this@MetadataOverlay.alpha, visibleAlpha)) {
-                            this@MetadataOverlay.text = nextText
-                            delay(1000.milliseconds)
-                            continue
-                        }
+            val activeText =
+                if (metadataType == MetadataType.DYNAMIC) {
+                    poi[0]?.replace("\n", " ") ?: location
+                } else {
+                    location
+                }
 
-                        // Set new string and fade in
-                        this@MetadataOverlay
-                            .animate()
-                            .alpha(0f)
-                            .setDuration(1000)
-                            .withEndAction {
-                                this@MetadataOverlay.text = nextText
-                                this@MetadataOverlay
-                                    .animate()
-                                    .alpha(visibleAlpha)
-                                    .setDuration(1000)
-                                    .start()
-                            }.start()
-                    }
+            applyDisplayText(activeText, location)
 
-                    // Set new interval for POI string update
-                    // Longer is a new string has just been set
-                    val interval = if (shouldUpdate) 3000L else 1000L
-                    delay(interval.milliseconds)
+            // Hide if completely blank
+            if (titleView.text.isNullOrBlank()) {
+                this.visibility = GONE
+            }
+
+            // Dynamic points of interest timer
+            if (metadataType == MetadataType.DYNAMIC && poi.size > 1) {
+                updatePointsOfInterest(poi, player, location)
+            } else {
+                poiJob?.cancel()
+                poiJob = null
+            }
+        }
+
+        private fun applyDisplayText(
+            primary: String,
+            fallbackLocation: String,
+        ) {
+            val cleanPrimary = primary.trim()
+            val coords =
+                WorldCoordinates.find(cleanPrimary)
+                    ?: WorldCoordinates.find(fallbackLocation)
+
+            miniMapView.setCoordinates(coords?.latitude, coords?.longitude)
+
+            // If primary is a specific landmark/POI different from the general location,
+            // show landmark as title and city/region as subtitle!
+            if (cleanPrimary != fallbackLocation && fallbackLocation.isNotBlank()) {
+                titleView.text = cleanPrimary
+                subtitleView.text = fallbackLocation
+                subtitleView.visibility = VISIBLE
+            } else {
+                // Check if primary contains comma (e.g. "Cathedral Canyon, Lake Powell, Utah")
+                if (cleanPrimary.contains(",")) {
+                    val parts = cleanPrimary.split(",", limit = 2)
+                    titleView.text = parts[0].trim()
+                    subtitleView.text = parts[1].trim()
+                    subtitleView.visibility = VISIBLE
+                } else {
+                    titleView.text = cleanPrimary
+                    subtitleView.visibility = GONE
                 }
             }
+        }
+
+        fun render(
+            state: MetadataOverlayState,
+            player: VideoPlayerView,
+        ) {
+            updateLocationData(state.text, state.poi, state.metadataType, player)
+        }
+
+        private fun updatePointsOfInterest(
+            poi: Map<Int, String>,
+            player: VideoPlayerView,
+            baseLocation: String,
+        ) {
+            val poiTimes = poi.keys.sorted()
+            var lastPoi = 0
+
+            poiJob?.cancel()
+            poiJob =
+                findViewTreeLifecycleOwner()?.lifecycleScope?.launch {
+                    delay(1000.milliseconds)
+                    while (isActive) {
+                        val time = player.currentPosition / 1000
+                        val newPoi = poiTimes.findLast { it <= time } ?: 0
+                        val shouldUpdate = newPoi != lastPoi
+
+                        if (shouldUpdate && !isFadingOutMedia) {
+                            val nextText = poi[newPoi]?.replace("\n", " ") ?: ""
+                            lastPoi = newPoi
+
+                            if (!OverlayOpacityHelper.isVisible(this@MetadataOverlay.alpha, visibleAlpha)) {
+                                applyDisplayText(nextText, baseLocation)
+                                delay(1000.milliseconds)
+                                continue
+                            }
+
+                            // Smooth fade out, change text & pin, fade in
+                            textLayout
+                                .animate()
+                                .alpha(0f)
+                                .setDuration(600)
+                                .withEndAction {
+                                    applyDisplayText(nextText, baseLocation)
+                                    textLayout
+                                        .animate()
+                                        .alpha(1f)
+                                        .setDuration(600)
+                                        .start()
+                                }.start()
+                        }
+
+                        val interval = if (shouldUpdate) 3000L else 1000L
+                        delay(interval.milliseconds)
+                    }
+                }
+        }
     }
-}

@@ -216,7 +216,7 @@ class MediaService(
                 unmatchedVideos = emptyList()
             }
 
-            var filteredMedia = unmatchedVideos + matchedVideos + unmatchedPhotos + matchedPhotos
+            var filteredMedia = unmatchedPhotos + matchedPhotos + unmatchedVideos + matchedVideos
 
             // With caching on, the full list is stored and the filter is applied at read time, so
             // the cache survives day/night cycles. Without a cache the filter is applied here,

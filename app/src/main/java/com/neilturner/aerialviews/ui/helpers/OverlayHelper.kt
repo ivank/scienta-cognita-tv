@@ -114,15 +114,20 @@ class OverlayHelper(
         rightIds: List<Int>,
         alternateOverlays: Boolean,
     ) {
-        if (!alternateOverlays) {
-            leftFlow.referencedIds = leftIds.toIntArray()
-            rightFlow.referencedIds = rightIds.toIntArray()
-        } else {
-            leftFlow.referencedIds = rightIds.toIntArray()
-            rightFlow.referencedIds = leftIds.toIntArray()
-        }
+        val currentLeftIds = if (!alternateOverlays) leftIds else rightIds
+        val currentRightIds = if (!alternateOverlays) rightIds else leftIds
+        leftFlow.referencedIds = currentLeftIds.toIntArray()
+        rightFlow.referencedIds = currentRightIds.toIntArray()
         leftFlow.requestLayout()
         rightFlow.requestLayout()
+
+        findOverlay<MetadataOverlay>().forEach { overlay ->
+            if (currentRightIds.contains(overlay.id)) {
+                overlay.setAlignment(isRight = true)
+            } else if (currentLeftIds.contains(overlay.id)) {
+                overlay.setAlignment(isRight = false)
+            }
+        }
     }
 
     // Overrides the screen_border_padding margins set in overlay_view.xml
@@ -272,28 +277,28 @@ class OverlayHelper(
             OverlayType.METADATA1 -> {
                 MetadataOverlay(context).apply {
                     type = overlay
-                    applyFontToTextView(this, prefs.overlayMetadata1Size.toFloat(), prefs.overlayMetadata1Weight)
+                    style(prefs.fontTypeface, prefs.overlayMetadata1Size.toFloat(), prefs.overlayMetadata1Weight)
                 }
             }
 
             OverlayType.METADATA2 -> {
                 MetadataOverlay(context).apply {
                     type = overlay
-                    applyFontToTextView(this, prefs.overlayMetadata2Size.toFloat(), prefs.overlayMetadata2Weight)
+                    style(prefs.fontTypeface, prefs.overlayMetadata2Size.toFloat(), prefs.overlayMetadata2Weight)
                 }
             }
 
             OverlayType.METADATA3 -> {
                 MetadataOverlay(context).apply {
                     type = overlay
-                    applyFontToTextView(this, prefs.overlayMetadata3Size.toFloat(), prefs.overlayMetadata3Weight)
+                    style(prefs.fontTypeface, prefs.overlayMetadata3Size.toFloat(), prefs.overlayMetadata3Weight)
                 }
             }
 
             OverlayType.METADATA4 -> {
                 MetadataOverlay(context).apply {
                     type = overlay
-                    applyFontToTextView(this, prefs.overlayMetadata4Size.toFloat(), prefs.overlayMetadata4Weight)
+                    style(prefs.fontTypeface, prefs.overlayMetadata4Size.toFloat(), prefs.overlayMetadata4Weight)
                 }
             }
 

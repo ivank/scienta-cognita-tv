@@ -35,4 +35,5 @@ class Comm1Video : AbstractVideo() {
 @Serializable
 class Comm1Videos {
     val assets: List<Comm1Video>? = null
+    val photos: List<Comm1Photo>? = null
 }
