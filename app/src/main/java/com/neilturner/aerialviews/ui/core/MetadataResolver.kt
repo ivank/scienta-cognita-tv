@@ -20,6 +20,7 @@ internal class MetadataResolver(
         val text: String,
         val poi: Map<Int, String>,
         val metadataType: MetadataType,
+        val detailedText: String = "",
     )
 
     data class Preferences(
@@ -37,12 +38,25 @@ internal class MetadataResolver(
         context: Context,
         media: AerialMedia,
         preferences: Preferences,
-    ): ResolvedMetadata =
-        if (media.type == AerialMediaType.IMAGE) {
-            resolvePhoto(context, media, preferences)
-        } else {
-            resolveVideo(context, media, preferences)
-        }
+    ): ResolvedMetadata {
+        val base =
+            if (media.type == AerialMediaType.IMAGE) {
+                resolvePhoto(context, media, preferences)
+            } else {
+                resolveVideo(context, media, preferences)
+            }
+        val detailed =
+            media.metadata.longDescription.ifBlank {
+                if (media.metadata.pointsOfInterest.isNotEmpty()) {
+                    media.metadata.pointsOfInterest.values
+                        .distinct()
+                        .joinToString(". ")
+                } else {
+                    media.metadata.shortDescription
+                }
+            }
+        return base.copy(detailedText = detailed)
+    }
 
     private suspend fun resolveVideo(
         context: Context,

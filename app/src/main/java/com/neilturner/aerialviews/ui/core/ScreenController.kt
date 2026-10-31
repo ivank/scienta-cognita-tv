@@ -521,6 +521,11 @@ class ScreenController(
             videoViewBinding.root.visibility = View.INVISIBLE
         }
 
+        if (isDetailsMode) {
+            imagePlayer.setLooping(true)
+            videoPlayer.setLooping(true)
+        }
+
         // Best to rest progress bar (if enabled) before media playback
         if (GeneralPrefs.progressBarLocation != ProgressBarLocation.DISABLED) {
             GlobalBus.post(ProgressBarEvent(ProgressState.RESET))
@@ -734,6 +739,7 @@ class ScreenController(
     }
 
     private fun hideOverlays(delay: Long = 0L) {
+        if (isDetailsMode) return
         val overlaysToFade = overlayHelper.getOverlaysToFade()
 
         if (overlaysToFade.isEmpty()) {
@@ -1055,6 +1061,43 @@ class ScreenController(
         NotificationHelper.show(notificationContainer, message)
     }
 
+    var isDetailsMode: Boolean = false
+        private set
+
+    fun openDetailsView() {
+        if (blackOutMode || isDetailsMode) return
+        isDetailsMode = true
+        canShowOverlays = false
+
+        overlayHelper.getOverlaysToFade().forEach {
+            it.animate()?.cancel()
+            it.alpha = overlayVisibleAlpha
+        }
+
+        overlayHelper.findOverlay<MetadataOverlay>().forEach {
+            it.setDetailsMode(true)
+        }
+
+        imagePlayer.setLooping(true)
+        videoPlayer.setLooping(true)
+    }
+
+    fun closeDetailsView() {
+        if (!isDetailsMode) return
+        isDetailsMode = false
+
+        overlayHelper.findOverlay<MetadataOverlay>().forEach {
+            it.setDetailsMode(false)
+        }
+
+        imagePlayer.setLooping(false)
+        videoPlayer.setLooping(false)
+
+        if (overlayVisibilityMode == "HIDE_AFTER_DELAY") {
+            hideOverlays(overlayRevealTimeout * 1000)
+        }
+    }
+
     fun restartVideo() {
         if (blackOutMode) return
         if (currentMedia?.type != AerialMediaType.VIDEO) return
@@ -1199,6 +1242,7 @@ class ScreenController(
     override fun onVideoPlaybackSpeedChanged() = handlePlaybackSpeedChanged()
 
     override fun onVideoAlmostFinished() {
+        if (isDetailsMode) return
         if (currentMedia?.type == AerialMediaType.VIDEO) {
             fadeOutCurrentItem()
         }
@@ -1227,6 +1271,7 @@ class ScreenController(
     }
 
     override fun onImageFinished() {
+        if (isDetailsMode) return
         if (currentMedia?.type == AerialMediaType.IMAGE) {
             fadeOutCurrentItem()
         }
@@ -1261,6 +1306,7 @@ class ScreenController(
                             resolved.text,
                             resolved.poi,
                             resolved.metadataType,
+                            resolved.detailedText,
                         )
                     } catch (e: Exception) {
                         Timber.e(e, "Metadata slot $slot resolver failed")

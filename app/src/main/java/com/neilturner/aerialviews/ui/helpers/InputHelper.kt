@@ -105,6 +105,15 @@ object InputHelper {
 
         Timber.i("Gesture: $gesture, Action: $action")
 
+        if (gesture == GestureType.DOWN && controller?.isDetailsMode != true) {
+            controller?.openDetailsView()
+            return
+        }
+        if (gesture == GestureType.UP && controller?.isDetailsMode == true) {
+            controller.closeDetailsView()
+            return
+        }
+
         // Check if any swipe or screen tap should wake from black out mode
         if (GeneralPrefs.wakeOnAnyButtonPress &&
             controller?.blackOutMode == true
@@ -172,6 +181,10 @@ object InputHelper {
             }
 
             KeyEvent.KEYCODE_BACK -> {
+                if (controller?.isDetailsMode == true) {
+                    controller.closeDetailsView()
+                    return true
+                }
                 action = ButtonType.EXIT
             }
 
@@ -192,6 +205,10 @@ object InputHelper {
             }
 
             KeyEvent.KEYCODE_DPAD_UP -> {
+                if (controller?.isDetailsMode == true) {
+                    controller.closeDetailsView()
+                    return true
+                }
                 action =
                     if (type == ButtonPressType.PRESS) {
                         GeneralPrefs.buttonUpPress
@@ -201,6 +218,10 @@ object InputHelper {
             }
 
             KeyEvent.KEYCODE_DPAD_DOWN -> {
+                if (controller?.isDetailsMode != true) {
+                    controller?.openDetailsView()
+                    return true
+                }
                 action =
                     if (type == ButtonPressType.PRESS) {
                         GeneralPrefs.buttonDownPress

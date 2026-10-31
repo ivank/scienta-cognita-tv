@@ -20,6 +20,7 @@ class OverlayStateStore {
         text: String,
         poi: Map<Int, String>,
         metadataType: MetadataType,
+        detailedText: String = "",
     ) {
         _uiState.update {
             it.copy(
@@ -31,6 +32,7 @@ class OverlayStateStore {
                                 text = text,
                                 poi = poi,
                                 metadataType = metadataType,
+                                detailedText = detailedText,
                             ),
                         )
                     },

@@ -5,6 +5,8 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
@@ -21,6 +23,9 @@ class MiniMapView
         private val mapDrawable: Drawable? = ContextCompat.getDrawable(context, R.drawable.ic_world_map)
         private var latitude: Double? = null
         private var longitude: Double? = null
+
+        var zoomFraction: Float = 0f
+            private set
 
         private val pinHaloPaint =
             Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -39,6 +44,22 @@ class MiniMapView
                 style = Paint.Style.FILL
                 color = Color.WHITE
             }
+
+        private val mapBgPaint =
+            Paint(Paint.ANTI_ALIAS_FLAG).apply {
+                style = Paint.Style.FILL
+                color = Color.parseColor("#26000000") // 15% black backdrop
+            }
+
+        private val mapBorderPaint =
+            Paint(Paint.ANTI_ALIAS_FLAG).apply {
+                style = Paint.Style.STROKE
+                strokeWidth = context.resources.displayMetrics.density * 0.75f
+                color = Color.parseColor("#33FFFFFF") // 20% white border
+            }
+
+        private val clipPath = Path()
+        private val clipRect = RectF()
 
         private var pulseFraction = 0f
         private val pulseAnimator =
@@ -79,6 +100,14 @@ class MiniMapView
             }
         }
 
+        fun setZoomFraction(fraction: Float) {
+            val clamped = fraction.coerceIn(0f, 1f)
+            if (zoomFraction != clamped) {
+                zoomFraction = clamped
+                invalidate()
+            }
+        }
+
         override fun onDraw(canvas: Canvas) {
             super.onDraw(canvas)
 
@@ -86,35 +115,77 @@ class MiniMapView
             val h = height.toFloat()
             if (w <= 0 || h <= 0) return
 
-            // 1. Draw subtle world map silhouette
-            mapDrawable?.let {
-                it.setBounds(0, 0, width, height)
-                it.draw(canvas)
-            }
+            val density = resources.displayMetrics.density
+            val cornerRadius = 6f * density
 
-            // 2. Draw location pin if coordinates are known
+            clipRect.set(0f, 0f, w, h)
+            clipPath.reset()
+            clipPath.addRoundRect(clipRect, cornerRadius, cornerRadius, Path.Direction.CW)
+
+            // 1. Draw subtle background
+            canvas.drawRoundRect(clipRect, cornerRadius, cornerRadius, mapBgPaint)
+
             val lat = latitude
             val lon = longitude
-            if (lat != null && lon != null) {
-                // Equirectangular projection
-                val px = ((lon + 180.0) / 360.0 * w).toFloat().coerceIn(4f, w - 4f)
-                val py = ((90.0 - lat) / 180.0 * h).toFloat().coerceIn(4f, h - 4f)
 
-                val density = resources.displayMetrics.density
+            // 2. Draw map with canvas transform
+            canvas.save()
+            canvas.clipPath(clipPath)
+
+            val baseH = w / 2f
+            if (lat != null && lon != null) {
+                // Equirectangular projection coordinates on 2:1 world map
+                val px0 = ((lon + 180.0) / 360.0 * w).toFloat()
+                val py0 = ((90.0 - lat) / 180.0 * baseH).toFloat()
+
+                // Cur zoom: 1.0x to 7.0x (~size of India region)
+                val curZoom = 1.0f + (6.0f * zoomFraction)
+
+                // Pin glides from natural world position to center of view
+                val targetPinX = px0 + (w / 2f - px0) * zoomFraction
+                val targetPinY = py0 + (h / 2f - py0) * zoomFraction
+
+                canvas.translate(targetPinX, targetPinY)
+                canvas.scale(curZoom, curZoom)
+                canvas.translate(-px0, -py0)
+
+                mapDrawable?.let {
+                    it.setBounds(0, 0, w.toInt(), baseH.toInt())
+                    it.draw(canvas)
+                }
+            } else {
+                mapDrawable?.let {
+                    val top = ((h - baseH) / 2f).toInt()
+                    it.setBounds(0, top, w.toInt(), top + baseH.toInt())
+                    it.draw(canvas)
+                }
+            }
+            canvas.restore()
+
+            // 3. Draw border
+            canvas.drawRoundRect(clipRect, cornerRadius, cornerRadius, mapBorderPaint)
+
+            // 4. Draw location pin
+            if (lat != null && lon != null) {
+                val px0 = ((lon + 180.0) / 360.0 * w).toFloat()
+                val py0 = ((90.0 - lat) / 180.0 * baseH).toFloat()
+                val targetPinX = px0 + (w / 2f - px0) * zoomFraction
+                val targetPinY = py0 + (h / 2f - py0) * zoomFraction
+
                 val baseRadius = 3.5f * density
                 val pulseRadius = baseRadius + (4f * density * pulseFraction)
                 val pulseAlpha = ((1f - pulseFraction) * 160).toInt().coerceIn(0, 255)
 
                 // Outer pulsing halo
                 pinHaloPaint.alpha = pulseAlpha
-                canvas.drawCircle(px, py, pulseRadius, pinHaloPaint)
+                canvas.drawCircle(targetPinX, targetPinY, pulseRadius, pinHaloPaint)
 
                 // Main glowing red dot
                 pinCorePaint.alpha = 230
-                canvas.drawCircle(px, py, baseRadius, pinCorePaint)
+                canvas.drawCircle(targetPinX, targetPinY, baseRadius, pinCorePaint)
 
                 // Crisp white center dot
-                canvas.drawCircle(px, py, baseRadius * 0.45f, pinCenterPaint)
+                canvas.drawCircle(targetPinX, targetPinY, baseRadius * 0.45f, pinCenterPaint)
             }
         }
     }

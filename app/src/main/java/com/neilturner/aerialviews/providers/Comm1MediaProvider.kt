@@ -55,6 +55,7 @@ class Comm1MediaProvider(
 
         wrapper.photos?.forEach { photo ->
             if (prefs.enabled) {
+                val detailed = photo.details.ifBlank { photo.description }
                 videos.add(
                     AerialMedia(
                         photo.uriAtQuality(quality),
@@ -63,6 +64,7 @@ class Comm1MediaProvider(
                         metadata =
                             AerialMediaMetadata(
                                 shortDescription = photo.title,
+                                longDescription = detailed,
                                 exif = AerialExifMetadata(description = photo.title),
                             ),
                     ),
@@ -87,6 +89,8 @@ class Comm1MediaProvider(
                             AerialMediaMetadata(
                                 timeOfDay = timeOfDay,
                                 scene = scene,
+                                shortDescription = asset.description,
+                                longDescription = asset.details,
                             ),
                     ),
                 )

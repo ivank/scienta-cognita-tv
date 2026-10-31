@@ -15,6 +15,8 @@ class Comm1Photo {
     val url4k: String? = null
 
     val title: String = ""
+    val description: String = ""
+    val details: String = ""
 
     fun uriAtQuality(quality: VideoQuality?): Uri {
         val url =

@@ -21,6 +21,7 @@ data class MetadataOverlayState(
     val text: String = "",
     val poi: Map<Int, String> = emptyMap(),
     val metadataType: MetadataType = MetadataType.STATIC,
+    val detailedText: String = "",
 )
 
 data class MessageOverlayState(

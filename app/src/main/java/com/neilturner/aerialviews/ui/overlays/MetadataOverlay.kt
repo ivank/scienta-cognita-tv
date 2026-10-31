@@ -1,11 +1,16 @@
 package com.neilturner.aerialviews.ui.overlays
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Color
+import android.text.TextUtils
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
@@ -46,9 +51,15 @@ class MetadataOverlay
         private val textLayout: LinearLayout
         private val titleView: AppCompatTextView
         private val subtitleView: AppCompatTextView
+        private val descriptionView: AppCompatTextView
 
         private var currentLocationText: String = ""
+        private var currentDetailedText: String = ""
         private var isRightSide: Boolean = true
+
+        private var detailsAnimator: ValueAnimator? = null
+        var isDetailsMode: Boolean = false
+            private set
 
         init {
             orientation = HORIZONTAL
@@ -67,7 +78,7 @@ class MetadataOverlay
                 AppCompatTextView(context).apply {
                     TextViewCompat.setTextAppearance(this, R.style.OverlayText)
                     includeFontPadding = false
-                    maxLines = 3
+                    maxLines = 2
                     setLineSpacing(0f, 1.15f)
                 }
 
@@ -77,12 +88,25 @@ class MetadataOverlay
                     includeFontPadding = false
                     setTextColor(Color.parseColor("#B3FFFFFF")) // Soft 70% white
                     visibility = GONE
-                    maxLines = 2
+                    maxLines = 1
                     setLineSpacing(0f, 1.15f)
+                }
+
+            descriptionView =
+                AppCompatTextView(context).apply {
+                    TextViewCompat.setTextAppearance(this, R.style.OverlayText)
+                    includeFontPadding = false
+                    setTextColor(Color.parseColor("#E6FFFFFF")) // Crisp 90% white
+                    visibility = GONE
+                    alpha = 0f
+                    maxLines = 5
+                    ellipsize = TextUtils.TruncateAt.END
+                    setLineSpacing(0f, 1.25f)
                 }
 
             textLayout.addView(titleView)
             textLayout.addView(subtitleView)
+            textLayout.addView(descriptionView)
 
             applyLayoutForSide(isRightSide)
         }
@@ -100,7 +124,7 @@ class MetadataOverlay
             val padV = (6 * density).toInt()
 
             val mapW = (104 * density).toInt()
-            val mapH = (52 * density).toInt()
+            val mapH = if (isDetailsMode) (148 * density).toInt() else (52 * density).toInt()
             val gap = (14 * density).toInt()
 
             if (isRight) {
@@ -111,6 +135,8 @@ class MetadataOverlay
                 titleView.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
                 subtitleView.gravity = Gravity.END
                 subtitleView.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+                descriptionView.gravity = Gravity.END
+                descriptionView.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
                 textLayout.gravity = Gravity.CENTER_VERTICAL or Gravity.END
 
                 miniMapView.layoutParams =
@@ -130,6 +156,8 @@ class MetadataOverlay
                 titleView.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
                 subtitleView.gravity = Gravity.START
                 subtitleView.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                descriptionView.gravity = Gravity.START
+                descriptionView.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
                 textLayout.gravity = Gravity.CENTER_VERTICAL or Gravity.START
 
                 miniMapView.layoutParams =
@@ -167,6 +195,7 @@ class MetadataOverlay
             super.onDetachedFromWindow()
             poiJob?.cancel()
             poiJob = null
+            detailsAnimator?.cancel()
         }
 
         fun style(
@@ -184,6 +213,10 @@ class MetadataOverlay
             subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (titleSize - 2f).coerceAtLeast(9.5f))
             subtitleView.typeface = FontHelper.getTypeface(context, font, "400")
 
+            // Description size: compact readable font
+            descriptionView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (titleSize - 1.5f).coerceAtLeast(10f))
+            descriptionView.typeface = FontHelper.getTypeface(context, font, "400")
+
             val density = context.resources.displayMetrics.density
             val screenWidth = context.resources.displayMetrics.widthPixels
             val mapW = (104 * density).toInt()
@@ -192,6 +225,83 @@ class MetadataOverlay
             val maxTextWidth = ((screenWidth * 0.45f) - mapW - gap - padTotal).toInt()
             titleView.maxWidth = maxTextWidth.coerceIn((200 * density).toInt(), (450 * density).toInt())
             subtitleView.maxWidth = maxTextWidth.coerceIn((200 * density).toInt(), (450 * density).toInt())
+            descriptionView.maxWidth = maxTextWidth.coerceIn((200 * density).toInt(), (450 * density).toInt())
+            (descriptionView.layoutParams as? LayoutParams)?.topMargin = (5 * density).toInt()
+        }
+
+        fun setDetailsMode(
+            enable: Boolean,
+            animated: Boolean = true,
+        ) {
+            if (isDetailsMode == enable) return
+            isDetailsMode = enable
+
+            detailsAnimator?.cancel()
+
+            val density = context.resources.displayMetrics.density
+            val normalCardH = (64 * density).toInt()
+            val detailsCardH = (160 * density).toInt()
+
+            val normalMapH = (52 * density).toInt()
+            val detailsMapH = (148 * density).toInt()
+
+            val targetFraction = if (enable) 1f else 0f
+            val currentFraction = miniMapView.zoomFraction
+
+            if (enable) {
+                descriptionView.text = currentDetailedText.ifBlank { currentLocationText }
+                descriptionView.visibility = VISIBLE
+            }
+
+            if (!animated) {
+                miniMapView.setZoomFraction(targetFraction)
+                miniMapView.layoutParams =
+                    miniMapView.layoutParams.apply {
+                        height = if (enable) detailsMapH else normalMapH
+                    }
+                layoutParams =
+                    layoutParams.apply {
+                        height = if (enable) detailsCardH else normalCardH
+                    }
+                descriptionView.alpha = targetFraction
+                if (!enable) descriptionView.visibility = GONE
+                requestLayout()
+                return
+            }
+
+            detailsAnimator =
+                ValueAnimator.ofFloat(currentFraction, targetFraction).apply {
+                    duration = 450L
+                    interpolator = DecelerateInterpolator()
+                    addUpdateListener { animator ->
+                        val fraction = animator.animatedValue as Float
+                        miniMapView.setZoomFraction(fraction)
+
+                        val curCardH = (normalCardH + (detailsCardH - normalCardH) * fraction).toInt()
+                        val curMapH = (normalMapH + (detailsMapH - normalMapH) * fraction).toInt()
+
+                        miniMapView.layoutParams =
+                            miniMapView.layoutParams.apply {
+                                height = curMapH
+                            }
+                        layoutParams =
+                            layoutParams.apply {
+                                height = curCardH
+                            }
+                        descriptionView.alpha = fraction
+                        requestLayout()
+                    }
+                    addListener(
+                        object : AnimatorListenerAdapter() {
+                            override fun onAnimationEnd(animation: Animator) {
+                                if (!enable) {
+                                    descriptionView.visibility = GONE
+                                }
+                            }
+                        },
+                    )
+                    start()
+                }
         }
 
         fun updateLocationData(
@@ -199,10 +309,12 @@ class MetadataOverlay
             poi: Map<Int, String>,
             metadataType: MetadataType,
             player: VideoPlayerView,
+            detailedText: String = "",
         ) {
             isFadingOutMedia = false
             this.visibility = VISIBLE
             currentLocationText = location
+            currentDetailedText = detailedText
 
             val activeText =
                 if (metadataType == MetadataType.DYNAMIC) {
@@ -212,6 +324,12 @@ class MetadataOverlay
                 }
 
             applyDisplayText(activeText, location)
+
+            if (isDetailsMode) {
+                descriptionView.text = detailedText.ifBlank { location }
+                descriptionView.visibility = VISIBLE
+                descriptionView.alpha = 1f
+            }
 
             // Hide if completely blank
             if (titleView.text.isNullOrBlank()) {
@@ -262,7 +380,7 @@ class MetadataOverlay
             state: MetadataOverlayState,
             player: VideoPlayerView,
         ) {
-            updateLocationData(state.text, state.poi, state.metadataType, player)
+            updateLocationData(state.text, state.poi, state.metadataType, player, state.detailedText)
         }
 
         private fun updatePointsOfInterest(

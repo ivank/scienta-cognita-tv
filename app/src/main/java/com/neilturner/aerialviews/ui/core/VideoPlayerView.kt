@@ -99,6 +99,10 @@ class VideoPlayerView
             player?.repeatMode = Player.REPEAT_MODE_OFF
         }
 
+        fun setLooping(looping: Boolean) {
+            player?.repeatMode = if (looping) Player.REPEAT_MODE_ALL else Player.REPEAT_MODE_OFF
+        }
+
         fun release() {
             if (isDestroyed) return
 

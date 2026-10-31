@@ -51,7 +51,23 @@ class ImagePlayerView : FrameLayout {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     private var listener: OnImagePlayerEventListener? = null
-    private var finishedRunnable = Runnable { listener?.onImageFinished() }
+    var isLoopingImage: Boolean = false
+
+    fun setLooping(looping: Boolean) {
+        isLoopingImage = looping
+    }
+
+    private val finishedRunnable: Runnable =
+        Runnable {
+            if (isLoopingImage) {
+                val duration = (GeneralPrefs.slideshowSpeed.toIntOrNull() ?: 30) * 1000L
+                val durationMinusFade = maxOf(1000L, duration - 1500L)
+                startKenBurns(duration)
+                postDelayed(finishedRunnable, durationMinusFade)
+            } else {
+                listener?.onImageFinished()
+            }
+        }
     private var errorRunnable = Runnable { listener?.onImageError() }
 
     private val ioJob = SupervisorJob()

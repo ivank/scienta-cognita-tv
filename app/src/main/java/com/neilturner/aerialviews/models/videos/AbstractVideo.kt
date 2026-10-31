@@ -29,6 +29,8 @@ abstract class AbstractVideo {
     @SerialName("accessibilityLabel")
     val description: String = ""
 
+    val details: String = ""
+
     @SerialName("pointsOfInterest")
     val pointsOfInterest: Map<Int, String> = emptyMap()
 
