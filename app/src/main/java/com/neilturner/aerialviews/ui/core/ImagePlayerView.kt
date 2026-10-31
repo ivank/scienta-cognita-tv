@@ -37,7 +37,10 @@ import com.neilturner.aerialviews.ui.controls.ProgressState
 import com.neilturner.aerialviews.ui.core.ImagePlayerHelper.buildGifDecoder
 import com.neilturner.aerialviews.ui.core.ImagePlayerHelper.buildOkHttpClient
 import com.neilturner.aerialviews.ui.helpers.BitmapHelper
+import com.neilturner.aerialviews.ui.views.ArtLightingManager
 import com.neilturner.aerialviews.ui.views.GalleryFrameView
+import com.neilturner.aerialviews.ui.views.GallerySpotlightOverlay
+import com.neilturner.aerialviews.ui.views.SculptureBacklightView
 import com.neilturner.aerialviews.utils.FirebaseHelper
 import com.neilturner.aerialviews.utils.filename
 import kotlinx.coroutines.CoroutineScope
@@ -130,17 +133,10 @@ class ImagePlayerView : FrameLayout {
             visibility = GONE
         }
 
-    // Ambient backlight shadow behind sculpture
-    private val sculptureShadowView =
-        View(context).apply {
+    // Ambient directional backlight & occlusion shadow behind sculpture
+    private val sculptureBacklightView =
+        SculptureBacklightView(context).apply {
             layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER)
-            background =
-                GradientDrawable().apply {
-                    shape = GradientDrawable.OVAL
-                    gradientType = GradientDrawable.RADIAL_GRADIENT
-                    gradientRadius = 380f * context.resources.displayMetrics.density
-                    colors = intArrayOf(Color.parseColor("#99000000"), Color.TRANSPARENT)
-                }
             visibility = GONE
         }
 
@@ -155,6 +151,13 @@ class ImagePlayerView : FrameLayout {
         AppCompatImageView(context).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
             scaleType = ImageView.ScaleType.CENTER_CROP
+            visibility = GONE
+        }
+
+    // Dynamic museum ceiling track spotlight on the gallery wall
+    private val gallerySpotlightView =
+        GallerySpotlightOverlay(context).apply {
+            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
             visibility = GONE
         }
 
@@ -181,9 +184,10 @@ class ImagePlayerView : FrameLayout {
     init {
         addView(backgroundImageView)
         addView(backgroundDimOverlay)
-        addView(sculptureShadowView)
+        addView(sculptureBacklightView)
         addView(foregroundImageView)
         addView(galleryBackgroundImageView)
+        addView(gallerySpotlightView)
         addView(galleryFrameView)
     }
 
@@ -343,7 +347,7 @@ class ImagePlayerView : FrameLayout {
     ) {
         foregroundImageView.visibility = GONE
         backgroundDimOverlay.visibility = GONE
-        sculptureShadowView.visibility = GONE
+        sculptureBacklightView.visibility = GONE
         blurHelper.cancel()
 
         val text = ((currentMedia?.metadata?.shortDescription ?: "") + " " + (currentMedia?.metadata?.longDescription ?: "")).lowercase()
@@ -352,6 +356,7 @@ class ImagePlayerView : FrameLayout {
                 "mona lisa", "pearl earring", "las meninas", "creation of adam",
                 "birth of venus", "night watch", "fresco", "frescoes", "botticelli",
                 "velázquez", "vermeer", "da vinci", "michelangelo", "rembrandt",
+                "qianlong", "court ladies", "immortal", "mughal", "persian",
             ).any { text.contains(it) }
 
         galleryBackgroundImageView.setImageResource(
@@ -359,6 +364,14 @@ class ImagePlayerView : FrameLayout {
         )
         galleryBackgroundImageView.visibility = VISIBLE
 
+        // Dynamic lighting profile
+        val lightingProfile = ArtLightingManager.getProfile(currentMedia)
+        gallerySpotlightView.setLightingProfile(lightingProfile)
+        gallerySpotlightView.visibility = VISIBLE
+
+        galleryFrameView.lightingProfile = lightingProfile
+        galleryFrameView.focalY = naturalFocalY
+        galleryFrameView.kenBurnsScale = 1.0f
         galleryFrameView.isClassicalStyle = isClassical
         galleryFrameView.paintingAspectRatio = width.toFloat() / height.toFloat()
         galleryFrameView.paintingDrawable = drawable
@@ -379,11 +392,16 @@ class ImagePlayerView : FrameLayout {
         height: Int,
     ) {
         galleryBackgroundImageView.visibility = GONE
+        gallerySpotlightView.visibility = GONE
         galleryFrameView.visibility = GONE
         galleryFrameView.paintingDrawable = null
 
-        blurHelper.update(drawable)
+        val lightingProfile = ArtLightingManager.getProfile(currentMedia)
+        backgroundDimOverlay.alpha = lightingProfile.dimOverlayAlpha
         backgroundDimOverlay.visibility = VISIBLE
+
+        sculptureBacklightView.setLightingProfile(lightingProfile)
+        blurHelper.update(drawable)
 
         foregroundImageView.visibility = VISIBLE
         foregroundImageView.scaleType = ImageView.ScaleType.FIT_CENTER
@@ -407,13 +425,13 @@ class ImagePlayerView : FrameLayout {
         foregroundImageView.scaleX = 1f
         foregroundImageView.scaleY = 1f
 
-        val shadowW = (targetW * 1.5f).toInt()
-        val shadowH = (targetH * 0.85f).toInt()
-        sculptureShadowView.layoutParams =
+        val shadowW = (targetW * 1.55f).toInt()
+        val shadowH = (targetH * 0.95f).toInt()
+        sculptureBacklightView.layoutParams =
             LayoutParams(shadowW, shadowH, Gravity.CENTER).apply {
-                sculptureShadowView.translationX = sideOffset
+                sculptureBacklightView.translationX = sideOffset
             }
-        sculptureShadowView.visibility = VISIBLE
+        sculptureBacklightView.visibility = VISIBLE
     }
 
     private fun setupStandardMode(
@@ -422,10 +440,12 @@ class ImagePlayerView : FrameLayout {
         height: Int,
     ) {
         galleryBackgroundImageView.visibility = GONE
+        gallerySpotlightView.visibility = GONE
         galleryFrameView.visibility = GONE
         galleryFrameView.paintingDrawable = null
-        sculptureShadowView.visibility = GONE
+        sculptureBacklightView.visibility = GONE
         backgroundDimOverlay.visibility = GONE
+        backgroundDimOverlay.alpha = 0.55f
 
         foregroundImageView.visibility = VISIBLE
         blurHelper.update(drawable.takeIf { currentMedia != null && shouldShowBlurBackground(currentMedia!!, it) })
@@ -569,13 +589,16 @@ class ImagePlayerView : FrameLayout {
         foregroundImageView.imageMatrix = baseMatrix
 
         galleryBackgroundImageView.visibility = GONE
+        gallerySpotlightView.visibility = GONE
         galleryFrameView.visibility = GONE
         galleryFrameView.paintingDrawable = null
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
+        galleryFrameView.kenBurnsScale = 1f
 
-        sculptureShadowView.visibility = GONE
+        sculptureBacklightView.visibility = GONE
         backgroundDimOverlay.visibility = GONE
+        backgroundDimOverlay.alpha = 0.55f
         blurHelper.cancel()
     }
 
@@ -686,11 +709,14 @@ class ImagePlayerView : FrameLayout {
 
         when (currentDisplayMode) {
             DisplayMode.GALLERY -> {
-                val startScale = 1.0f
-                val endScale = 1.025f
+                val startFrameScale = 1.0f
+                val endFrameScale = 1.04f
+                val startPaintingZoom = 1.0f
+                val endPaintingZoom = 1.30f // Zoom into painting details
 
                 galleryFrameView.pivotX = galleryFrameView.width / 2f
                 galleryFrameView.pivotY = galleryFrameView.height / 2f
+                galleryFrameView.focalY = naturalFocalY
 
                 kenBurnsAnimator =
                     ValueAnimator.ofFloat(0f, 1f).apply {
@@ -698,9 +724,12 @@ class ImagePlayerView : FrameLayout {
                         interpolator = LinearInterpolator()
                         addUpdateListener { animator ->
                             val f = animator.animatedFraction
-                            val s = startScale + (endScale - startScale) * f
-                            galleryFrameView.scaleX = s
-                            galleryFrameView.scaleY = s
+                            val fs = startFrameScale + (endFrameScale - startFrameScale) * f
+                            galleryFrameView.scaleX = fs
+                            galleryFrameView.scaleY = fs
+
+                            galleryFrameView.kenBurnsScale =
+                                startPaintingZoom + (endPaintingZoom - startPaintingZoom) * f
                         }
                         start()
                     }
@@ -708,8 +737,8 @@ class ImagePlayerView : FrameLayout {
             DisplayMode.SCULPTURE -> {
                 val sideOffset = if (isOverlayOnRight) -(vw * 0.23f) else +(vw * 0.23f)
                 val zoomIn = kotlin.random.Random.nextBoolean()
-                val startScale = if (zoomIn) 1.0f else 1.03f
-                val endScale = if (zoomIn) 1.03f else 1.0f
+                val startScale = if (zoomIn) 1.0f else 1.04f
+                val endScale = if (zoomIn) 1.04f else 1.0f
 
                 kenBurnsAnimator =
                     ValueAnimator.ofFloat(0f, 1f).apply {
@@ -721,9 +750,9 @@ class ImagePlayerView : FrameLayout {
                             foregroundImageView.scaleX = s
                             foregroundImageView.scaleY = s
                             foregroundImageView.translationX = sideOffset
-                            sculptureShadowView.scaleX = s
-                            sculptureShadowView.scaleY = s
-                            sculptureShadowView.translationX = sideOffset
+                            sculptureBacklightView.scaleX = s
+                            sculptureBacklightView.scaleY = s
+                            sculptureBacklightView.translationX = sideOffset
                         }
                         start()
                     }
@@ -804,8 +833,8 @@ class ImagePlayerView : FrameLayout {
         }
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
-        sculptureShadowView.scaleX = 1f
-        sculptureShadowView.scaleY = 1f
+        sculptureBacklightView.scaleX = 1f
+        sculptureBacklightView.scaleY = 1f
     }
 
     private fun runSetupFinishedRunnable() {
