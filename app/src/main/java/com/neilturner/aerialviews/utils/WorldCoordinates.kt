@@ -362,6 +362,14 @@ object WorldCoordinates {
             "rhodope" to Coordinates(41.6000, 24.5000),
             "vacha" to Coordinates(41.9333, 24.4500),
             "orpheus" to Coordinates(41.6167, 24.6833),
+            "belogradchik" to Coordinates(43.6236, 22.6841),
+            "nessebar" to Coordinates(42.6588, 27.7342),
+            "nesebar" to Coordinates(42.6588, 27.7342),
+            "plovdiv" to Coordinates(42.1354, 24.7453),
+            "buzludzha" to Coordinates(42.7358, 25.3939),
+            "rila monastery" to Coordinates(42.1333, 23.3402),
+            "seven rila lakes" to Coordinates(42.2036, 23.3153),
+            "rila lakes" to Coordinates(42.2036, 23.3153),
         )
 
     fun find(name: String?): Coordinates? {

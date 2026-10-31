@@ -282,118 +282,6 @@
     },
     {
       "timeOfDay": "day",
-      "accessibilityLabel": "Sofia, Bulgaria",
-      "title": "Sofia National Palace of Culture",
-      "scene": "city",
-      "id": "video_bulgaria_sofia_ndk",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Aerial_views_of_the_National_Palace_of_Culture%2C_Sofia%2C_Bulgaria.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Aerial_views_of_the_National_Palace_of_Culture%2C_Sofia%2C_Bulgaria.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Aerial_views_of_the_National_Palace_of_Culture%2C_Sofia%2C_Bulgaria.webm",
-      "pointsOfInterest": {
-        "0": "video_bulgaria_sofia_ndk_0"
-      },
-      "details": "Aerial view of the National Palace of Culture (NDK) in central Sofia, surrounded by cascading park fountains and framed by the snow-capped peak of Mount Vitosha in the background."
-    },
-    {
-      "timeOfDay": "day",
-      "accessibilityLabel": "Sofia, Bulgaria",
-      "title": "Sofia Central Architecture",
-      "scene": "city",
-      "id": "video_bulgaria_sofia_architecture",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Sofia_Synagogue.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Sofia_Synagogue.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Sofia_Synagogue.webm",
-      "pointsOfInterest": {
-        "0": "video_bulgaria_sofia_architecture_0"
-      },
-      "details": "Sweeping flight over the historic heart of Sofia, showcasing the golden domes of Saint Alexander Nevsky Cathedral, ancient Roman Serdica ruins, and Neo-Byzantine basilicas."
-    },
-    {
-      "timeOfDay": "day",
-      "accessibilityLabel": "Rhodope Mountains, Bulgaria",
-      "title": "Orpheus Rocks Rhodope Mountains",
-      "scene": "nature",
-      "id": "video_bulgaria_rhodope_orpheus",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/1/1c/%D0%9E%D1%80%D1%84%D0%B5%D0%B5%D0%B2%D0%B8_%D1%81%D0%BA%D0%B0%D0%BB%D0%B8_%D0%B2_%D0%A0%D0%BE%D0%B4%D0%BE%D0%BF%D0%B8%D1%82%D0%B5_-_Orpheus_Rocks_in_the_Bulgarian_Rhodope_Mountains.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/1/1c/%D0%9E%D1%80%D1%84%D0%B5%D0%B5%D0%B2%D0%B8_%D1%81%D0%BA%D0%B0%D0%BB%D0%B8_%D0%B2_%D0%A0%D0%BE%D0%B4%D0%BE%D0%BF%D0%B8%D1%82%D0%B5_-_Orpheus_Rocks_in_the_Bulgarian_Rhodope_Mountains.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/1/1c/%D0%9E%D1%80%D1%84%D0%B5%D0%B5%D0%B2%D0%B8_%D1%81%D0%BA%D0%B0%D0%BB%D0%B8_%D0%B2_%D0%A0%D0%BE%D0%B4%D0%BE%D0%BF%D0%B8%D1%82%D0%B5_-_Orpheus_Rocks_in_the_Bulgarian_Rhodope_Mountains.webm",
-      "pointsOfInterest": {
-        "0": "video_bulgaria_rhodope_orpheus_0"
-      },
-      "details": "Dramatic limestone cliffs and pine valleys of the Rhodope Mountains near Smolyan, Bulgaria, steeped in the ancient Thracian mythology of the legendary musician Orpheus."
-    },
-    {
-      "timeOfDay": "day",
-      "accessibilityLabel": "Bulgaria",
-      "title": "Bulgarian Lavender Fields",
-      "scene": "countryside",
-      "id": "video_bulgaria_lavender",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/4/43/%D0%9B%D0%B0%D0%B2%D0%B0%D0%BD%D0%B4%D1%83%D0%BB%D0%B0.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/4/43/%D0%9B%D0%B0%D0%B2%D0%B0%D0%BD%D0%B4%D1%83%D0%BB%D0%B0.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/4/43/%D0%9B%D0%B0%D0%B2%D0%B0%D0%BD%D0%B4%D1%83%D0%BB%D0%B0.webm",
-      "pointsOfInterest": {
-        "0": "video_bulgaria_lavender_0"
-      },
-      "details": "Vibrant purple lavender fields stretching across the Rose Valley of central Bulgaria, the world's leading producer of premium lavender oil and aromatic botanicals."
-    },
-    {
-      "timeOfDay": "day",
-      "accessibilityLabel": "Provadia, Bulgaria",
-      "title": "Ovech Medieval Fortress",
-      "scene": "nature",
-      "id": "video_bulgaria_ovech_provadia",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/4/4e/%D0%9E%D0%B2%D0%B5%D1%87%2C_%D0%9F%D1%80%D0%BE%D0%B2%D0%B0%D0%B4%D0%B8%D1%8F.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/4/4e/%D0%9E%D0%B2%D0%B5%D1%87%2C_%D0%9F%D1%80%D0%BE%D0%B2%D0%B0%D0%B4%D0%B8%D1%8F.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/4/4e/%D0%9E%D0%B2%D0%B5%D1%87%2C_%D0%9F%D1%80%D0%BE%D0%B2%D0%B0%D0%B4%D0%B8%D1%8F.webm",
-      "pointsOfInterest": {
-        "0": "video_bulgaria_ovech_provadia_0"
-      },
-      "details": "High aerial glide over the stone plateau fortress of Ovech, perched atop sheer cliffs above Provadia, used successively by Thracians, Romans, Byzantines, and Bulgarian tsars."
-    },
-    {
-      "timeOfDay": "day",
-      "accessibilityLabel": "Burgas, Bulgaria",
-      "title": "Burgas Black Sea Coast",
-      "scene": "sea",
-      "id": "video_bulgaria_burgas",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/7/75/Burgas%2C_Bulgaria.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/7/75/Burgas%2C_Bulgaria.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/7/75/Burgas%2C_Bulgaria.webm",
-      "pointsOfInterest": {
-        "0": "video_bulgaria_burgas_0"
-      },
-      "details": "Sweeping flight along the Black Sea coastline at Burgas, capturing white-crested waves, tranquil coastal lagoons, and the lush seaside Sea Garden promenade."
-    },
-    {
-      "timeOfDay": "day",
-      "accessibilityLabel": "Varna, Bulgaria",
-      "title": "Varna & Asparuhovo Coastline",
-      "scene": "sea",
-      "id": "video_bulgaria_varna_asparuhovo",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/a/a1/%D0%92%D0%B0%D1%80%D0%BD%D0%B0%2C_%D0%BC%D0%BE%D1%80%D0%B5%2C_%D0%90%D1%81%D0%BF%D0%B0%D1%80%D1%83%D1%85%D0%BE%D0%B2%D0%BE.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/a/a1/%D0%92%D0%B0%D1%80%D0%BD%D0%B0%2C_%D0%BC%D0%BE%D1%80%D0%B5%2C_%D0%90%D1%81%D0%BF%D0%B0%D1%80%D1%83%D1%85%D0%BE%D0%B2%D0%BE.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/a/a1/%D0%92%D0%B0%D1%80%D0%BD%D0%B0%2C_%D0%BC%D0%BE%D1%80%D0%B5%2C_%D0%90%D1%81%D0%BF%D0%B0%D1%80%D1%83%D1%85%D0%BE%D0%B2%D0%BE.webm",
-      "pointsOfInterest": {
-        "0": "video_bulgaria_varna_asparuhovo_0"
-      },
-      "details": "Panoramic flight over Varna Bay and the Asparuhov Bridge connecting the maritime capital of Bulgaria with scenic coastal bluffs and golden Black Sea shores."
-    },
-    {
-      "timeOfDay": "day",
-      "accessibilityLabel": "Rhodope Mountains, Bulgaria",
-      "title": "Vacha Reservoir Canyon",
-      "scene": "nature",
-      "id": "video_bulgaria_vacha_reservoir",
-      "url-4K-SDR": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Vacha-Reservoir.webm",
-      "url-1080-SDR": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Vacha-Reservoir.webm",
-      "url-1080-H264": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Vacha-Reservoir.webm",
-      "pointsOfInterest": {
-        "0": "video_bulgaria_vacha_reservoir_0"
-      },
-      "details": "Emerald waters of the Vacha Reservoir winding through deep forested canyons in the Rhodope Mountains, framed by one of the tallest concrete gravity dams in Europe."
-    },
-    {
-      "timeOfDay": "day",
       "accessibilityLabel": "Moscow, Russia",
       "title": "Moscow & Kremlin Skyline",
       "scene": "city",
@@ -475,243 +363,341 @@
         "0": "video_russia_forest_0"
       },
       "details": "Sunlit flight above vibrant white birch groves and evergreen pine forests in rural Russia during peak seasonal autumn foliage."
+    },
+    {
+      "timeOfDay": "day",
+      "accessibilityLabel": "Rila Monastery, Bulgaria",
+      "title": "Rila Monastery",
+      "scene": "nature",
+      "id": "video_bulgaria_rila_monastery",
+      "url-4K-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_rila_monastery.mp4",
+      "url-1080-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_rila_monastery.mp4",
+      "url-1080-H264": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_rila_monastery.mp4",
+      "pointsOfInterest": {
+        "0": "video_bulgaria_rila_monastery_0"
+      },
+      "details": "Founded in the 10th century by Saint John of Rila, this Eastern Orthodox monastery sits at 1,147 m in the forested Rila Mountains. Renowned for its distinctive striped colonnades, intricate vibrant frescoes, and the 14th-century stone Tower of Hrelyo, it stands as Bulgaria's cultural and spiritual sanctuary."
+    },
+    {
+      "timeOfDay": "day",
+      "accessibilityLabel": "Seven Rila Lakes, Bulgaria",
+      "title": "Seven Rila Lakes",
+      "scene": "nature",
+      "id": "video_bulgaria_seven_rila_lakes",
+      "url-4K-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_seven_rila_lakes.mp4",
+      "url-1080-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_seven_rila_lakes.mp4",
+      "url-1080-H264": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_seven_rila_lakes.mp4",
+      "pointsOfInterest": {
+        "0": "video_bulgaria_seven_rila_lakes_0"
+      },
+      "details": "A group of glacial lakes situated in the northwestern Rila Mountains between 2,100 and 2,500 meters altitude. Cascading into each other from the highest 'The Tear' to 'The Eye', 'The Kidney', 'The Twin', 'The Trefoil', 'Fish Lake', and 'The Lower Lake', they form Bulgaria's most visited alpine wonderland."
+    },
+    {
+      "timeOfDay": "day",
+      "accessibilityLabel": "Belogradchik, Bulgaria",
+      "title": "Belogradchik Rocks and Fortress",
+      "scene": "nature",
+      "id": "video_bulgaria_belogradchik_rocks",
+      "url-4K-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_belogradchik_rocks.mp4",
+      "url-1080-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_belogradchik_rocks.mp4",
+      "url-1080-H264": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_belogradchik_rocks.mp4",
+      "pointsOfInterest": {
+        "0": "video_bulgaria_belogradchik_rocks_0"
+      },
+      "details": "A striking formation of reddish and yellowish sandstone and conglomerate rock pinnacles sculpted over 200 million years, reaching up to 200 meters high on the western slopes of the Balkan Mountains. Built naturally into the towers is the ancient Belogradchik Fortress, dating back to Roman times."
+    },
+    {
+      "timeOfDay": "day",
+      "accessibilityLabel": "Nessebar, Bulgaria",
+      "title": "Ancient City of Nessebar",
+      "scene": "city",
+      "id": "video_bulgaria_nessebar_peninsula",
+      "url-4K-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_nessebar_peninsula.mp4",
+      "url-1080-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_nessebar_peninsula.mp4",
+      "url-1080-H264": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_nessebar_peninsula.mp4",
+      "pointsOfInterest": {
+        "0": "video_bulgaria_nessebar_peninsula_0"
+      },
+      "details": "An ancient Black Sea peninsula with over 3,000 years of civilization, known as the 'Pearl of the Black Sea'. Connected to the mainland by a narrow isthmus with a wooden windmill, this UNESCO World Heritage town showcases remarkable medieval churches, timber houses, and seaside fortifications."
+    },
+    {
+      "timeOfDay": "day",
+      "accessibilityLabel": "Sofia, Bulgaria",
+      "title": "Alexander Nevsky Cathedral, Sofia",
+      "scene": "city",
+      "id": "video_bulgaria_sofia_cathedrals",
+      "url-4K-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_sofia_cathedrals.mp4",
+      "url-1080-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_sofia_cathedrals.mp4",
+      "url-1080-H264": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_sofia_cathedrals.mp4",
+      "pointsOfInterest": {
+        "0": "video_bulgaria_sofia_cathedrals_0"
+      },
+      "details": "One of the largest Eastern Orthodox cathedrals in the world, built in Neo-Byzantine style with gold-plated and copper domes soaring 53 meters high. Serving as the primary cathedral of the Bulgarian Patriarchate, it dominates the historic heart of Sofia."
+    },
+    {
+      "timeOfDay": "day",
+      "accessibilityLabel": "Mount Buzludzha, Bulgaria",
+      "title": "Buzludzha Monument",
+      "scene": "nature",
+      "id": "video_bulgaria_buzludzha_peak",
+      "url-4K-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_buzludzha_peak.mp4",
+      "url-1080-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_buzludzha_peak.mp4",
+      "url-1080-H264": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_buzludzha_peak.mp4",
+      "pointsOfInterest": {
+        "0": "video_bulgaria_buzludzha_peak_0"
+      },
+      "details": "Perched atop Mount Buzludzha at 1,441 m along the Central Balkan Mountains ridge, this colossal saucer-shaped brutalist structure and 70-meter tower was opened in 1981. Now an enigmatic world-renowned relic of 20th-century history, it stands amid sweeping panoramic mountain vistas."
+    },
+    {
+      "timeOfDay": "day",
+      "accessibilityLabel": "Plovdiv, Bulgaria",
+      "title": "Old Town & Roman Theatre, Plovdiv",
+      "scene": "city",
+      "id": "video_bulgaria_plovdiv_ancient",
+      "url-4K-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_plovdiv_ancient.mp4",
+      "url-1080-SDR": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_plovdiv_ancient.mp4",
+      "url-1080-H264": "https://github.com/ivank/scienta-cognita-tv/releases/download/media-v1/video_bulgaria_plovdiv_ancient.mp4",
+      "pointsOfInterest": {
+        "0": "video_bulgaria_plovdiv_ancient_0"
+      },
+      "details": "Continuously inhabited for over 8,000 years, Plovdiv is one of the oldest cities in Europe. Its historic Old Town spreads across three granite hills (Nebet Tepe), featuring ornate National Revival mansions and a remarkably preserved 1st-century Roman amphitheatre overlooking the city."
     }
   ],
   "version": 1,
-  "initialAssetCount": 0,
+  "initialAssetCount": 33,
   "photos": [
     {
-      "title": "Christ the Redeemer \u2014 Paul Landowski, 1931, Corcovado, Rio de Janeiro, Brazil",
+      "title": "Christ the Redeemer — Paul Landowski, 1931, Corcovado, Rio de Janeiro, Brazil",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Christ_the_Redeemer_-_Cristo_Redentor.jpg/1920px-Christ_the_Redeemer_-_Cristo_Redentor.jpg",
       "description": "Colossal Art Deco statue of Jesus Christ created by French sculptor Paul Landowski and Brazilian engineer Heitor da Silva Costa. Standing 30 meters tall atop the 700-meter Corcovado peak overlooking Rio de Janeiro, it was constructed between 1922 and 1931 from reinforced concrete and six million soapstone tiles. In 2007, it was voted one of the New Seven Wonders of the World."
     },
     {
-      "title": "David \u2014 Michelangelo, 1504, Galleria dell'Accademia, Florence, Italy",
+      "title": "David — Michelangelo, 1504, Galleria dell'Accademia, Florence, Italy",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/%27David%27_by_Michelangelo_Fir_JBU004.jpg/1920px-%27David%27_by_Michelangelo_Fir_JBU004.jpg",
       "description": "Masterpiece of Renaissance sculpture created in pure Carrara marble by Michelangelo between 1501 and 1504. Standing 5.17 meters tall, the statue portrays the biblical hero David, poised with intense focus before facing Goliath. Its anatomical accuracy and contrapposto stance established it as the supreme symbol of Florentine civic liberty."
     },
     {
-      "title": "Mask of Tutankhamun \u2014 18th Dynasty Gold Mask, c. 1323 BC, Luxor / Cairo, Egypt",
+      "title": "Mask of Tutankhamun — 18th Dynasty Gold Mask, c. 1323 BC, Luxor / Cairo, Egypt",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/2/27/CairoEgMuseumTaaMaskMostlyPhotographed.jpg",
       "description": "Ancient Egyptian gold funerary mask of the 18th Dynasty pharaoh Tutankhamun, crafted around 1323 BC. Discovered in 1925 in the Valley of the Kings by Howard Carter, it is fashioned from two sheets of beaten high-karat gold inlaid with colored glass, faience, and semi-precious lapis lazuli."
     },
     {
-      "title": "Great Sphinx of Giza \u2014 Old Kingdom Colossal Sculpture, c. 2500 BC, Giza, Egypt",
+      "title": "Great Sphinx of Giza — Old Kingdom Colossal Sculpture, c. 2500 BC, Giza, Egypt",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Sphinx_with_the_third_pyramid.jpg/1920px-Sphinx_with_the_third_pyramid.jpg",
       "description": "Colossal limestone statue of a reclining mythical sphinx with the body of a lion and the head of Pharaoh Khafre, carved around 2500 BC during Egypt's Old Kingdom. Measuring 73 meters long and 20 meters high, it is the oldest known monumental sculpture in Egypt."
     },
     {
-      "title": "Benin Bronzes \u2014 Kingdom of Benin Royal Sculptures, 16th c., Benin City, Nigeria",
+      "title": "Benin Bronzes — Kingdom of Benin Royal Sculptures, 16th c., Benin City, Nigeria",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Benin_brass_plaque_03_%28cropped%29.jpg/1920px-Benin_brass_plaque_03_%28cropped%29.jpg",
       "description": "Group of over a thousand commemorative brass and bronze plaques and cast sculptures created by the Edo people of the Kingdom of Benin from the 16th century onward. Adorning the royal palace of the Oba, their intricate lost-wax casting exemplifies West African metalworking mastery."
     },
     {
-      "title": "Church of St. George \u2014 Rock-Hewn Monolithic Church, c. 1200, Lalibela, Ethiopia",
+      "title": "Church of St. George — Rock-Hewn Monolithic Church, c. 1200, Lalibela, Ethiopia",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Lalibela%2C_san_giorgio%2C_esterno_24.jpg/1920px-Lalibela%2C_san_giorgio%2C_esterno_24.jpg",
       "description": "Monolithic cross-shaped church carved directly downward into volcanic tuff rock during the late 12th or early 13th century under King Gebre Mesqel Lalibela. Connected by a subterranean network of trenches and catacombs, it remains an active pilgrimage site of the Ethiopian Orthodox Tewahedo Church."
     },
     {
-      "title": "Great Mosque of Djenn\u00e9 \u2014 Sudano-Sahelian Earth Architecture, c. 13th c., Djenn\u00e9, Mali",
+      "title": "Great Mosque of Djenné — Sudano-Sahelian Earth Architecture, c. 13th c., Djenné, Mali",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Djenne_great_mud_mosque.jpg/1920px-Djenne_great_mud_mosque.jpg",
       "description": "The largest mud-brick architecture in the world, situated along the Bani River in Mali. Built in the distinctive Sudano-Sahelian architectural style with sun-baked earth bricks, its walls are replastered annually by the entire community during an extraordinary cultural festival."
     },
     {
-      "title": "Ife Head of a King \u2014 Kingdom of Ife Brass Sculpture, c. 1300, Ife, Nigeria",
+      "title": "Ife Head of a King — Kingdom of Ife Brass Sculpture, c. 1300, Ife, Nigeria",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Arte_yoruba%2C_nigeria%2C_testa_da_ife%2C_12-15mo_secolo.JPG",
       "description": "Masterpiece of Yoruba naturalistic sculpture cast in copper alloy around 1300 AD in the ancient sacred city of Ile-Ife. Unearthed in 1938, its refined facial features and delicate striations represent an Ooni (king) wearing a beaded royal headdress."
     },
     {
-      "title": "The Great Wave off Kanagawa \u2014 Hokusai, c. 1831, Mount Fuji, Japan",
+      "title": "The Great Wave off Kanagawa — Hokusai, c. 1831, Mount Fuji, Japan",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Tsunami_by_hokusai_19th_century.jpg/1920px-Tsunami_by_hokusai_19th_century.jpg",
       "description": "Famous woodblock print by the Japanese ukiyo-e master Katsushika Hokusai, published around 1831 as the first print in Thirty-Six Views of Mount Fuji. Depicts towering rogue waves framing Japan's sacred Mount Fuji, with three oared cargo boats bravely navigating the turbulent seas."
     },
     {
-      "title": "Along the River During the Qingming Festival \u2014 Zhang Zeduan, Song Dynasty, Bianjing, China",
+      "title": "Along the River During the Qingming Festival — Zhang Zeduan, Song Dynasty, Bianjing, China",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Bianjing_city_gate.JPG/1920px-Bianjing_city_gate.JPG",
       "description": "Panoramic Song Dynasty handscroll painting by Zhang Zeduan from the early 12th century, capturing the vibrant daily life, commerce, and celebrations in the imperial capital of Bianjing (modern Kaifeng) along the Yellow River during the annual Qingming festival."
     },
     {
-      "title": "Terracotta Army \u2014 Qin Dynasty Sculptures, c. 210 BC, Xi'an, China",
+      "title": "Terracotta Army — Qin Dynasty Sculptures, c. 210 BC, Xi'an, China",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/51714-Terracota-Army.jpg/1920px-51714-Terracota-Army.jpg",
       "description": "Monumental funerary collection of more than 8,000 life-sized terracotta soldiers, 130 chariots, and 520 horses buried around 210 BC to protect Qin Shi Huang, the first Emperor of China, in the afterlife. Every single soldier displays unique facial features, armor, and hairstyles."
     },
     {
-      "title": "Taj Mahal \u2014 Mughal Monumental Architecture, 1648, Agra, India",
+      "title": "Taj Mahal — Mughal Monumental Architecture, 1648, Agra, India",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/1920px-Taj_Mahal_%28Edited%29.jpeg",
       "description": "Ivory-white marble mausoleum on the south bank of the Yamuna River, commissioned in 1631 by Mughal Emperor Shah Jahan to house the tomb of his favorite wife, Mumtaz Mahal. Celebrated as the jewel of Muslim art in India, it features symmetry, Persian calligraphy, and pietra dura inlays."
     },
     {
-      "title": "Padmapani Bodhisattva Fresco \u2014 Ajanta Caves, c. 475 AD, Maharashtra, India",
+      "title": "Padmapani Bodhisattva Fresco — Ajanta Caves, c. 475 AD, Maharashtra, India",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Ajanta_%2863%29.jpg",
       "description": "Ancient Buddhist cave fresco painted around 475 AD inside Cave 1 of the Ajanta Caves, a UNESCO World Heritage site in the Sahyadri mountains. Depicts Bodhisattva Padmapani holding a blue lotus flower, radiating compassion with subtle shading and spiritual elegance."
     },
     {
-      "title": "Kandariya Mahadeva Temple \u2014 Chandela Dynasty, c. 1030 AD, Khajuraho, India",
+      "title": "Kandariya Mahadeva Temple — Chandela Dynasty, c. 1030 AD, Khajuraho, India",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Khajuraho.KandariyaMahadeva.jpg/1920px-Khajuraho.KandariyaMahadeva.jpg",
       "description": "The largest and most ornate Hindu temple at Khajuraho, built around 1030 AD by the Chandela king Vidyadhara. Dedicated to Lord Shiva, its towering spire represents Mount Meru, adorned with over 800 intricately carved sculptures celebrating divine joy and artistic perfection."
     },
     {
-      "title": "Angkor Wat \u2014 Khmer Monumental Architecture, c. 1150 AD, Siem Reap, Cambodia",
+      "title": "Angkor Wat — Khmer Monumental Architecture, c. 1150 AD, Siem Reap, Cambodia",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1920px-Angkor_Wat.jpg",
       "description": "Massive temple complex constructed in the early 12th century by Khmer King Suryavarman II, originally dedicated to Vishnu before transforming into a Buddhist center. Spanning over 160 hectares, it is the largest religious monument in the world, surrounded by a vast moat."
     },
     {
-      "title": "Borobudur Temple Stupas \u2014 Sailendra Dynasty, c. 800 AD, Java, Indonesia",
+      "title": "Borobudur Temple Stupas — Sailendra Dynasty, c. 800 AD, Java, Indonesia",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Pradaksina.jpg/1920px-Pradaksina.jpg",
       "description": "The world's largest Buddhist temple, built in the 8th and 9th centuries under the Sailendra Dynasty. Constructed without mortar from volcanic rock, its concentric terraces ascend past 2,672 relief panels and 504 Buddha statues toward a central monumental dome."
     },
     {
-      "title": "Gate of All Nations \u2014 Achaemenid Empire, c. 515 BC, Persepolis, Iran",
+      "title": "Gate of All Nations — Achaemenid Empire, c. 515 BC, Persepolis, Iran",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/2018-09-21_Iran%2C_Persepolis%2C_Tachara_%28from_the_southeast%29.jpg/1920px-2018-09-21_Iran%2C_Persepolis%2C_Tachara_%28from_the_southeast%29.jpg",
       "description": "Grand entrance portal ordered by King Xerxes I around 515 BC at Persepolis, the ceremonial capital of the Persian Achaemenid Empire. Guarded by colossal winged human-headed bulls (lamassu), it welcomed envoys and dignitaries from all provinces of the vast empire."
     },
     {
-      "title": "El Castillo (Pyramid of Kukulkan) \u2014 Maya Civilization, c. 900 AD, Chichen Itza, Mexico",
+      "title": "El Castillo (Pyramid of Kukulkan) — Maya Civilization, c. 900 AD, Chichen Itza, Mexico",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Chichen_Itza_3.jpg/1920px-Chichen_Itza_3.jpg",
       "description": "Mesoamerican step-pyramid dedicated to the feathered serpent deity Kukulkan, built by the Maya civilization between the 9th and 12th centuries. During the equinoxes, the afternoon sun casts shadows creating the illusion of a giant serpent slithering down the stairs."
     },
     {
-      "title": "Pyramid of the Sun \u2014 Pre-Columbian City, c. 200 AD, Teotihuacan, Mexico",
+      "title": "Pyramid of the Sun — Pre-Columbian City, c. 200 AD, Teotihuacan, Mexico",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/2020-02-11_Teotihuacan_la_Avenida_de_los_Muertos_y_la_Pir%C3%A1mide_del_Sol.jpg/1920px-2020-02-11_Teotihuacan_la_Avenida_de_los_Muertos_y_la_Pir%C3%A1mide_del_Sol.jpg",
       "description": "The largest structure in the ancient pre-Columbian city of Teotihuacan, built around 200 AD along the Avenue of the Dead. Rising 65 meters above the valley floor, it served as an astronomical observatory and ceremonial temple dedicated to celestial deities."
     },
     {
-      "title": "Aztec Sun Stone (Piedra del Sol) \u2014 Aztec Empire, c. 1502, Tenochtitlan / Mexico City",
+      "title": "Aztec Sun Stone (Piedra del Sol) — Aztec Empire, c. 1502, Tenochtitlan / Mexico City",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Monolito_de_la_Piedra_del_Sol.jpg/1920px-Monolito_de_la_Piedra_del_Sol.jpg",
-      "description": "Colossal basalt calendar monolith carved in the early 16th century by the Mexica (Aztec) Empire under Emperor Moctezuma II. Unearthed beneath Mexico City's Z\u00f3calo in 1790, it depicts the central face of the sun god Tonatiuh surrounded by four previous cosmic eras."
+      "description": "Colossal basalt calendar monolith carved in the early 16th century by the Mexica (Aztec) Empire under Emperor Moctezuma II. Unearthed beneath Mexico City's Zócalo in 1790, it depicts the central face of the sun god Tonatiuh surrounded by four previous cosmic eras."
     },
     {
-      "title": "Machu Picchu Sanctuary \u2014 Inca Empire, c. 1450, Andes Mountains, Cusco, Peru",
+      "title": "Machu Picchu Sanctuary — Inca Empire, c. 1450, Andes Mountains, Cusco, Peru",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Machu_Picchu%2C_2023_%28012%29.jpg/1920px-Machu_Picchu%2C_2023_%28012%29.jpg",
       "description": "Inca royal citadel situated on a mountain ridge 2,430 meters above sea level in the Sacred Valley of Peru, constructed around 1450 under Emperor Pachacuti. Known for its sophisticated dry-stone masonry, agricultural terraces, and dramatic alpine panorama."
     },
     {
-      "title": "Moai of Rapa Nui \u2014 Polynesian Monolithic Statues, c. 1250\u20131500, Easter Island, Chile",
+      "title": "Moai of Rapa Nui — Polynesian Monolithic Statues, c. 1250–1500, Easter Island, Chile",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/5/50/AhuTongariki.JPG",
       "description": "Monolithic volcanic stone figures carved by the Polynesian Rapa Nui people between 1250 and 1500 AD. Representing ancestral chiefs, nearly 1,000 statues stand across the remote Pacific island, gazing inland from monumental stone platforms called ahu."
     },
     {
-      "title": "American Gothic \u2014 Grant Wood, 1930, Eldon, Iowa / Art Institute of Chicago",
+      "title": "American Gothic — Grant Wood, 1930, Eldon, Iowa / Art Institute of Chicago",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Grant_Wood_-_American_Gothic_%281930%29.jpg/1920px-Grant_Wood_-_American_Gothic_%281930%29.jpg",
       "description": "Iconic 1930 regionalist painting by Grant Wood, inspired by the Carpenter Gothic house in Eldon, Iowa. Depicting a farmer holding a pitchfork alongside his daughter, it captures the stoic spirit and work ethic of small-town rural America during the Great Depression."
     },
     {
-      "title": "Nighthawks \u2014 Edward Hopper, 1942, New York / Art Institute of Chicago",
+      "title": "Nighthawks — Edward Hopper, 1942, New York / Art Institute of Chicago",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Nighthawks_by_Edward_Hopper_1942.jpg/1920px-Nighthawks_by_Edward_Hopper_1942.jpg",
       "description": "Atmospheric 1942 oil painting by Edward Hopper portraying four late-night patrons seated in an illuminated downtown diner on a quiet city corner. Renowned for its subtle depiction of urban solitude, cinematic lighting, and modernist architectural geometry."
     },
     {
-      "title": "Aboriginal Rock Art \u2014 Indigenous Australian Ancestral Art, Kakadu, Australia",
+      "title": "Aboriginal Rock Art — Indigenous Australian Ancestral Art, Kakadu, Australia",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/9/93/Kakadu_2431.jpg",
       "description": "Ancient Indigenous Australian rock art gallery in Kakadu National Park, Northern Territory, dating back over 20,000 years. Painted by Bininj/Mungguy artists using natural ochre pigments, it documents ancestral creation stories, native wildlife, and the spiritual Rainbow Serpent."
     },
     {
-      "title": "Mona Lisa \u2014 Leonardo da Vinci, c. 1503, Mus\u00e9e du Louvre, Paris, France",
+      "title": "Mona Lisa — Leonardo da Vinci, c. 1503, Musée du Louvre, Paris, France",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Mona_Lisa.jpg/1920px-Mona_Lisa.jpg",
-      "description": "Celebrated Renaissance portrait painted in oil on poplar wood by Leonardo da Vinci, begun around 1503 in Florence. Famous for its subtle sfumato blending, enigmatic smile, and imaginary mountainous landscape, it is the most visited painting in the Mus\u00e9e du Louvre."
+      "description": "Celebrated Renaissance portrait painted in oil on poplar wood by Leonardo da Vinci, begun around 1503 in Florence. Famous for its subtle sfumato blending, enigmatic smile, and imaginary mountainous landscape, it is the most visited painting in the Musée du Louvre."
     },
     {
-      "title": "The Starry Night \u2014 Vincent van Gogh, 1889, Saint-R\u00e9my-de-Provence, France",
+      "title": "The Starry Night — Vincent van Gogh, 1889, Saint-Rémy-de-Provence, France",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1920px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
-      "description": "Post-impressionist masterpiece painted by Vincent van Gogh in June 1889 from his asylum room window at Saint-R\u00e9my-de-Provence. Features swirling celestial rhythms, glowing crescents and stars, and an expressive foreground cypress tree."
+      "description": "Post-impressionist masterpiece painted by Vincent van Gogh in June 1889 from his asylum room window at Saint-Rémy-de-Provence. Features swirling celestial rhythms, glowing crescents and stars, and an expressive foreground cypress tree."
     },
     {
-      "title": "The Birth of Venus \u2014 Sandro Botticelli, c. 1485, Uffizi Gallery, Florence, Italy",
+      "title": "The Birth of Venus — Sandro Botticelli, c. 1485, Uffizi Gallery, Florence, Italy",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/1920px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg",
       "description": "Renaissance canvas painted around 1485 by Sandro Botticelli, depicting the goddess Venus emerging from the sea upon a scallop shell, blown ashore by the winds Zephyr and Aura. Preserved in Florence's Uffizi Gallery, it embodies Neoplatonic humanist ideals."
     },
     {
-      "title": "The Creation of Adam \u2014 Michelangelo, 1512, Sistine Chapel, Vatican City",
+      "title": "The Creation of Adam — Michelangelo, 1512, Sistine Chapel, Vatican City",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/1920px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg",
       "description": "Monumental fresco painted by Michelangelo between 1508 and 1512 upon the ceiling of the Sistine Chapel. Illustrating the biblical creation narrative from Genesis, the nearly touching fingertips of God and Adam form one of the most celebrated gestures in Western art."
     },
     {
-      "title": "The Thinker \u2014 Auguste Rodin, 1904, Mus\u00e9e Rodin, Paris, France",
+      "title": "The Thinker — Auguste Rodin, 1904, Musée Rodin, Paris, France",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Le_Penseur_by_Rodin_%28Kunsthalle_Bielefeld%29_2014-04-10.JPG/1920px-Le_Penseur_by_Rodin_%28Kunsthalle_Bielefeld%29_2014-04-10.JPG",
       "description": "Iconic bronze sculpture created by French sculptor Auguste Rodin, conceived in 1880 as part of The Gates of Hell inspired by Dante's Inferno. Depicts a muscular male figure leaning forward in deep philosophical meditation, symbolizing human contemplation and creative struggle."
     },
     {
-      "title": "The Kiss \u2014 Gustav Klimt, 1908, Belvedere Palace, Vienna, Austria",
+      "title": "The Kiss — Gustav Klimt, 1908, Belvedere Palace, Vienna, Austria",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/The_Kiss_-_Gustav_Klimt_-_Google_Cultural_Institute.jpg/1920px-The_Kiss_-_Gustav_Klimt_-_Google_Cultural_Institute.jpg",
       "description": "Sensual Golden Phase painting by Austrian symbolist Gustav Klimt, completed in 1908. Using gold leaf, silver, and intricate geometric patterns, it portrays two lovers wrapped in an ornate embrace atop a bed of wild alpine blossoms in Vienna's Belvedere Palace."
     },
     {
-      "title": "Girl with a Pearl Earring \u2014 Johannes Vermeer, 1665, Mauritshuis, The Hague",
+      "title": "Girl with a Pearl Earring — Johannes Vermeer, 1665, Mauritshuis, The Hague",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/1665_Girl_with_a_Pearl_Earring.jpg/1920px-1665_Girl_with_a_Pearl_Earring.jpg",
       "description": "Exquisite Dutch Golden Age tronie painted around 1665 by Johannes Vermeer. Renowned for its luminous rendering of light, exotic blue turban, and reflective teardrop pearl, it captivates viewers with her momentary over-the-shoulder glance."
     },
     {
-      "title": "The Night Watch \u2014 Rembrandt, 1642, Rijksmuseum, Amsterdam, Netherlands",
+      "title": "The Night Watch — Rembrandt, 1642, Rijksmuseum, Amsterdam, Netherlands",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/La_ronda_de_noche%2C_por_Rembrandt_van_Rijn.jpg/1920px-La_ronda_de_noche%2C_por_Rembrandt_van_Rijn.jpg",
       "description": "Monumental 1642 masterpiece by Rembrandt van Rijn, depicting Captain Frans Banninck Cocq and his civic militia company preparing to march. Acclaimed for its dramatic chiaroscuro lighting, dynamic motion, and life-size group composition in the Rijksmuseum."
     },
     {
-      "title": "Venus de Milo \u2014 Alexandros of Antioch, c. 150 BC, Milos, Greece",
+      "title": "Venus de Milo — Alexandros of Antioch, c. 150 BC, Milos, Greece",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Front_views_of_the_Venus_de_Milo.jpg/1920px-Front_views_of_the_Venus_de_Milo.jpg",
       "description": "Classical Hellenistic marble sculpture carved around 150 BC on the Aegean island of Milos, attributed to Alexandros of Antioch. Standing over 2 meters tall, the graceful goddess of love and beauty is renowned worldwide for her classic S-curve contrapposto."
     },
     {
-      "title": "Winged Victory of Samothrace \u2014 Hellenistic Sculpture, c. 190 BC, Samothrace, Greece",
+      "title": "Winged Victory of Samothrace — Hellenistic Sculpture, c. 190 BC, Samothrace, Greece",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Victoire_de_Samothrace_-_Musee_du_Louvre_-_20190812.jpg/1920px-Victoire_de_Samothrace_-_Musee_du_Louvre_-_20190812.jpg",
       "description": "Monumental Parian marble sculpture of the goddess Nike, created around 190 BC on the Greek island of Samothrace to celebrate a naval triumph. Perched upon a ship's prow with rippling drapery swept by sea winds, it presides over the Daru staircase in the Louvre."
     },
     {
-      "title": "The Colosseum \u2014 Flavian Amphitheatre, 80 AD, Rome, Italy",
+      "title": "The Colosseum — Flavian Amphitheatre, 80 AD, Rome, Italy",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1920px-Colosseo_2020.jpg",
       "description": "The largest ancient amphitheatre ever built, constructed in limestone, tuff, and brick-faced concrete under the Flavian emperors between 72 and 80 AD. Seating over 50,000 spectators for gladiatorial contests, it remains the ultimate architectural icon of Imperial Rome."
     },
     {
-      "title": "The Parthenon & Acropolis \u2014 Classical Greek Architecture, c. 447 BC, Athens, Greece",
+      "title": "The Parthenon & Acropolis — Classical Greek Architecture, c. 447 BC, Athens, Greece",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/d/da/The_Parthenon_in_Athens.jpg",
       "description": "Former temple dedicated to the goddess Athena, constructed between 447 and 432 BC atop the rocky Acropolis of Athens by architects Ictinus and Callicrates under Pericles. Regarded as the zenith of Doric classical architecture and Western democratic heritage."
     },
     {
-      "title": "The Scream \u2014 Edvard Munch, 1893, National Museum, Oslo, Norway",
+      "title": "The Scream — Edvard Munch, 1893, National Museum, Oslo, Norway",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg/1920px-Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg",
       "description": "Pioneering expressionist composition created in 1893 by Norwegian artist Edvard Munch. Depicting an agonized figure under an infernal orange sunset along the Kristiania fjord, it externalizes Munch's sensation of an infinite, piercing scream passing through nature."
     },
     {
-      "title": "Las Meninas \u2014 Diego Vel\u00e1zquez, 1656, Museo del Prado, Madrid, Spain",
+      "title": "Las Meninas — Diego Velázquez, 1656, Museo del Prado, Madrid, Spain",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Las_Meninas%2C_by_Diego_Vel%C3%A1zquez%2C_from_Prado_in_Google_Earth.jpg/1920px-Las_Meninas%2C_by_Diego_Vel%C3%A1zquez%2C_from_Prado_in_Google_Earth.jpg",
-      "description": "Complex Golden Age painting created in 1656 by Diego Vel\u00e1zquez in the Royal Alc\u00e1zar of Madrid. Depicting the young Infanta Margaret Theresa attended by her retinue, with Vel\u00e1zquez himself at the easel and the King and Queen reflected in a rear mirror."
+      "description": "Complex Golden Age painting created in 1656 by Diego Velázquez in the Royal Alcázar of Madrid. Depicting the young Infanta Margaret Theresa attended by her retinue, with Velázquez himself at the easel and the King and Queen reflected in a rear mirror."
     },
     {
-      "title": "Wanderer above the Sea of Fog \u2014 Caspar David Friedrich, 1818, Dresden / Hamburg",
+      "title": "Wanderer above the Sea of Fog — Caspar David Friedrich, 1818, Dresden / Hamburg",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg/1920px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg",
       "description": "Romantic oil painting by Caspar David Friedrich, completed in 1818. Depicting a lone traveler standing upon a rocky precipice gazing out over a sweeping landscape cloaked in mountain fog, it epitomizes the Romantic encounter with the sublime in nature."
     },
     {
-      "title": "Madara Rider \u2014 Early Medieval Rock Relief, c. 710 AD, Madara, Bulgaria",
+      "title": "Madara Rider — Early Medieval Rock Relief, c. 710 AD, Madara, Bulgaria",
       "url-1080": "https://upload.wikimedia.org/wikipedia/commons/1/18/JE%C5%B9DZIEC_Z_MADARY.JPG",
       "description": "Early medieval monumental rock relief carved around 710 AD into a vertical 100-meter cliff near Madara in northeastern Bulgaria. Depicting a horseman triumphant over a lion, followed by a hunting dog, it is a UNESCO World Heritage site honoring the early Bulgarian rulers."
     },
     {
-      "title": "Boyana Church Frescoes \u2014 Medieval Master, 1259, Boyana, Sofia, Bulgaria",
+      "title": "Boyana Church Frescoes — Medieval Master, 1259, Boyana, Sofia, Bulgaria",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Boyana_Church_2_TB.JPG/1920px-Boyana_Church_2_TB.JPG",
       "description": "Medieval Bulgarian Orthodox church located at the foot of Mount Vitosha in Sofia. Its exceptional 1259 frescoes by a master Bulgarian iconographer display remarkable psychological depth, realism, and vibrant color, foreshadowing the European Renaissance by decades."
     },
     {
-      "title": "Rila Monastery Frescoes \u2014 Zahari Zograf, c. 1844, Rila, Bulgaria",
+      "title": "Rila Monastery Frescoes — Zahari Zograf, c. 1844, Rila, Bulgaria",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Rila_Monastery%2C_August_2013.jpg/1920px-Rila_Monastery%2C_August_2013.jpg",
       "description": "The spiritual and cultural heart of Bulgaria, founded in the 10th century in the Rila Mountains. Its 1844 exterior frescoes by Zahari Zograf feature brilliant biblical scenes, angels, and virtues, representing the pinnacle of the Bulgarian National Revival."
     },
     {
-      "title": "The Bronze Horseman \u2014 \u00c9tienne Falconet, 1782, Senate Square, Saint Petersburg, Russia",
+      "title": "The Bronze Horseman — Étienne Falconet, 1782, Senate Square, Saint Petersburg, Russia",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/The_Bronze_Horseman_%28St._Petersburg%2C_Russia%29.jpg/1920px-The_Bronze_Horseman_%28St._Petersburg%2C_Russia%29.jpg",
-      "description": "Monumental equestrian statue of Peter the Great, commissioned by Catherine the Great and sculpted by \u00c9tienne Maurice Falconet between 1768 and 1782 on the bank of the Neva River. Peter points westward atop the Thunder Stone, the largest stone ever moved by humans."
+      "description": "Monumental equestrian statue of Peter the Great, commissioned by Catherine the Great and sculpted by Étienne Maurice Falconet between 1768 and 1782 on the bank of the Neva River. Peter points westward atop the Thunder Stone, the largest stone ever moved by humans."
     },
     {
-      "title": "Morning in a Pine Forest \u2014 Ivan Shishkin, 1889, Tretyakov Gallery, Moscow, Russia",
+      "title": "Morning in a Pine Forest — Ivan Shishkin, 1889, Tretyakov Gallery, Moscow, Russia",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Utro_v_sosnovom_lesu.jpg/1920px-Utro_v_sosnovom_lesu.jpg",
       "description": "Beloved 1889 Russian landscape painting by Ivan Shishkin, featuring four brown bear cubs playing among fallen trees in a misty primordial forest. Renowned for Shishkin's masterly depiction of morning sunlight filtering through ancient pine crowns."
     },
     {
-      "title": "The Ninth Wave \u2014 Ivan Aivazovsky, 1850, State Russian Museum, Saint Petersburg, Russia",
+      "title": "The Ninth Wave — Ivan Aivazovsky, 1850, State Russian Museum, Saint Petersburg, Russia",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Hovhannes_Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg/1920px-Hovhannes_Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg",
       "description": "Epic 1850 marine masterpiece by Russian romantic painter Ivan Aivazovsky. Depicting castaways clinging to a broken mast after a nocturnal storm as the luminous morning sun breaks through crashing ocean swells, it symbolizes hope amidst the raw power of the sea."
     },
     {
-      "title": "Barge Haulers on the Volga \u2014 Ilya Repin, 1873, State Russian Museum, Saint Petersburg, Russia",
+      "title": "Barge Haulers on the Volga — Ilya Repin, 1873, State Russian Museum, Saint Petersburg, Russia",
       "url-1080": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Ilia_Efimovich_Repin_%281844-1930%29_-_Volga_Boatmen_%281870-1873%29.jpg/1920px-Ilia_Efimovich_Repin_%281844-1930%29_-_Volga_Boatmen_%281870-1873%29.jpg",
       "description": "Seminal 1873 realist oil painting by Ilya Repin, depicting eleven exhausted burlaks (barge haulers) straining against heavy leather straps to pull a barge up the Volga River under the blazing sun. Praised by Tolstoy, it is an enduring tribute to human dignity."
     }
