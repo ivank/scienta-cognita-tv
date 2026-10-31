@@ -466,22 +466,7 @@ class ScreenController(
         musicPlayer = null
     }
 
-    private fun loadItem(media: AerialMedia) {
-        // Reset pause state when loading new item
-        isPaused = false
-        pauseStartTime = 0
-        currentMedia = media
-
-        if (media.uri.toString().contains("smb://")) {
-            val pattern = Regex("(smb://)([^:]+):([^@]+)@([\\d.]+)/")
-            val replacement = "$1****:****@****/"
-            val url = pattern.replace(media.uri.toString(), replacement)
-            Timber.i("Loading: ${media.metadata.shortDescription} - $url (${media.metadata.pointsOfInterest})")
-        } else {
-            Timber.i("Loading: ${media.metadata.shortDescription} - ${media.uri} (${media.metadata.pointsOfInterest})")
-        }
-
-        // Set overlay positions
+    private fun applyNextOverlayPositions() {
         overlayHelper.assignOverlaysAndIds(
             overlayViewBinding.flowBottomLeft,
             overlayViewBinding.flowBottomRight,
@@ -501,17 +486,30 @@ class ScreenController(
         if (shouldAlternateOverlays) {
             alternate = !alternate
         }
+    }
 
-        // Videos
+    private fun loadItem(media: AerialMedia) {
+        // Reset pause state when loading new item
+        isPaused = false
+        pauseStartTime = 0
+        currentMedia = media
+
+        if (media.uri.toString().contains("smb://")) {
+            val pattern = Regex("(smb://)([^:]+):([^@]+)@([\\d.]+)/")
+            val replacement = "$1****:****@****/"
+            val url = pattern.replace(media.uri.toString(), replacement)
+            Timber.i("Loading: ${media.metadata.shortDescription} - $url (${media.metadata.pointsOfInterest})")
+        } else {
+            Timber.i("Loading: ${media.metadata.shortDescription} - ${media.uri} (${media.metadata.pointsOfInterest})")
+        }
+
+        // Start loading next media in background without disturbing the currently visible item or overlays
         if (media.type == AerialMediaType.VIDEO) {
             videoPlayer.setVideo(media)
             videoPlayer.start()
         }
 
-        // Images
         if (media.type == AerialMediaType.IMAGE) {
-            val isOverlayOnRight = overlayHelper.findOverlay<MetadataOverlay>().firstOrNull()?.isRightSide ?: true
-            imagePlayer.setOverlayOnRight(isOverlayOnRight)
             imagePlayer.setImage(media)
         }
 
@@ -520,11 +518,6 @@ class ScreenController(
         if (isDetailsMode) {
             imagePlayer.setLooping(true)
             videoPlayer.setLooping(true)
-        }
-
-        // Best to rest progress bar (if enabled) before media playback
-        if (GeneralPrefs.progressBarLocation != ProgressBarLocation.DISABLED) {
-            GlobalBus.post(ProgressBarEvent(ProgressState.RESET))
         }
     }
 
@@ -571,7 +564,6 @@ class ScreenController(
 //                gradientTopView.alpha = 0f
         when (overlayVisibilityMode) {
             "ALWAYS_VISIBLE" -> {
-                // Overlays stay visible, no hiding
                 overlayHelper.getOverlaysToFade().forEach { it.alpha = overlayVisibleAlpha }
                 if (GeneralPrefs.showTopGradient && overlayHelper.hasTopOverlaysToFade()) {
                     gradientTopView.alpha = 1f
@@ -597,7 +589,6 @@ class ScreenController(
             }
 
             "HIDE_AFTER_DELAY" -> {
-                // Show overlays, then hide after delay
                 overlayHelper.getOverlaysToFade().forEach { it.alpha = overlayVisibleAlpha }
                 if (GeneralPrefs.showTopGradient && overlayHelper.hasTopOverlaysToFade()) {
                     gradientTopView.alpha = 1f
@@ -818,7 +809,6 @@ class ScreenController(
 
     private fun renderMetadataOverlays(state: OverlayUiState) {
         overlayHelper.findOverlay<MetadataOverlay>().forEach { overlay ->
-            imagePlayer.setOverlayOnRight(overlay.isRightSide)
             state.metadata[overlay.type]?.let { overlay.render(it, videoPlayer) }
         }
     }
@@ -1281,13 +1271,72 @@ class ScreenController(
         }
     }
 
-    override fun onVideoPrepared() {
-        if (!blackOutMode && currentMedia?.type == AerialMediaType.VIDEO) {
-            currentMedia?.let {
-                overlayStateStore.resetForNextMedia()
-                updateMetadataOverlayData(it)
+    private fun commitAndFadeInPreparedItem(media: AerialMedia) {
+        if (blackOutMode || currentMedia !== media) return
+
+        // While the screen is completely covered by loadingView (alpha = 1f),
+        // move overlays to their next position and update the underlying media views.
+        applyNextOverlayPositions()
+
+        if (GeneralPrefs.progressBarLocation != ProgressBarLocation.DISABLED) {
+            GlobalBus.post(ProgressBarEvent(ProgressState.RESET))
+        }
+
+        updateMetadataOverlayData(media)
+
+        if (media.type == AerialMediaType.IMAGE) {
+            val isOverlayOnRight = overlayHelper.findOverlay<MetadataOverlay>().firstOrNull()?.isRightSide ?: true
+            imagePlayer.setOverlayOnRight(isOverlayOnRight)
+            if (videoViewBinding.root.isVisible) {
+                videoPlayer.stop()
+                videoViewBinding.root.visibility = View.INVISIBLE
             }
-            fadeInNextItem()
+            imageViewBinding.root.alpha = 1f
+            imageViewBinding.root.visibility = View.VISIBLE
+            imagePlayer.commitPreparedImage {
+                fadeInNextItem()
+            }
+        } else if (media.type == AerialMediaType.VIDEO) {
+            if (imageViewBinding.root.isVisible) {
+                imageViewBinding.imagePlayer.stop()
+                imageViewBinding.root.visibility = View.INVISIBLE
+            }
+            videoViewBinding.root.alpha = 1f
+            videoViewBinding.root.visibility = View.VISIBLE
+            view.post {
+                fadeInNextItem()
+            }
+        }
+    }
+
+    private fun transitionToPreparedItem(media: AerialMedia) {
+        if (blackOutMode || currentMedia !== media) return
+
+        if (loadingView.isVisible) {
+            commitAndFadeInPreparedItem(media)
+            return
+        }
+
+        // Smoothly fade loadingView (which sits above media and overlays) from 0f to 1f once the new item is ready in memory
+        val fadeOutMs = minOf(mediaFadeOut, 420L).coerceAtLeast(250L)
+        loadingContainer.visibility = View.GONE
+        loadingView.animate().cancel()
+        loadingView.alpha = 0f
+        loadingView.visibility = View.VISIBLE
+        loadingView
+            .animate()
+            .alpha(1f)
+            .setStartDelay(0)
+            .setDuration(fadeOutMs)
+            .withEndAction {
+                commitAndFadeInPreparedItem(media)
+            }.start()
+    }
+
+    override fun onVideoPrepared() {
+        val media = currentMedia
+        if (!blackOutMode && media != null && media.type == AerialMediaType.VIDEO) {
+            transitionToPreparedItem(media)
         }
     }
 
@@ -1425,13 +1474,10 @@ class ScreenController(
     override fun onImagePrepared() {
         Timber.d("onImagePrepared")
         if (blackOutMode) return
-        currentMedia
-            ?.takeIf { it.type == AerialMediaType.IMAGE }
-            ?.let {
-                overlayStateStore.resetForNextMedia()
-                updateMetadataOverlayData(it)
-            }
-        fadeInNextItem()
+        val media = currentMedia
+        if (media != null && media.type == AerialMediaType.IMAGE) {
+            transitionToPreparedItem(media)
+        }
     }
 
     private fun bindOverlayState() {

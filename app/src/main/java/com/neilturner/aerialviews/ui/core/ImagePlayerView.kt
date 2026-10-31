@@ -103,18 +103,45 @@ class ImagePlayerView : FrameLayout {
     private var currentDisplayMode: DisplayMode = DisplayMode.STANDARD
     private var currentMedia: AerialMedia? = null
     private var currentDrawable: Drawable? = null
+    private var pendingMedia: AerialMedia? = null
+    private var pendingDrawable: Drawable? = null
+    private var pendingWidth: Int = 0
+    private var pendingHeight: Int = 0
     private var isOverlayOnRight: Boolean = true
 
     fun setOverlayOnRight(onRight: Boolean) {
-        if (isOverlayOnRight != onRight) {
-            isOverlayOnRight = onRight
-            if (currentDisplayMode == DisplayMode.SCULPTURE) {
-                updateSculpturePosition()
-            } else if (currentDisplayMode == DisplayMode.GALLERY) {
-                val (vw, _) = resolveTargetSize()
-                galleryFrameView.translationX = if (isOverlayOnRight) -(vw * 0.11f) else +(vw * 0.11f)
-            }
-        }
+        isOverlayOnRight = onRight
+    }
+
+    private fun computeGallerySideOffsetX(
+        vw: Float,
+        vh: Float,
+        endFrameScale: Float = GALLERY_END_FRAME_SCALE,
+    ): Float {
+        if (vw <= 0f || vh <= 0f) return 0f
+        val (frameW, _) = galleryFrameView.computeFrameDimensions(vw, vh)
+        if (frameW <= 0f) return 0f
+        val zoomedHalfW = (frameW * endFrameScale) / 2f
+        // Keep the zoomed frame safely inside the flanking marble pilasters (at least 9% margin from screen edge)
+        val maxSafeShift = maxOf(0f, (vw * 0.41f) - zoomedHalfW)
+        val desiredShift = vw * 0.105f
+        val shiftMag = minOf(desiredShift, maxSafeShift * 0.80f)
+        return if (isOverlayOnRight) -shiftMag else +shiftMag
+    }
+
+    private fun computeSculptureSideOffsetX(
+        vw: Float,
+        vh: Float,
+    ): Float {
+        if (vw <= 0f || vh <= 0f || currentImageWidth <= 0 || currentImageHeight <= 0) return 0f
+        val aspect = currentImageWidth.toFloat() / currentImageHeight.toFloat()
+        val displayedW = minOf(vw, vh * aspect)
+        val zoomedHalfW = (displayedW * 1.04f) / 2f
+        // Keep at least 6% margin from the outer screen edge even at peak zoom; wide portraits shift toward center
+        val maxSafeShift = maxOf(0f, (vw * 0.44f) - zoomedHalfW)
+        val desiredShift = vw * 0.18f
+        val shiftMag = minOf(desiredShift, maxSafeShift * 0.85f)
+        return if (isOverlayOnRight) -shiftMag else +shiftMag
     }
 
     private var backgroundReadyToken: Long = -1
@@ -264,8 +291,10 @@ class ImagePlayerView : FrameLayout {
         }
     }
 
+    private var onCommitReadyCallback: (() -> Unit)? = null
+
     fun setImage(media: AerialMedia) {
-        currentMedia = media
+        pendingMedia = media
         ioScope.launch {
             val baseStream = ImagePlayerHelper.streamFromMedia(context, media)
             if (baseStream == null) {
@@ -345,13 +374,16 @@ class ImagePlayerView : FrameLayout {
                     .target(
                         onStart = {},
                         onSuccess = { image ->
-                            currentDrawable = image.asDrawable(resources)
+                            pendingDrawable = image.asDrawable(resources)
                         },
                     ).listener(
                         onSuccess = { _, result ->
-                            val drawable = currentDrawable ?: result.image.asDrawable(resources)
-                            setupDisplay(drawable, result.image.width, result.image.height)
-                            setupFinishedRunnable()
+                            val drawable = pendingDrawable ?: result.image.asDrawable(resources)
+                            pendingMedia = media
+                            pendingDrawable = drawable
+                            pendingWidth = result.image.width
+                            pendingHeight = result.image.height
+                            listener?.onImagePrepared()
                         },
                         onError = { _, result ->
                             handleImageError(result.throwable)
@@ -371,6 +403,18 @@ class ImagePlayerView : FrameLayout {
 
             listener?.onImageError()
         }
+    }
+
+    fun commitPreparedImage(onReady: () -> Unit) {
+        val drawable = pendingDrawable ?: return
+        val media = pendingMedia ?: return
+        val width = pendingWidth
+        val height = pendingHeight
+        currentMedia = media
+        currentDrawable = drawable
+        onCommitReadyCallback = onReady
+        setupDisplay(drawable, width, height)
+        setupFinishedRunnable()
     }
 
     private fun setupDisplay(
@@ -466,7 +510,7 @@ class ImagePlayerView : FrameLayout {
         val (vw, vh) = resolveTargetSize()
         val density = resources.displayMetrics.density
         val wallCenterOffsetY = vh * 0.015f
-        val gallerySideOffsetX = if (isOverlayOnRight) -(vw * 0.11f) else +(vw * 0.11f)
+        val gallerySideOffsetX = computeGallerySideOffsetX(vw.toFloat(), vh.toFloat())
 
         galleryFrameView.translationY = wallCenterOffsetY
         galleryFrameView.translationX = gallerySideOffsetX
@@ -523,11 +567,8 @@ class ImagePlayerView : FrameLayout {
         val (vw, vh) = resolveTargetSize()
         if (currentImageWidth <= 0 || currentImageHeight <= 0) return
 
-        val targetH = vh * 0.90f
-        val targetW = targetH * (currentImageWidth.toFloat() / currentImageHeight.toFloat())
-
-        // Position on the side NOT occupied by the info bubble
-        val sideOffset = if (isOverlayOnRight) -(vw.toFloat() * 0.23f) else +(vw.toFloat() * 0.23f)
+        // Position on the side NOT occupied by the info bubble, moving toward center if wide
+        val sideOffset = computeSculptureSideOffsetX(vw.toFloat(), vh.toFloat())
 
         foregroundImageView.translationX = sideOffset
         foregroundImageView.translationY = 0f
@@ -672,6 +713,7 @@ class ImagePlayerView : FrameLayout {
 
     companion object {
         private const val STREAM_BUFFER_SIZE = 64 * 1024
+        private const val GALLERY_END_FRAME_SCALE = 1.15f
     }
 
     private fun resolveTargetSize(): Pair<Int, Int> {
@@ -838,23 +880,28 @@ class ImagePlayerView : FrameLayout {
         val (viewW, viewH) = resolveTargetSize()
         val vw = viewW.toFloat()
         val vh = viewH.toFloat()
+        // Add a 5-second buffer so the dolly motion stays smooth while the next artwork downloads and fades out
+        val animDuration = durationMs + 5000L
 
         when (currentDisplayMode) {
             DisplayMode.GALLERY -> {
                 val startScale = 1.0f
-                val endWallScale = 1.24f // Plane 1: Far background room (d = 6.5m)
-                val endFrameScale = 1.34f // Plane 3: Painting & museum frame (starts large and zooms in deeply)
-                val endMidParallaxScale = 1.52f // Plane 5: Midground 3D fixtures & flanking pilasters (d = 4.7m)
-                val endFgParallaxScale = 1.68f // Plane 6: Near-foreground 3D stanchions & velvet rope (d = 2.95m)
+                val endWallScale = 1.11f // Plane 1: Far background room (d = 6.5m)
+                val endFrameScale = GALLERY_END_FRAME_SCALE // Plane 3: Painting & museum frame (gentle zoom, never clips)
+                val endMidParallaxScale = 1.24f // Plane 5: Midground 3D fixtures & flanking pilasters (d = 4.7m)
+                val endFgParallaxScale = 1.34f // Plane 6: Near-foreground 3D stanchions & velvet rope (d = 2.95m)
 
-                val gallerySideOffsetX = if (isOverlayOnRight) -(vw * 0.11f) else +(vw * 0.11f)
-                val focalYOnFrame = galleryFrameView.getFocalPointY()
-                galleryFrameView.pivotX = galleryFrameView.width / 2f
-                galleryFrameView.pivotY = focalYOnFrame
+                val gallerySideOffsetX = computeGallerySideOffsetX(vw, vh, endFrameScale)
+                val (measuredW, measuredH) = galleryFrameView.computeMeasuredDimensions(vw, vh)
+                val pivotXOnFrame = if (measuredW > 0) measuredW / 2f else galleryFrameView.width / 2f
+                val pivotYOnFrame = if (measuredH > 0) measuredH / 2f else galleryFrameView.height / 2f
+
+                galleryFrameView.pivotX = pivotXOnFrame
+                galleryFrameView.pivotY = pivotYOnFrame
                 galleryFrameView.focalY = naturalFocalY
 
                 val screenFocalX = vw / 2f + gallerySideOffsetX
-                val screenFocalY = galleryFrameView.top + galleryFrameView.translationY + focalYOnFrame
+                val screenFocalY = vh / 2f + galleryFrameView.translationY
 
                 galleryBackgroundImageView.pivotX = screenFocalX
                 galleryBackgroundImageView.pivotY = screenFocalY
@@ -864,13 +911,13 @@ class ImagePlayerView : FrameLayout {
                 galleryForegroundParallaxView.pivotY = vh * 0.65f
 
                 val startFrameTransY = galleryFrameView.translationY
-                val endFrameTransY = startFrameTransY - 6f * resources.displayMetrics.density
+                val endFrameTransY = startFrameTransY - 4f * resources.displayMetrics.density
                 val density = resources.displayMetrics.density
 
-                Timber.i("Gallery 3D Multi-Plane Dolly Ken Burns: pivotY=$focalYOnFrame, screenFocalX=$screenFocalX, duration=$durationMs")
+                Timber.i("Gallery 3D Multi-Plane Dolly Ken Burns: pivotX=$pivotXOnFrame, pivotY=$pivotYOnFrame, screenFocalX=$screenFocalX, duration=$animDuration")
                 kenBurnsAnimator =
                     ValueAnimator.ofFloat(0f, 1f).apply {
-                        duration = durationMs
+                        duration = animDuration
                         interpolator = LinearInterpolator()
                         addUpdateListener { animator ->
                             val f = animator.animatedFraction
@@ -879,7 +926,7 @@ class ImagePlayerView : FrameLayout {
                             val wallScale = startScale + (endWallScale - startScale) * f
                             galleryBackgroundImageView.scaleX = wallScale
                             galleryBackgroundImageView.scaleY = wallScale
-                            galleryBackgroundImageView.translationY = 6f * density * f
+                            galleryBackgroundImageView.translationY = 4f * density * f
 
                             // Plane 3: Painting & Museum Frame
                             val frameScale = startScale + (endFrameScale - startScale) * f
@@ -892,26 +939,26 @@ class ImagePlayerView : FrameLayout {
                             val midScale = startScale + (endMidParallaxScale - startScale) * f
                             galleryMidgroundParallaxView.scaleX = midScale
                             galleryMidgroundParallaxView.scaleY = midScale
-                            galleryMidgroundParallaxView.translationY = (-28f - 14f * f) * density
+                            galleryMidgroundParallaxView.translationY = (-28f - 10f * f) * density
 
                             // Plane 6: Near-Foreground 3D Parallax (Stanchion Posts & Velvet Rope with Bokeh)
                             val fgScale = startScale + (endFgParallaxScale - startScale) * f
                             galleryForegroundParallaxView.scaleX = fgScale
                             galleryForegroundParallaxView.scaleY = fgScale
-                            galleryForegroundParallaxView.translationY = (-20f + 26f * f) * density
+                            galleryForegroundParallaxView.translationY = (-20f + 18f * f) * density
                         }
                         start()
                     }
             }
             DisplayMode.SCULPTURE -> {
-                val sideOffset = if (isOverlayOnRight) -(vw * 0.23f) else +(vw * 0.23f)
+                val sideOffset = computeSculptureSideOffsetX(vw, vh)
                 val zoomIn = kotlin.random.Random.nextBoolean()
                 val startScale = if (zoomIn) 1.0f else 1.04f
                 val endScale = if (zoomIn) 1.04f else 1.0f
 
                 kenBurnsAnimator =
                     ValueAnimator.ofFloat(0f, 1f).apply {
-                        duration = durationMs
+                        duration = animDuration
                         interpolator = LinearInterpolator()
                         addUpdateListener { animator ->
                             val f = animator.animatedFraction
@@ -945,7 +992,7 @@ class ImagePlayerView : FrameLayout {
 
                     kenBurnsAnimator =
                         ValueAnimator.ofFloat(0f, 1f).apply {
-                            duration = durationMs
+                            duration = animDuration
                             interpolator = LinearInterpolator()
                             addUpdateListener { animator ->
                                 val f = animator.animatedFraction
@@ -961,8 +1008,8 @@ class ImagePlayerView : FrameLayout {
                         }
                 } else {
                     val zoomIn = kotlin.random.Random.nextBoolean()
-                    val startScale = if (zoomIn) 1.02f else 1.12f
-                    val endScale = if (zoomIn) 1.12f else 1.02f
+                    val startScale = if (zoomIn) 1.02f else 1.10f
+                    val endScale = if (zoomIn) 1.10f else 1.02f
 
                     val startTransX = (kotlin.random.Random.nextFloat() * 2f - 1f) * 20f
                     val endTransX = (kotlin.random.Random.nextFloat() * 2f - 1f) * 40f
@@ -974,7 +1021,7 @@ class ImagePlayerView : FrameLayout {
 
                     kenBurnsAnimator =
                         ValueAnimator.ofFloat(0f, 1f).apply {
-                            duration = durationMs
+                            duration = animDuration
                             interpolator = LinearInterpolator()
                             addUpdateListener { animator ->
                                 val f = animator.animatedFraction
@@ -1003,7 +1050,7 @@ class ImagePlayerView : FrameLayout {
         val (vw, vh) = resolveTargetSize()
         val density = resources.displayMetrics.density
         val wallCenterOffsetY = vh * 0.015f
-        val gallerySideOffsetX = if (isOverlayOnRight) -(vw * 0.11f) else +(vw * 0.11f)
+        val gallerySideOffsetX = computeGallerySideOffsetX(vw.toFloat(), vh.toFloat())
         galleryFrameView.scaleX = 1f
         galleryFrameView.scaleY = 1f
         galleryFrameView.translationX = gallerySideOffsetX
@@ -1031,8 +1078,6 @@ class ImagePlayerView : FrameLayout {
     }
 
     private fun runSetupFinishedRunnable() {
-        listener?.onImagePrepared()
-
         val speedSeconds = GeneralPrefs.slideshowSpeed.toLongOrNull() ?: 30L
         val duration = maxOf(20000L, speedSeconds * 1000L)
         val fadeDuration = GeneralPrefs.mediaFadeOutDuration.toLongOrNull() ?: 800L
@@ -1046,6 +1091,12 @@ class ImagePlayerView : FrameLayout {
         Timber.i("Image display duration: ${duration.milliseconds}, delay: ${durationMinusFade.milliseconds}")
         if (progressBar) GlobalBus.post(ProgressBarEvent(ProgressState.START, 0, duration))
         postDelayed(finishedRunnable, durationMinusFade)
+
+        val readyCb = onCommitReadyCallback
+        onCommitReadyCallback = null
+        if (readyCb != null) {
+            post { readyCb.invoke() }
+        }
     }
 
     private fun markBackgroundReady(token: Long) {

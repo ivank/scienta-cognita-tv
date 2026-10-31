@@ -173,25 +173,6 @@ class MetadataOverlay
             }
         }
 
-        override fun onLayout(
-            changed: Boolean,
-            left: Int,
-            top: Int,
-            right: Int,
-            bottom: Int,
-        ) {
-            super.onLayout(changed, left, top, right, bottom)
-            if (width <= 0) return
-            val screenWidth = context.resources.displayMetrics.widthPixels
-            val rightSide = (left + right) / 2 > screenWidth / 2
-            if (rightSide != isRightSide) {
-                isRightSide = rightSide
-                post {
-                    applyLayoutForSide(rightSide)
-                }
-            }
-        }
-
         override fun onDetachedFromWindow() {
             super.onDetachedFromWindow()
             poiJob?.cancel()

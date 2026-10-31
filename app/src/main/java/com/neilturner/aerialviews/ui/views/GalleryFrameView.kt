@@ -124,19 +124,10 @@ class GalleryFrameView @JvmOverloads constructor(
         setLayerType(LAYER_TYPE_HARDWARE, null)
     }
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val availableW = MeasureSpec.getSize(widthMeasureSpec).toFloat()
-        val availableH = MeasureSpec.getSize(heightMeasureSpec).toFloat()
-
-        if (availableW <= 0f || availableH <= 0f) {
-            super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-            return
-        }
-
-        // Start with a prominent gallery frame height (~68% of screen height) so paintings
-        // command the screen right from the start before zooming in further.
-        val maxAllowedH = availableH * 0.68f
-        val maxAllowedW = availableW * 0.64f
+    fun computeFrameDimensions(availableW: Float, availableH: Float): Pair<Float, Float> {
+        if (availableW <= 0f || availableH <= 0f) return Pair(0f, 0f)
+        val maxAllowedH = availableH * 0.65f
+        val maxAllowedW = availableW * 0.60f
 
         var targetCanvasH = maxAllowedH - 2 * totalBorderPerSide
         var targetCanvasW = targetCanvasH * paintingAspectRatio
@@ -146,10 +137,27 @@ class GalleryFrameView @JvmOverloads constructor(
         }
         val targetFrameW = targetCanvasW + 2 * totalBorderPerSide
         val targetFrameH = targetCanvasH + 2 * totalBorderPerSide
+        return Pair(targetFrameW, targetFrameH)
+    }
 
+    fun computeMeasuredDimensions(availableW: Float, availableH: Float): Pair<Int, Int> {
+        val (targetFrameW, targetFrameH) = computeFrameDimensions(availableW, availableH)
+        if (targetFrameW <= 0f || targetFrameH <= 0f) return Pair(0, 0)
         val measuredW = (targetFrameW + shadowPadX * 2).toInt()
         val measuredH = (targetFrameH + shadowPadY * 2).toInt()
+        return Pair(measuredW, measuredH)
+    }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val availableW = MeasureSpec.getSize(widthMeasureSpec).toFloat()
+        val availableH = MeasureSpec.getSize(heightMeasureSpec).toFloat()
+
+        if (availableW <= 0f || availableH <= 0f) {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+            return
+        }
+
+        val (measuredW, measuredH) = computeMeasuredDimensions(availableW, availableH)
         setMeasuredDimension(measuredW, measuredH)
     }
 
